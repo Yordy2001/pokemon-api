@@ -11,6 +11,6 @@ router.get('/id/:id', getById)
 router.use('/name/:name', getByName)
 router.get('/', getAll)
 
-router.post('/pokemon', postRouter)
+router.post('/', postRouter)
 
 module.exports = router
