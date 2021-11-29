@@ -36,3 +36,21 @@ Start the server
 
 ```bash
   npm run start
+```  
+  
+## Migrations
+
+Create database pokemon-api with npx sequelize-cli db:create
+
+### run migrations
+
+```bash
+  npx sequelize-cli db:migrate
+```
+### run seeders
+
+```bash
+  npx sequelize-cli db:seed:all
+```
+    
+    
