@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const getAll = require('./getRouter/index')
+const getAll = require('./Pokemons/index')
 
 const router = express.Router()
 
