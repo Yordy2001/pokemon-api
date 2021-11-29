@@ -8,11 +8,6 @@ var cookieParse =require('cookie-parser')
 // ROUTERS
 const router = require('./routers/index')
 
-// MIDDLEWARE
-// const loger = require('./middleware/logger')
-// let requestTime = require('./middleware/requestime')
-// let validateCookies = require('./middleware/cookieValidator')
-// let pokemons = require('./utils/pokemons-json')
 
 // App. Middleware
 app.use(bodyParser.urlencoded({
@@ -20,11 +15,6 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 app.use(cookieParse())
-
-// Dev. Middleware
-// app.use(validateCookies)
-// app.use(requestTime)
-// app.use(loger)
 
 
 // Routers
