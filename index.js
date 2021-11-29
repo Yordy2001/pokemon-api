@@ -36,18 +36,6 @@ app.get('/', (req, res)=>{
 
 app.use(router)
 
-// app.delete('/pokemon/:id', (req, res) =>{
-//     res.send("call delete")
-//     const responseId = req.params.id
-//     pokemons.splice(responseId, 1)
-//     pokemon = (responseId)=>{
-//         pokemons.map((element, index) => {
-//             console.log(element, index)
-//         });
-//     }
-//     pokemon()
-// })
-
 
 // Error handler
 app.use((err, req, res, next) => res.status(400).send(err.menssage))
@@ -55,4 +43,3 @@ app.use((err, req, res, next) => res.status(400).send(err.menssage))
 app.listen(port, ()=>{
     console.log(`this project is running on http://localhost:${port}/`)
 })
-
