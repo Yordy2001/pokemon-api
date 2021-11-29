@@ -12,7 +12,7 @@ const router = require('./routers/index')
 // const loger = require('./middleware/logger')
 // let requestTime = require('./middleware/requestime')
 // let validateCookies = require('./middleware/cookieValidator')
-let pokemons = require('./utils/pokemons-json')
+// let pokemons = require('./utils/pokemons-json')
 
 // App. Middleware
 app.use(bodyParser.urlencoded({
@@ -36,17 +36,17 @@ app.get('/', (req, res)=>{
 
 app.use(router)
 
-app.delete('/pokemon/:id', (req, res) =>{
-    res.send("call delete")
-    const responseId = req.params.id
-    pokemons.splice(responseId, 1)
-    pokemon = (responseId)=>{
-        pokemons.map((element, index) => {
-            console.log(element, index)
-        });
-    }
-    pokemon()
-})
+// app.delete('/pokemon/:id', (req, res) =>{
+//     res.send("call delete")
+//     const responseId = req.params.id
+//     pokemons.splice(responseId, 1)
+//     pokemon = (responseId)=>{
+//         pokemons.map((element, index) => {
+//             console.log(element, index)
+//         });
+//     }
+//     pokemon()
+// })
 
 
 // Error handler

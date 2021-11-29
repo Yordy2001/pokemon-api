@@ -1,5 +1,14 @@
-const pokemon = require('../../utils/getPokemons')
+const {Pokemon} = require('../../../db');
 
-module.exports = (req, res)=> {
-    res.send(pokemon)
+module.exports = async (req, res) => {
+    try {
+        const pokemons = await Pokemon.findAll({
+            attributes: ['name', 'ability', 'type']
+        });
+        res.send(pokemons)
+    } catch (error) {
+        console.log(error)
+    }
+
+    
 }
