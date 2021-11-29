@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
         const pokemons = await Pokemon.findAll({
             attributes: ['name', 'ability', 'type']
         });
-        res.send(pokemons)
+        res.send( {data: pokemons} )
     } catch (error) {
         console.log(error)
     }

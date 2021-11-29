@@ -30,7 +30,6 @@ app.use(cookieParse())
 // Routers
 app.get('/', (req, res)=>{
     var responseText = "Welcome to Pokemon-api! <br>"
-    responseText += `<small>Requested at: ${req.requestTime} </small>`
     res.send(responseText)
 })
 
