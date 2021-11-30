@@ -9,6 +9,7 @@ module.exports = (req, res) =>{
                 name
             }   
         })
+        res.send(`pokemon ${pokemon.name} was updated`)
     } catch (error) {
         console.log(error)
     }
