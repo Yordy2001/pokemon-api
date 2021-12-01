@@ -6,4 +6,5 @@ const auth  = require('./auth/index')
 
 router.use('/pokemon', getAll) 
 router.use('/auth', auth)
+
 module.exports = router
