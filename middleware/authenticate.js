@@ -1,25 +1,19 @@
-const jwt = require('jsonwebtoken')
-const { User } = require('../db')
+const db = require('../db')
+const session = require("express-session");
+
+
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 module.exports = async(req, res, next ) =>{
-    const token = req.headers.authorization
-
-    try {
-        const authEntity = jwt.verify(token)
-        console.log(authEntity.userName)
-
-        const user = await User.findOne( {where: {name: userName, password: password }} )
-        if(user === null){
-            res.send('user not found')
-        }
-
-        console.log('this user ' + user.name + ' found')
-        next()
-
-    } catch (error) {
-        console.log(error)
-        // return res.status(401).send({
-        //     message: 'The token is invalid or has not been provided.',
-    // });
-    }
+    session({
+        secret: "Pokemon auth",
+        resave: false,
+        saveUninitialized: true,
+        // store: new SequelizeStore({
+        //     db:db,
+        // }),
+        // resave: false, 
+        // proxy: false, 
+    })
+    next()
 };
