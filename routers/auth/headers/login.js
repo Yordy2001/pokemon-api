@@ -1,21 +1,25 @@
 const {User}= require('../../../db')
+const bcrypt = require('bcrypt')
+
 
 module.exports = async (req, res)  =>{
-    // res.send("Autenticate")
-    // try {
+    res.send("login")
+   const {email, password} = req.body
+    try {
 
-    //     const user = await User.findOne( {where: {name: userName, password: password }} )
-    //     if(user === null){
-    //         res.send('user not found')
-    //     }
+        const user = await User.findOne( {where: {email}} )
+        if(!user){
+            return res.send('not found')
+        }
 
-    //     console.log('this user ' + user.name + ' found')
-    //     next()
+        const isMatch = await bcrypt.compare(password, user.password)
 
-    // } catch (error) {
-    //     console.log(error)
-    //     // return res.status(401).send({
-    //     //     message: 'The token is invalid or has not been provided.',
-    // // });
-    // }
+        if(!isMatch){
+            return res.send("incorrect password")
+        }
+        
+        res.redirect('/Pokemon')
+    } catch (error) {
+        console.log(error)
+    }
 }

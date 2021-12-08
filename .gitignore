@@ -1,6 +1,5 @@
 node_modules
 package-lock.json   
-package.json
 middware
 cookieValidator.js
 logger.js
