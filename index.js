@@ -20,8 +20,8 @@ app.use(cookie)
 // Routers
 app.get('/', (req, res)=>{
     req.session.isAuth = true
-    console.log(req.session)
-    console.log(req.session.id)
+    // console.log(req.session)
+    // console.log(req.session.id)
     var responseText = "Welcome to Pokemon-api! <br>"
     res.send(responseText)
 })
