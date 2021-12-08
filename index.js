@@ -19,7 +19,6 @@ app.use(cookieSession)
 
 // Routers
 app.get('/', (req, res)=>{
-    console.log(req.session)
     var responseText = "Welcome to Pokemon-api! <br>"
     res.send(responseText)
 })

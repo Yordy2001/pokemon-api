@@ -1,26 +1,24 @@
 const {User}= require('../../../db')
-const bcrypt = require('bcrypt')
+const bycript = require('bcrypt')
 
 module.exports = async (req, res)  =>{
-    const {userName, email, password } = req.body
-    console.log("redirecting...")
+    const {name, password, email} = req.body
+    console.log(name, password, email)
     try {
 
-        const user = await User.findOne( {where: {email: email}} )
-        if(user){
-            return res.redirect('/register')
-            
+        const user = await User.findOne({where:{email} })
+        if(user !== null){
+            res.redirect('/register')
         }
-        const hashedPsw = await bcrypt.hash(password, 12)
+
+        const hashdPsw = await bycript.hash(password, 12)
 
         await User.create({
-            firstName: userName,
+            name,
             email,
-            password: hashedPsw,
-        });
-
-
-        res.redirect('/login')
+            password: hashdPsw,
+        })
+        res,send("done")
     } catch (error) {
         console.log(error)
 
