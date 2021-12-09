@@ -12,7 +12,7 @@ const  router  = express.Router()
 
 router.get('/id/:id', getById)
 router.use('/name/:name', getByName)
-router.get('/', getAll)
+router.get('/', autenticate, getAll)
 
 router.post('/', autenticate, addPokemon)
 router.delete('/', autenticate, deletePokemon)
