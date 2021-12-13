@@ -13,12 +13,24 @@ app.set('trust proxy', 1)
 app.use(bodyParser.urlencoded({
     extended:false
 }))
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
 app.use(cookieParse())
 app.use(cookieSession)
 
+// app.use(function (req, res, next) {
+//     req.session.isNew = false
+//     next()
+// })
+// const isAuth = (req, res, next) => {
+//     if(!req.session.isNew){
+//         next()
+//     }
+//     res.redirect('/login')
+// }
+
 // Routers
 app.get('/', (req, res)=>{
+    console.log(req.session)
     var responseText = "Welcome to Pokemon-api! <br>"
     res.send(responseText)
 })

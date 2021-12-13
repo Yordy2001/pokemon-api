@@ -1,9 +1,9 @@
 const {User}= require('../../../db')
 const bcrypt = require('bcrypt')
 
-
 module.exports = async (req, res)  =>{
     const {email, password} = req.body
+    // res.send("done")
     try {
 
         const user = await User.findOne( {where: {email}} )
@@ -16,7 +16,10 @@ module.exports = async (req, res)  =>{
         if(!isMatch){
             return res.send("incorrect password")
         }
-        res.redirect('/pokemon')
+
+        req.session.isNew = false
+        // res.redirect('/pokemon')
+
     } catch (error) {
         console.log(error)
     }

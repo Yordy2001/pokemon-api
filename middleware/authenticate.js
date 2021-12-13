@@ -1,6 +1,9 @@
+
 module.exports = async(req, res, next ) =>{
-    if(req.session === null){
-        return res.redirect('/')
+    if(req.session.isNew){
+       next()
+    }else{
+        res.redirect('/login')
     }
-    next()
+    
 };

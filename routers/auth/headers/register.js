@@ -2,6 +2,7 @@ const {User}= require('../../../db')
 const bycript = require('bcrypt')
 
 module.exports = async (req, res)  =>{
+    console.log("registrado")
     const {firstName, password, email} = req.body
     try {
 
