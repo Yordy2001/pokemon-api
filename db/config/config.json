@@ -8,14 +8,14 @@
   },
   "test": {
     "username": "postgres",
-    "password": "Yonmarlin1905",
+    "password": "",
     "database": "pokemon-api",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "Yonmarlin1905",
+    "password": "",
     "database": "pokemon-api",
     "host": "localhost",
     "dialect": "postgres"

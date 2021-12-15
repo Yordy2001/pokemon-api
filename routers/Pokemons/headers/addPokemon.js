@@ -1,10 +1,10 @@
 const { Pokemon } = require('../../../db')
 
-module.exports = (req, res) =>{
+module.exports = async (req, res) =>{
     res.send("Se hizo el post")
     const {name, ability, type} = req.body
     try {
-        const pokemon = Pokemon.create({
+        await Pokemon.create({
             name,
             ability,
             type
