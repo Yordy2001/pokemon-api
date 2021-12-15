@@ -1,3 +1,4 @@
+const path = require('path')
 const {Pokemon} = require('../../../db');
 
 module.exports = async (req, res) => {
@@ -5,7 +6,8 @@ module.exports = async (req, res) => {
         const pokemons = await Pokemon.findAll({
             attributes: ['name', 'ability', 'type']
         });
-        res.send( {data: pokemons} )
+        res.sendFile((path.resolve(__dirname, '../../../static/templates/pokemon.htm')))
+        // res.send( {data: pokemons} )
     } catch (error) {
         console.log(error)
     }
