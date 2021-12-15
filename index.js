@@ -10,6 +10,7 @@ const router = require('./routers/index')
 
 // App. Middleware
 app.set('trust proxy', 1)
+app.set('view engine', 'pug')
 app.use(bodyParser.urlencoded({
     extended:false
 }))
