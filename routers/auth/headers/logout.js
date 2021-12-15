@@ -1,4 +1,6 @@
-// module.exports = (req, res) =>{
-//     req.session = null
-//     res.send(res.session)
-// }
+const login = require('../../login')
+
+module.exports = (req, res) =>{
+    req.session.isAuth = false 
+    res.redirect('/login')
+}

@@ -1,14 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-// const getRegister = require('./register')
-// const getLoging = require('./register')
 const login = require('./headers/login')
 const register = require('./headers/register')
+const logout = require('./headers/logout')
 
-// router.get('/login', getLoging)
-// router.get('/register', getRegister)
-
+router.get('/logout', logout)
 router.post('/login', login) 
 router.post('/register', register) 
 
