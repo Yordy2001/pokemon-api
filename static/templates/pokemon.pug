@@ -1,9 +1,13 @@
 doctype html
 html(lang='en')
     head 
-        title Pokemon! 
+    style(type='text/css').
+        .remark{
+            width:40px
+            background: red 
+        }
+    title Pokemon! 
     body 
         h1 Pokemons 
-        - const pokemons = []
         .remark 
-            p #{pokemons.name}
+            p #{pokemons} 

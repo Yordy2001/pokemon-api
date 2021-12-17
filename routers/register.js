@@ -1,6 +1,6 @@
 const path = require('path')
 
 module.exports = (req, res) =>{
-    res.sendFile(path.resolve(__dirname, '../static/templates/register.htm'))
+    res.render(path.resolve(__dirname, '../static/templates/register.pug'))
 
 }
