@@ -117,10 +117,10 @@ html(lang='en')
     form(action='/auth/login' method='POST')
       h3 Login
       label(for='unserName') userName
-      input#username(type='text' name='userName' placeholder='userName')
+      input#username(type='text' name='firstName' placeholder='userName' require)
       label(for='email') e-mail
-      input#username(type='email' name='email' placeholder='Email')
+      input#username(type='email' name='email' placeholder='Email' require)
       label(for='password') Password
-      input#password(type='password' name='password' placeholder='Password')
+      input#password(type='password' name='password' placeholder='Password' require)
       button Register
       button.register Log In
