@@ -1,20 +1,21 @@
+const cookieSession = require('cookie-session');
 const path = require('path')
-const pug = require('pug')
-const {Pokemon} = require('../../../db');
+const pug = require('pug');
+const { JSON } = require('sequelize/dist');
+const { QueryTypes } = require('sequelize')
+const {Pokemon, sequelize} = require('../../../db');
 
 module.exports = async (req, res) => {
+    data = []
     try {
-        const pokemons = await Pokemon.findAll({
-            attributes: ['name', 'ability', 'type']
+        const pokemons = await Pokemon.findAll();
+        pokemons.forEach(element => {
+            const {name, ability, type} = element
+            data = [...data, {name, ability, type}]
         });
-        // const {Pokemon} =
-        // for(i = 0; i <= pokemons.length; i++){
-        //     console.log(pokemons)
-        // }
-        // res.send(pokemons)
 
-        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), {pokemons:pokemons})
-    //    res.render('pokemon.pug', {name:'charizar'})
+        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), data)
+
     } catch (error) {
         console.log(error)
     }
