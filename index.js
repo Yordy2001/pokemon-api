@@ -14,6 +14,7 @@ app.set('trust proxy', 1) //cookie config
 app.use(bodyParser.urlencoded({extended:false}))
 app.set('templates', './static/templates') //templates config
 app.set('view engine', 'pug')
+app.use(bodyParser.json())
 app.use(cookieParse())
 app.use(cookieSession)
 
