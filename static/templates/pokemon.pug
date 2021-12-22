@@ -1,11 +1,85 @@
 doctype html
-html(lang='en')
- head
-   meta(charset='UTF-8')
-   meta(http-equiv='X-UA-Compatible' content='IE=edge')
-   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-   title Pokemon
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='style.css')
+  title Pokemon
+  style.
 
- body
-    p #{data[0].name}
-     
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    }
+    img{
+        width: 100%;
+    }
+    header{
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        height: auto;
+        padding: 1.2rem;
+        width: 100%;
+        background-color: steelblue;
+    }
+    .button-logout{
+        padding: 16px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .card__container{
+        align-items: center;
+        display: grid;
+        width: 100%;
+        height: auto;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-gap: 1.5rem;
+        padding: 1rem;
+        justify-items: center;
+    }
+    .card {
+        width: 50%;
+        height: auto;
+        max-height: 300px;
+        padding: auto;
+        text-align: center;
+        background: rgba(70, 131, 180, 0.76);
+        border-radius: 10px;
+        /* box-shadow: 20px 20px 40px #1b1c1b, -20px -20px 40px #2d302f; */
+    }
+    .card__header{
+        height: 40%;
+        /* max-width: 20px; */
+        background-color: tan;
+        margin-bottom: auto;
+        font-size: medium;
+
+    }
+header
+  h1 Pokemon-api
+  button.button-logout log out
+main
+  .card__container
+    .card
+      each value in data 
+       .card__content
+         .card__header
+           img(src='alola-pokemon.jpg' alt='alola imagen')
+         p.card__info #{value.name}
+         p.card__info #{value.ability}
+         p.card__info #{value.type}
+         button.card__button ---- &gt;
+
+
+    //- ul 
+    //-   each value in data
+    //-     li #{value.name} 
