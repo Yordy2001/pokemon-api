@@ -13,7 +13,8 @@ module.exports = async (req, res, next)  =>{
         const isMatch = await bcrypt.compare(password, user.password)
 
         if(!isMatch){
-            return res.send("incorrect password")
+            alert("incorrect password")
+            res.render("/login")
         }
 
         req.session.isAuth = true

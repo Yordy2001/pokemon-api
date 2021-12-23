@@ -9,7 +9,7 @@ const app = express()
 const router = require('./routers/index')
 
 // App. Middleware
-app.use('/static', express.static(__dirname + './static/templates'))
+// app.use('/static', express.static(__dirname + './static/templates'))
 app.set('trust proxy', 1) //cookie config
 app.use(bodyParser.urlencoded({extended:false}))
 app.set('templates', './static/templates') //templates config
