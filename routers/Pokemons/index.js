@@ -14,7 +14,7 @@ router.get('/id/:id', getById)
 router.use('/name/:name', getByName)
 router.get('/', autenticate, getAll)
 
-router.post('/', autenticate, addPokemon)
+router.post('/', addPokemon)
 router.delete('/', autenticate, deletePokemon)
 
 module.exports = router

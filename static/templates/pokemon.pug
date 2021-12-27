@@ -1,0 +1,81 @@
+doctype html
+html 
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Pokemon       
+    script(type='text/javascript').
+      const handleLogout = async ()=>{
+        await fetch('http://localhost:5000/auth/logout')
+        window.location.href = '/login'
+      }   
+    style.
+
+      *,
+      *::before,
+      *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+      }
+      img{
+        width: 100%;
+      }
+      header{
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        height: auto;
+        padding: 1.2rem;
+        width: 100%;
+        background-color: steelblue;
+      }
+      .button-logout{
+        padding: 16px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .card__container{
+        display: grid;
+        grid-template-columns: repeat(3, 300px);
+        justify-content: space-evenly;
+      }
+
+      .card__content {
+        border-radius: 3px;
+        border: teal 2px solid;
+        background-color: teal;
+      }
+
+      .card_body {
+        padding: .5rem;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 1.3rem;
+      }
+
+      //- .card_body .card__info2{
+      //-   display: none;
+      //- }
+      .card__button{
+        font-size: xx-large;
+      }
+  body 
+    header
+      h1 Pokemon-api
+      button.button-logout(onclick="handleLogout()") log out
+    main
+      .card__container
+        each value in data
+          .card__content
+            img(src='https://files.fm/thumb_show.php?i=5qytjga3w' alt='alola imagen')
+            .card_body
+              p.card__info.name #{value.name}
+              p.card__info2 #{value.ability}
+              p.card__info2 #{value.type}-
