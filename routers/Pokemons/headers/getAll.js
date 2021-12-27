@@ -9,10 +9,8 @@ module.exports = async (req, res) => {
             const {name, ability, type} = element
             data = [...data, {name, ability, type}]
         });
-        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), data)
-
+        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), {data})
     } catch (error) {
         console.log(error)
     }
-    
 }

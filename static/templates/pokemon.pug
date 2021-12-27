@@ -4,8 +4,12 @@ html
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Pokemon
-    script(src='../js/auth.js')     
+    title Pokemon       
+    script(type='text/javascript').
+      const handleLogout = async ()=>{
+        await fetch('http://localhost:5000/auth/logout')
+        window.location.href = '/login'
+      }   
     style.
 
       *,
@@ -56,23 +60,22 @@ html
         font-size: 1.3rem;
       }
 
-      .card_body .card__info2{
-        display: none;
-      }
+      //- .card_body .card__info2{
+      //-   display: none;
+      //- }
       .card__button{
         font-size: xx-large;
       }
   body 
     header
       h1 Pokemon-api
-      button.button-logout(onClick="logout()") log out
+      button.button-logout(onclick="handleLogout()") log out
     main
       .card__container
         each value in data
           .card__content
-            img(src='alola-pokemon.jpg' alt='alola imagen')
+            img(src='https://files.fm/thumb_show.php?i=5qytjga3w' alt='alola imagen')
             .card_body
               p.card__info.name #{value.name}
               p.card__info2 #{value.ability}
-              p.card__info2 #{value.type}
-              button.card__button ---
+              p.card__info2 #{value.type}-
