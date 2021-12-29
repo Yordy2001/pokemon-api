@@ -5,6 +5,84 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(rel='stylesheet' href='admin.css')
   title admin-site
+  style.
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    }
+    img{
+        width: 100%;
+    }
+    header{
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        height: auto;
+        padding: 1.2rem;
+        width: 100%;
+        background-color: steelblue;
+    }
+
+    .container{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns:300px  auto;
+        grid-template-rows: 60vh;
+    }
+
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .sidebar button{
+        display: block;
+        margin-top: 1rem;
+        padding: 1rem;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    main{
+        border: black 3px solid;
+        border-radius: 4px;
+        align-items: center;
+        justify-items: center;
+        margin: auto;
+        width: calc(90% - 2rem);
+        height: 95%;
+    }
+
+    form{
+        display: flex;
+        padding: .5rem;
+        font-size: 1.5rem;
+    }
+    form select{
+        border: none;
+        outline:steelblue solid 1px 
+    }
+
+    form select, 
+    .url-input > input{
+        font-size:1.3rem ;
+        margin-right: 1rem;
+    }
+
+    .url-input input{
+        width: 40rem;
+        border: none;
+        outline:steelblue solid 2px ;
+    }
+
+    .content{
+        overflow-y: scroll;
+    }
 header
   h1 Pokemon-admin
   button.button-logout log out
