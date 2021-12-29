@@ -1,0 +1,42 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='admin.css')
+  title admin-site
+header
+  h1 Pokemon-admin
+  button.button-logout log out
+section.container
+  section.sidebar
+    button ADD
+    button DELETE
+    button UPDATE
+    button GET
+  main
+    form#form(action='' method='POST')
+      select#form-select(name='method')
+        option(value='GET') GET
+        option(value='POST') POST
+        option(value='UPDATE') UPDATE
+        option(value='DELETE') DELETE
+        option(value='' selected='' disabled='') METHOD
+      .url-input
+        input#url(type='url' name='url' value='http://localhost:5000/pokemon')
+        button(type='submit') SEND
+    hr
+    .content
+      | [
+      | {
+      | &quot;name&quot;:&quot;&quot;
+      | &quot;name&quot;:&quot;&quot;
+      | &quot;name&quot;:&quot;&quot;
+      | },
+      | {
+      | &quot;name&quot;:&quot;&quot;
+      | &quot;name&quot;:&quot;&quot;
+      | &quot;name&quot;:&quot;&quot;
+      | }
+      | ]
+script(src='admin.js')
