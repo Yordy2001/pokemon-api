@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const pokemon = require('./pokemon');
 module.exports = (sequelize, DataTypes) => {
   class pokemon_ability extends Model {
     /**
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      pokemon_ability.belongsTo(pokemon)
     }
   };
   pokemon_ability.init({

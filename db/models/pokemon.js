@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const pokemon_type = require('./pokemon_type');
+const pokemon_ability = require('./pokemon_ability');
 module.exports = (sequelize, DataTypes) => {
   class Pokemon extends Model {
     /**
@@ -11,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Pokemon.hasMany(type, {
+        foreignKey:'pokemon_type',
+      })
+      Pokemon.hasMany(ability, {
+        foreignKey:'pokemon_ability',
+      })
     }
   };
   Pokemon.init({
