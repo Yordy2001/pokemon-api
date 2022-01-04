@@ -93,28 +93,11 @@ section.container
     button UPDATE
     button GET
   main
-    form#form(action='' method='POST')
-      select#form-select(name='method')
-        option(value='GET') GET
-        option(value='POST') POST
-        option(value='UPDATE') UPDATE
-        option(value='DELETE') DELETE
-        option(value='' selected='' disabled='') METHOD
-      .url-input
-        input#url(type='url' name='url' value='http://localhost:5000/pokemon')
-        button(type='submit') SEND
-    hr
-    .content
-      | [
-      | {
-      | &quot;name&quot;:&quot;&quot;
-      | &quot;name&quot;:&quot;&quot;
-      | &quot;name&quot;:&quot;&quot;
-      | },
-      | {
-      | &quot;name&quot;:&quot;&quot;
-      | &quot;name&quot;:&quot;&quot;
-      | &quot;name&quot;:&quot;&quot;
-      | }
-      | ]
-script(src='admin.js')
+    form(action='/pokemon' method='POST')
+      label(for='name') Name
+        input#username(type='text' name='name'  require)
+        label(for='type') Type
+        input#username(type='text' name='type'  require)
+        label(for='ability') ability
+        input#password(type='text' name='ability'  require)
+        button(type="submit") ENVIAR 
