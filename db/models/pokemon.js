@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Pokemon.hasMany(type, {
+      Pokemon.hasMany(models.pokemon_type, {
         foreignKey:'pokemon_type',
       })
-      Pokemon.hasMany(ability, {
+      Pokemon.hasMany(models.pokemon_ability, {
         foreignKey:'pokemon_ability',
       })
     }

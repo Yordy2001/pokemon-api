@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      pokemon_type.belongsTo(pokemon)
+      pokemon_type.belongsTo(models.Pokemon)
     }
   };
   pokemon_type.init({
