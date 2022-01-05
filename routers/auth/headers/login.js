@@ -16,6 +16,7 @@ module.exports = async (req, res, next)  =>{
             res.redirect("/login")
             return
         }
+        req.session.user = user.firstName
         req.session.isAuth = true
         res.redirect('/pokemon')
 
