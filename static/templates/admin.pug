@@ -13,75 +13,97 @@ head
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+    /* max-height: 100%; */
     }
-    img{
-        width: 100%;
+    img {
+    width: 100%;
     }
-    header{
-        margin-bottom: 2rem;
-        display: flex;
-        justify-content: space-between;
-        height: auto;
-        padding: 1.2rem;
-        width: 100%;
-        background-color: steelblue;
+    body{
+    background-image: url('../pokemon-backgound.webp');
+    background-position: center;
+    background-size: cover;
     }
-
-    .container{
-        padding: 2rem;
-        display: grid;
-        grid-template-columns:300px  auto;
-        grid-template-rows: 60vh;
+    header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    padding: 1.2rem;
+    width: 100%;
+    background-color: steelblue;
     }
-
-    .sidebar{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+    .container {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-template-rows: 60vh;
     }
-
-    .sidebar button{
-        display: block;
-        margin-top: 1rem;
-        padding: 1rem;
-        outline: none;
-        border: none;
-        cursor: pointer;
+    .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(70, 131, 180, 0.836);
+    border-right: 3px solid steelblue;
+    border-top: 3px solid steelblue;
     }
-    main{
-        border: black 3px solid;
-        border-radius: 4px;
-        align-items: center;
-        justify-items: center;
-        margin: auto;
-        width: calc(90% - 2rem);
-        height: 95%;
+    .sidebar button {
+    margin: 1rem 2rem;
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
     }
-
-    form{
-        display: flex;
-        padding: .5rem;
-        font-size: 1.5rem;
+    main {
+    border-radius: 4px;
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+    width: 30rem;
+    height: 95%;
+    background: steelblue;
     }
-    form select{
-        border: none;
-        outline:steelblue solid 1px 
+    form {
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
     }
-
-    form select, 
-    .url-input > input{
-        font-size:1.3rem ;
-        margin-right: 1rem;
+    label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
     }
-
-    .url-input input{
-        width: 40rem;
-        border: none;
-        outline:steelblue solid 2px ;
+    input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
     }
-
-    .content{
-        overflow-y: scroll;
+    .enviar {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;;
     }
 header
   h1 Pokemon-admin
@@ -95,9 +117,9 @@ section.container
   main
     form(action='/pokemon' method='POST')
       label(for='name') Name
-        input#username(type='text' name='name'  require)
-        label(for='type') Type
-        input#username(type='text' name='type'  require)
-        label(for='ability') ability
-        input#password(type='text' name='ability'  require)
-        button(type="submit") ENVIAR 
+      input#username(type='text' name='name' require='')
+      label(for='type') Type
+      input#username(type='text' name='type' require='')
+      label(for='ability') ability
+      input#password(type='text' name='ability' require='')
+      button.enviar(type='submit') ENVIAR 
