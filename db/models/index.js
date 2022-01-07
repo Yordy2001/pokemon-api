@@ -40,11 +40,11 @@ db.Sequelize = Sequelize;
 // }catch(err){
 //     console.error("declaind", err)
 // }
-try {
-  sequelize.sync({force :true})
-  console.log("All models were synchronized successfully.")
-} catch (error) {
-  console.log(error)
-}
+// try {
+//   sequelize.sync({force :true})
+//   console.log("All models were synchronized successfully.")
+// } catch (error) {
+//   console.log(error)
+// }
 
 module.exports = db;
