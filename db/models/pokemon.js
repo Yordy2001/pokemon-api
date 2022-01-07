@@ -13,20 +13,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Pokemon.hasMany(models.pokemon_type, {
-        foreignKey:'pokemon_type',
-      })
-      Pokemon.hasMany(models.pokemon_ability, {
-        foreignKey:'pokemon_ability',
-      })
+      Pokemon.belongsTo(models.pokemon_ability)
+      
+      Pokemon.belongsTo(models.pokemon_type)
     }
   };
   Pokemon.init({
     name: DataTypes.STRING,
     img: DataTypes.STRING,
     description: DataTypes.STRING,
+    owner: DataTypes.STRING
   }, {
     sequelize,
+    timestamps:false,
     modelName: 'Pokemon',
   });
   return Pokemon;

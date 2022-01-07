@@ -12,14 +12,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      pokemon_ability.belongsTo(models.Pokemon)
+      pokemon_ability.hasMany(models.Pokemon, {
+      })
     }
   };
   pokemon_ability.init({
-    ability: DataTypes.STRING
+    ability: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'pokemon_ability',
+    timestamps:false,
   });
   return pokemon_ability;
 };

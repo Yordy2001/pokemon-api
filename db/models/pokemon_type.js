@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      pokemon_type.belongsTo(models.Pokemon)
+      pokemon_type.hasMany(models.Pokemon, {
+      })
     }
   };
   pokemon_type.init({
@@ -20,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'pokemon_type',
+    timestamps:false,
   });
   return pokemon_type;
 };

@@ -6,8 +6,8 @@ module.exports = async (req, res) => {
     try {
         const pokemons = await Pokemon.findAll();
         pokemons.forEach(element => {
-            const {name, ability, type} = element
-            data = [...data, {name, ability, type}]
+            const {name, pokemon_ability, pokemon_type} = element
+            data = [...data, {name, pokemon_ability, pokemon_type}]
         });
         res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), {data})
     } catch (error) {
