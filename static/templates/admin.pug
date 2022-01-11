@@ -19,7 +19,7 @@ head
     width: 100%;
     }
     body{
-    background-image: url('../pokemon-backgound.webp');
+    background-image: url('../images/pokemon-backgound.webp');
     background-position: center;
     background-size: cover;
     }
@@ -33,10 +33,10 @@ head
     background-color: steelblue;
     }
     .container {
-    padding: 2rem;
+    //- padding: 2rem;
     display: grid;
     grid-template-columns: 300px auto;
-    grid-template-rows: 60vh;
+    //- grid-template-rows: 60vh;
     }
     .sidebar {
     display: flex;
@@ -59,23 +59,22 @@ head
     align-items: center;
     justify-items: center;
     margin: auto;
-    width: 30rem;
-    height: 95%;
-    background: steelblue;
+    width: calc(90% - 5rem) ;
+    height: auto ;
     }
     form {
-    height: 520px;
-    width: 400px;
+    height: auto;
+    width: auto;
     background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
+    //- position: absolute;
+    //- transform: translate(-50%,-50%);
+    //- top: 50%;
+    //- left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+    padding: 40px 35px;
     }
     label{
     display: block;
@@ -95,6 +94,7 @@ head
     font-weight: 300;
     }
     .enviar {
+    display:block;
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
@@ -118,8 +118,22 @@ section.container
     form(action='/pokemon' method='POST')
       label(for='name') Name
       input#username(type='text' name='name' require='')
-      label(for='type') Type
-      input#username(type='text' name='type' require='')
-      label(for='ability') ability
-      input#password(type='text' name='ability' require='')
+
+
+      label(for='img') Img
+      input#username(type='text' name='img' require='')
+
+      label(for='description') Img
+      input#username(type='text' name='description' require='')
+
+      label(for='owner') Owner
+      input#password(type='text' name='owner' require='')
+
+      label(for='pokemonTypeId') Type
+      input#username(type='number' name='pokemonTypeId' require='')
+
+      label(for='pokemonAbilityId') Ability
+      input#password(type='number'  name='pokemonAbilityId' require='')
+
+
       button.enviar(type='submit') ENVIAR 

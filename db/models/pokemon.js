@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       Pokemon.belongsTo(models.pokemon_ability)
       
       Pokemon.belongsTo(models.pokemon_type)
+
+      Pokemon.belongsTo(models.User)
     }
+
   };
   Pokemon.init({
     name: DataTypes.STRING,
