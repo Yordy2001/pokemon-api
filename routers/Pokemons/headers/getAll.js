@@ -1,17 +1,21 @@
 const path = require('path')
-const {Pokemon} = require('../../../db');
+const {Pokemon, User} = require('../../../db');
 
 module.exports = async (req, res) => {
     data = []
     let user = req.session.user
     try {
-        const pokemons = await Pokemon.findAll();
+        let {id} = await User.findOne({attributes:['id'], where:{firstName: req.session.user} })
+        const pokemons = await Pokemon.findAll({
+            where:{ UserId:id }
+        });
         pokemons.forEach(element => {
-            const {name, pokemon_ability, pokemon_type} = element
-            data = [...data, {name, pokemon_ability, pokemon_type}]
+            const {name, owner, img, pokemonAbilityId, pokemonTypeId} = element
+            data = [...data, {name, owner, img, pokemonAbilityId, pokemonTypeId}]
         });
         res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), {data, user})
     } catch (error) {
         console.log(error)
     }
+    console.log(data)
 }
