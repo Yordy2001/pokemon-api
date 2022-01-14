@@ -13,15 +13,15 @@ head
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    /* max-height: 100%; */
     }
     img {
     width: 100%;
     }
     body{
-    background-image: url('../images/pokemon-backgound.webp');
+    background-image: url('../../public/images/pokemon-backgound.webp');
     background-position: center;
     background-size: cover;
+    max-height:100vh;
     }
     header {
     margin-bottom: 2rem;
@@ -34,11 +34,13 @@ head
     }
     .container {
     //- padding: 2rem;
+    max-height: 100vh;
     display: grid;
     grid-template-columns: 300px auto;
     //- grid-template-rows: 60vh;
     }
     .sidebar {
+    max-height:100%;
     display: flex;
     flex-direction: column;
     background-color: rgba(70, 131, 180, 0.836);
@@ -60,10 +62,10 @@ head
     justify-items: center;
     margin: auto;
     width: calc(90% - 5rem) ;
-    height: auto ;
+    //- height: auto ;
     }
     form {
-    height: auto;
+    //- height: auto;
     width: auto;
     background-color: rgba(255,255,255,0.13);
     //- position: absolute;
@@ -74,7 +76,7 @@ head
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 40px 35px;
+    padding: 0px 35px;
     }
     label{
     display: block;
@@ -106,7 +108,7 @@ head
     cursor: pointer;;
     }
 header
-  h1 Pokemon-admin
+  h1 #{user}
   button.button-logout log out
 section.container
   section.sidebar

@@ -1,12 +1,12 @@
-const {Pokemon} = require('../../../db')
+const {Pokemon} = require('../../../../db')
 const {Op} = require('sequelize')
 
 module.exports = async (req, res)=> {
     try {
         const pokemon = await Pokemon.findAll({
             where: {
-                name: {
-                [Op.eq]: req.params.name
+              id: {
+                [Op.eq]: req.params.id
               }
             }
         });

@@ -1,5 +1,5 @@
 const express = require('express')
-const autenticate = require('../../middleware/authenticate')
+const autenticate = require('../../../middleware/authenticate')
 
 const getAll = require('./headers/getAll')
 const getByName = require('./headers/getByName')

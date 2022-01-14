@@ -1,5 +1,5 @@
 const path = require('path')
-const {Pokemon, User} = require('../../../db');
+const {Pokemon, User} = require('../../../../db');
 
 module.exports = async (req, res) => {
     data = []
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
             const {name, owner, img, pokemonAbilityId, pokemonTypeId} = element
             data = [...data, {name, owner, img, pokemonAbilityId, pokemonTypeId}]
         });
-        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), {data, user})
+        res.render(path.resolve(__dirname, '../../../views/pokemon.pug'), {data, user})
     } catch (error) {
         console.log(error)
     }

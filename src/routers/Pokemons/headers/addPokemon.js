@@ -1,4 +1,4 @@
-const { Pokemon, User } = require('../../../db')
+const { Pokemon, User } = require('../../../../db')
 
 module.exports = async (req, res) =>{
     res.send("Se hizo el post")
@@ -7,6 +7,7 @@ module.exports = async (req, res) =>{
     try {
         // Get userId
         let userId = await User.findOne({attributes:['id'], where:{firstName: req.session.user} })
+        console.console.log(userId);
         await Pokemon.create({
             name,
             img,

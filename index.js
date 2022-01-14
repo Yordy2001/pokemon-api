@@ -6,7 +6,7 @@ const cookieSession = require('./cookie')
 const app = express()
 
 // ROUTERS
-const router = require('./routers/index')
+const router = require('./src/')
 
 // App. Middleware
 // app.use('/static', express.static(__dirname + './static/templates'))

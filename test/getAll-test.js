@@ -1,5 +1,5 @@
 var assert = require('assert');
-const getAll = require('../routers/Pokemons/headers/getAll')
+const getAll = require('../src/routers/Pokemons/headers/getAll')
 
 describe('Array', function(){
     describe('#indexOf()', () => {
