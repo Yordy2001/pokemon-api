@@ -5,6 +5,11 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(rel='stylesheet' href='admin.css')
   title admin-site
+  script(type='text/javascript').
+    const handleLogout = async ()=>{
+      await fetch('http://localhost:5000/auth/logout')
+      window.location.href = '/login'
+    }  
   style.
     *,
     *::before,
@@ -100,7 +105,7 @@ head
     }
 header
   h1 #{user}
-  button.button-logout log out
+  button.button-logout(onclick="handleLogout()") log out
 section.container
   section.sidebar
     button ADD
