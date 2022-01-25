@@ -72,10 +72,10 @@ html
       button.button-logout(onclick="handleLogout()") log out
     main
       .card__container
-        each value in data
+        each pokemon in pokemons
           .card__content
-            img(src=value.img alt='alola imagen')
+            img(src=pokemon.img alt='alola imagen')
             .card_body
-              p.card__info.name #{value.name}
-              p.card__info2 #{value.owner}
-              p.card__info2 #{value.pokemonTypeId}
+              p.card__info.name #{pokemon.name}
+              p.card__info2 #{pokemon.owner}
+              p.card__info2 #{pokemon.pokemonTypeId}
