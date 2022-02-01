@@ -9,10 +9,9 @@ const app = express()
 const router = require('./routers/index')
 
 // App. Middleware
-// app.use('/static', express.static(__dirname + './static/templates'))
 app.set('trust proxy', 1) //cookie config
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(express.static('./static'))
+app.use('/static', express.static('./static'))
 app.set('templates', './static/templates') //templates config
 app.set('view engine', 'pug')
 app.use(bodyParser.json())

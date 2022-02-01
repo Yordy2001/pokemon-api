@@ -4,12 +4,9 @@ html
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel="stylesheet", href="http://localhost:5000/static/styles/modal.css")
     title Pokemon       
-    script(type='text/javascript').
-      const handleLogout = async ()=>{
-        await fetch('http://localhost:5000/auth/logout')
-        window.location.href = '/login'
-      }   
+    
     style.
 
       *,
@@ -69,8 +66,9 @@ html
   body 
     header
       h1 Pokemon-api
-      button.button-logout(onclick="handleLogout()") log out
+      button.button-logout(onclick="handleLogout()") log out         
     main
+      button#myBtn(onclick="openModal()") Add 
       .card__container
         each pokemon in pokemons
           .card__content
@@ -79,3 +77,16 @@ html
               p.card__info.name #{pokemon.name}
               p.card__info2 #{pokemon.owner}
               p.card__info2 #{pokemon.pokemonTypeId}
+      .modal#myModal
+        // Modal content
+        .modal-content
+          span.close &times;
+          form(action='' method='post')
+            input(placeholder='name' type='text' name='name' require='')
+            input(placeholder='img' type='text' name='img' require='')
+            input(placeholder='description' type='text' name='description' require='')
+            input(placeholder='owner' type='text' name='owner' require='')
+            input(placeholder='pokemonTypeId' type='number' name='pokemonTypeId' require='')
+            input(placeholder='pokemonAbilityId' type='number' name='pokemonAbilityId' require='')
+            button.enviar(type='submit') Enviar
+      script(type='text/javascript' src='http://localhost:5000/static/js/modal.js').

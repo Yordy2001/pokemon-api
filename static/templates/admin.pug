@@ -5,6 +5,9 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   //- link(rel='stylesheet' href='admin.css')
   title admin-site
+  script 
+    
+
   script(type='text/javascript').
     const handleLogout = async ()=>{
       await fetch('http://localhost:5000/auth/logout')
@@ -23,7 +26,7 @@ head
     width: 100%;
     }
     body{
-    background-image: url('../images/pokemon-backgound.webp');
+    background-image: url('http://localhost:5000/static/images/pokemon-backgound.webp');
     background-position: center;
     background-size: cover;
     }
