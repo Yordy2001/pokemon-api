@@ -18,7 +18,7 @@ background-color: #fefefe;
 margin: 15% auto; /* 15% from the top and centered */
 padding: 20px;
 border: 1px solid #888;
-width: 80%; /* Could be more or less, depending on screen size */
+width: 30rem; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -37,8 +37,8 @@ cursor: pointer;
 }
 
 form {
-    height: auto;
-    width: auto;
+    height: 30rem;
+    width: 30rem;
     background-color: rgba(255,255,255,0.13);
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -51,10 +51,10 @@ input {
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    background-color: #ffffff;
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
+    margin-bottom: 8px;
     font-size: 14px;
     font-weight: 300;
 }
@@ -72,12 +72,11 @@ input {
 }
 
 .modal-content {
-    /* position: relative; */
-    background-color: #f7d988;
-    /* margin: auto; */
-    padding: 0;
+    background-color: rgba(70, 131, 180, 0.596);
+    padding: 2rem;
     border: 1px solid #888;
-    width: 80%;
+    width: 32rem;
+    height: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
