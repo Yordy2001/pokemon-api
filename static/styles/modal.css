@@ -72,6 +72,7 @@ input {
 }
 
 .modal-content {
+    background-color: rgba(48, 115, 170, 0.63);
     background-color: rgba(70, 131, 180, 0.596);
     padding: 2rem;
     border: 1px solid #888;

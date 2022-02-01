@@ -21,22 +21,37 @@ html
         width: 100%;
       }
       header{
-        margin-bottom: 2rem;
         display: flex;
         justify-content: space-between;
+        align-items:center;
         height: auto;
-        padding: 1.2rem;
+        padding: .5rem;
         width: 100%;
         background-color: steelblue;
       }
-      .button-logout{
+      nav{
+        display: flex;
+        margin-bottom: 2rem;
+        width:100%;
+        padding:.5rem;
+        background-color: rgba(48, 115, 170, 0.63);;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button{
         padding: 16px;
-        border-radius: 20px;
         border: none;
         outline: none;
         cursor: pointer;
         font-weight: bold;
+        margin-right:5px;
       }
+
+      .button-logout{
+        border-radius: 20px;
+      }
+
       .card__container{
         display: grid;
         grid-template-columns: repeat(3, 300px);
@@ -66,9 +81,13 @@ html
   body 
     header
       h1 Pokemon-api
-      button.button-logout(onclick="handleLogout()") log out         
+      .button 
+        button.button.button-logout(onclick="handleLogout()") log out     
+    nav
+      button.button#myBtn(onclick="openModal()") ADD
+      button.button DELETE
+      button.button UPDATE    
     main
-      button#myBtn(onclick="openModal()") Add 
       .card__container
         each pokemon in pokemons
           .card__content
@@ -78,9 +97,7 @@ html
               p.card__info2 #{pokemon.owner}
               p.card__info2 #{pokemon.pokemonTypeId}
       .modal#myModal
-        // Modal content
-        //- .modal-content
-        
+        // Modal content    
         form(action='/pokemon' method='POST' class='modal-content')
           span.close &times;
           input(placeholder='name' type='text' name='name' require='')
