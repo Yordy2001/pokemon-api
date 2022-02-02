@@ -1,7 +1,7 @@
 const { Pokemon, User } = require('../../../db')
 
 module.exports = async (req, res) =>{
-    res.send("Se hizo el post")
+    console.log("se hizo el post")
     const {name, img, description, owner, pokemonAbilityId, pokemonTypeId} = req.body
     const UserId =  req.session.user.id
     try {

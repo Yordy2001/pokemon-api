@@ -10,11 +10,11 @@ const deletePokemon = require('./headers/deletePokemon')
 
 const  router  = express.Router()
 
-router.get('/id/:id', getById)
-router.use('/name/:name', getByName)
-router.get('/',  getAll)
+router.get('/id/:id', autenticate, getById)
+router.use('/name/:name', autenticate, getByName)
+router.get('/', autenticate, getAll)
 
-router.post('/', addPokemon)
+router.post('/', autenticate,addPokemon)
 router.delete('/', autenticate, deletePokemon)
 // router.update('/', autenticate, updatePokemon)
 
