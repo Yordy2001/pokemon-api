@@ -71,7 +71,7 @@ html
         justify-content: space-evenly;
         font-size: 1.3rem;
       }
-
+   
       //- .card_body .card__info2{
       //-   display: none;
       //- }
@@ -85,14 +85,16 @@ html
         button.button.button-logout(onclick="handleLogout()") log out     
     nav
       button.button#addBtn ADD
-      button DELETE
+      button.button#deleteBtn DELETE
       button.button UPDATE    
     main
       .card__container
         each pokemon in pokemons
           .card__content
+            img.delete_card_btn(onclick='deleteCard()' src="http://localhost:5000/static/images/x-button.png", alt="")
             img(src=pokemon.img alt='alola imagen')
             .card_body
+              p.card__info(style='display:none;') #{pokemon.id}
               p.card__info.name #{pokemon.name}
               p.card__info2 #{pokemon.owner}
               p.card__info2 #{pokemon.pokemonTypeId}

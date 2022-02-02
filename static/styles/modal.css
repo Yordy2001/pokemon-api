@@ -35,7 +35,11 @@ color: black;
 text-decoration: none;
 cursor: pointer;
 }
-
+.delete_card_btn{
+    position:absolute;
+    width: 40px;
+    display: none;
+}
 form {
     height: 30rem;
     width: 30rem;
