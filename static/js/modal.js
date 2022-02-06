@@ -23,8 +23,14 @@ deleteBtn.addEventListener('click', function(){
   })
 })
 
-const deleteCard = ()=>{
-  console.log(Event.parentElement)
+for (let i = 0; i < deleteCardBtn.length; i++) {
+  deleteCardBtn[i].addEventListener('click', function(e){
+    const cardSelected = e.target.id
+    fetch(`http://localhost:5000/pokemon/${cardSelected}`,{
+      method: 'DELETE',
+
+    })
+  })
 }
 
 // When the user clicks on <span> (x), close the modal
