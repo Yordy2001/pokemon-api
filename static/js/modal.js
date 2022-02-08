@@ -30,6 +30,7 @@ for (let i = 0; i < deleteCardBtn.length; i++) {
       method: 'DELETE',
 
     })
+    window.location.reload()
   })
 }
 
