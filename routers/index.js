@@ -7,6 +7,7 @@ const login = require('./login')
 const admin = require('./admin')
 const register = require('./register')
 const authenticate = require('../middleware/authenticate')
+
 router.get('/login', login)
 router.get('/admin', authenticate, admin)
 router.get('/register', register)

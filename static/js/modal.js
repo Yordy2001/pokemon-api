@@ -26,7 +26,7 @@ deleteBtn.addEventListener('click', function(){
 for (let i = 0; i < deleteCardBtn.length; i++) {
   deleteCardBtn[i].addEventListener('click', function(e){
     const cardSelected = e.target.id
-    fetch(`http://localhost:5000/pokemon/${cardSelected}`,{
+    fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
       method: 'DELETE',
 
     })
