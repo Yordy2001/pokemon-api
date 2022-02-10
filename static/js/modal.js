@@ -10,7 +10,9 @@ const addBtn = document.getElementById("addBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 
-
+const handleSubmit= () =>{
+  window.location.reload()
+}
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
   modal.style.display = "block";
