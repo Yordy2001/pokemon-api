@@ -6,7 +6,7 @@ const getByName = require('./headers/getByName')
 const getById = require('./headers/getById')
 const addPokemon = require('./headers/addPokemon')
 const deletePokemon = require('./headers/deletePokemon')
-// const updatePokemon = require('./headers/updatePokemon')
+const updatePokemon = require('./headers/updatePokemon')
 
 const  router  = express.Router()
 
@@ -16,6 +16,6 @@ router.get('/', autenticate, getAll)
 
 router.post('/', autenticate, addPokemon)
 router.delete('/id/:id', autenticate, deletePokemon)
-// router.update('/', autenticate, updatePokemon)
+router.put('/id/:id', updatePokemon)
 
 module.exports = router

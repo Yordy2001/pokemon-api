@@ -1,16 +1,16 @@
 const { Pokemon } = require('../../../db')
 
-module.exports = (req, res) =>{
-    res.send("Se hizo el post")
-    const {id} = req.body
+module.exports = async (req, res) =>{
+    const {id} = req.params
+    const { name, img, description, owner, pokemonAbilityId, pokemonTypeId } = req.body
     try {
-        const pokemon = Pokemon.update({id}, {
+        await Pokemon.update({id, name, img, description, owner, pokemonAbilityId, pokemonTypeId }, {
             where: {
                 id
             }   
         })
-        res.send(`pokemon ${pokemon.name} was updated`)
     } catch (error) {
         console.log(error)
     }
+    res.send("Se hizo el update")
 }

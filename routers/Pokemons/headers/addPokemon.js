@@ -1,4 +1,4 @@
-const { Pokemon, User } = require('../../../db')
+const { Pokemon } = require('../../../db')
 
 module.exports = async (req, res) =>{
     const {name, img, description, owner, pokemonAbilityId, pokemonTypeId} = req.body
