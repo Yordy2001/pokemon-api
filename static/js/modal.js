@@ -11,6 +11,12 @@ const deleteBtn = document.getElementById("deleteBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
+const enviar = document.getElementsByClassName("enviar");
+
+const handleSubmit = () =>{
+  window.location.reload()
+  modal.style.display = "none";
+}
 
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){

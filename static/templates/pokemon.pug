@@ -100,13 +100,13 @@ html
               p.card__info2 #{pokemon.pokemonTypeId}
       .modal#myModal
         // Modal content    
-        form(action='/pokemon' method='POST' class='modal-content')
+        form(action='/pokemon' onsubmit='handleSubmit()' method='POST' class='modal-content')
           span.close &times;
-          input(placeholder='name' type='text' name='name' require='')
-          input(placeholder='img' type='text' name='img' require='')
-          input(placeholder='description' type='text' name='description' require='')
-          input(placeholder='owner' type='text' name='owner' require='')
-          input(placeholder='pokemonTypeId' type='number' name='pokemonTypeId' require='')
-          input(placeholder='pokemonAbilityId' type='number' name='pokemonAbilityId' require='')
+          input(placeholder='name' type='text' name='name' required)
+          input(placeholder='img' type='text' name='img' required)
+          input(placeholder='description' type='text' name='description' required)
+          input(placeholder='owner' type='text' name='owner' required)
+          input(placeholder='pokemonTypeId' type='number' name='pokemonTypeId' required)
+          input(placeholder='pokemonAbilityId' type='number' name='pokemonAbilityId' required)
           button.enviar(type='submit') Enviar
       script(type='text/javascript' src='http://localhost:5000/static/js/modal.js').
