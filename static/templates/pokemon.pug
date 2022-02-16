@@ -65,9 +65,10 @@ html
       }
 
       .card_body {
+        display:flex; 
         padding: .5rem;
         text-align: center;
-        display: flex;
+        align-items: center;
         justify-content: space-evenly;
         font-size: 1.3rem;
       }
@@ -91,22 +92,34 @@ html
       .card__container
         each pokemon in pokemons
           .card__content
-            button.delete_card_btn
-              img(src="http://localhost:5000/static/images/x-button.png", alt="" id=pokemon.id)
             img(src=pokemon.img alt='alola imagen')
             .card_body
+              button.icon.delete_card_btn
+                img(src="http://localhost:5000/static/images/x-button.png", alt="" id=pokemon.id)
+              button.icon.update_card_btn
+                img(src="http://localhost:5000/static/images/pencil.png", alt="" id=pokemon.id)
               p.card__info.name #{pokemon.name}
               p.card__info2 #{pokemon.owner}
               p.card__info2 #{pokemon.pokemonTypeId}
+              
       .modal#myModal
         // Modal content    
         form(action='/pokemon' onsubmit='handleSubmit()' method='POST' class='modal-content')
           span.close &times;
-          input(placeholder='name' type='text' name='name' required)
-          input(placeholder='img' type='text' name='img' required)
-          input(placeholder='description' type='text' name='description' required)
-          input(placeholder='owner' type='text' name='owner' required)
-          input(placeholder='pokemonTypeId' type='number' name='pokemonTypeId' required)
-          input(placeholder='pokemonAbilityId' type='number' name='pokemonAbilityId' required)
+          input(id='input_name' value='' placeholder='name' type='text' name='name' required)
+          input(id='input_img' value='' placeholder='img' type='text' name='img' required)
+          input(id='input_description' value='' placeholder='description' type='text' name='description' required)
+          input(id='input_owner' value='' placeholder='owner' type='text' name='owner' required)
+          select(id='input_pokemonTypeId' name='pokemonTypeId' required)
+            option(value="pokemon.pokemonTypeId" selected='' disabled) pokemonTypeId
+            each data in pokemons
+              option(value=data.pokemonTypeId) #{data.pokemonTypeId}
+          
+          select(id='input_pokemonAbilityId' name='pokemonTypeId' required)
+            option(value="pokemon.pokemonTypeId" selected='' disabled) pokemonAbilityId
+            each each in pokemons
+              option(value=each.pokemonTypeId) #{each.pokemonTypeId}
+  
           button.enviar(type='submit') Enviar
+    
       script(type='text/javascript' src='http://localhost:5000/static/js/modal.js').

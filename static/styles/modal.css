@@ -35,10 +35,8 @@ color: black;
 text-decoration: none;
 cursor: pointer;
 }
-.delete_card_btn{
-    position:absolute;
+.icon{
     width: 40px;
-    display: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -54,7 +52,8 @@ form {
     padding: 0px 35px;
 }
 
-input {
+input,
+select {
     display: block;
     height: 50px;
     width: 100%;

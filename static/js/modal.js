@@ -1,7 +1,14 @@
 const handleLogout = async ()=>{
   await fetch('http://localhost:5000/auth/logout')
   window.location.href = '/login'
-}   
+}
+//Get Inpit value
+const inputName = document.getElementById('input_name')
+const inputImg = document.getElementById('input_img')
+const inputDescription = document.getElementById('input_description')
+const inputOwner = document.getElementById('input_owner')
+const inputPokemonType = document.getElementById('input_pokemonTypeId')
+const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -11,6 +18,7 @@ const deleteBtn = document.getElementById("deleteBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
+const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementsByClassName("enviar");
 
 const handleSubmit = () =>{
@@ -23,16 +31,21 @@ addBtn.addEventListener('click', function(){
   modal.style.display = "block";
 })
 
-deleteBtn.addEventListener('click', function(){
-  deleteCardBtn.forEach(each =>{
-    each.style.display = "block";
-  })
-})
-
-for (let i = 0; i < deleteCardBtn.length; i++) {
-  deleteCardBtn[i].addEventListener('click', function(e){
+for (let e = 0; e < updateCardBtn.length; e++){
+  updateCardBtn[e].addEventListener('click',function(e){
     const cardSelected = e.target.id
     fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  })
+}
+
+
+for (let i = 0; i < deleteCardBtn.length; i++) {
+  deleteCardBtn[i].addEventListener('click', async function(e){
+    const cardSelected = e.target.id
+    await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
       method: 'DELETE',
 
     })
@@ -50,9 +63,5 @@ window.addEventListener('click', function(event){
   if (event.target == modal) {
     modal.style.display = "none";
   }
-  if(event.target != deleteBtn){
-    deleteCardBtn.forEach(each =>{
-      each.style.display = "none";
-    })
-  }
+
 })
