@@ -9,6 +9,7 @@ const inputDescription = document.getElementById('input_description')
 const inputOwner = document.getElementById('input_owner')
 const inputPokemonType = document.getElementById('input_pokemonTypeId')
 const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
+const pokemonForm = document.getElementById('pokemon-form')
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -37,7 +38,16 @@ for (let e = 0; e < updateCardBtn.length; e++){
     fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        inputName.value = data[0].name
+        inputImg.value = data[0].img
+        inputDescription.value = data[0].description
+        inputOwner.value = data[0].owner
+        inputPokemonAbility.value = data[0].pokemonAbilityId
+        inputPokemonType.value = data[0].pokemonTypeId
+    })
+    modal.style.display = "block";
+    pokemonForm.setAttribute("method", "PUT");
   })
 }
 

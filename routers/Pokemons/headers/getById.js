@@ -6,7 +6,7 @@ module.exports = async (req, res)=> {
             where: {id: req.params.id}
         });
         
-      return res.json({data:pokemon})
+      return res.send( pokemon )
     } catch (error) {
         console.log(error)
     }  
