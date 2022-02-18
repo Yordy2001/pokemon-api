@@ -22,9 +22,24 @@ const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementsByClassName("enviar");
 
-const handleSubmit = () =>{
-  window.location.reload()
-  modal.style.display = "none";
+const handleSubmit = (e) =>{
+  e.preventDefault();
+
+  if(e.target.value = "actualizar"){
+    console.log('actualizar')
+    fetch('http://localhost:5000/pokemon/id/4',{
+      method: 'PUT',
+      body: {
+        name: inputName.value,
+        img: inputImg.value,
+        description: inputDescription.value,
+        owner: inputOwner.value,
+        pokemonAbilityId: inputPokemonAbility.value,
+        pokemonTypeId: inputPokemonType.value,
+      }
+    })
+  }
+  modal.style.display = "none"; 
 }
 
 // When the user clicks on the button, open the modal
@@ -33,7 +48,7 @@ addBtn.addEventListener('click', function(){
 })
 
 for (let e = 0; e < updateCardBtn.length; e++){
-  updateCardBtn[e].addEventListener('click',function(e){
+  updateCardBtn[e].addEventListener('click', function(e){
     const cardSelected = e.target.id
     fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
     })
@@ -47,10 +62,9 @@ for (let e = 0; e < updateCardBtn.length; e++){
         inputPokemonType.value = data[0].pokemonTypeId
     })
     modal.style.display = "block";
-    pokemonForm.setAttribute("method", "PUT");
+  
   })
 }
-
 
 for (let i = 0; i < deleteCardBtn.length; i++) {
   deleteCardBtn[i].addEventListener('click', async function(e){
