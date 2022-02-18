@@ -104,7 +104,7 @@ html
               
       .modal#myModal
         // Modal content    
-        form(action='/pokemon' onsubmit='handleSubmit()' method='POST' class='modal-content' id='pokemon-form')
+        form( class='modal-content' id='pokemon-form' )
           span.close &times;
           input(id='input_name' value='' placeholder='name' type='text' name='name' required)
           input(id='input_img' value='' placeholder='img' type='text' name='img' required)
@@ -112,14 +112,14 @@ html
           input(id='input_owner' value='' placeholder='owner' type='text' name='owner' required)
           select(id='input_pokemonTypeId' name='pokemonTypeId' required)
             option(value="" selected='' disabled) pokemonTypeId
-            each data in pokemons
-              option(value=data.pokemonTypeId) #{data.pokemonTypeId}
+            each data in pokemonType
+              option(value=data.pokemonTypeId) #{data.id}
           
           select(id='input_pokemonAbilityId' name='pokemonAbilityId' required)
             option(value="" selected='' disabled) pokemonAbilityId
-            each each in pokemons
-              option(value=each.pokemonAbilityId) #{each.pokemonAbilityId}
+            each each in pokemonAbility
+              option(value=each.pokemonAbilityId) #{each.id}
   
-          button.enviar(type='submit') Enviar
+          button.enviar(type='submit' value='enviar' onsubmit='handleSubmit()' ) Enviar
     
       script(type='text/javascript' src='http://localhost:5000/static/js/modal.js').
