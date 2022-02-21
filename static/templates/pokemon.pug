@@ -104,7 +104,7 @@ html
               
       .modal#myModal
         // Modal content    
-        form( class='modal-content' id='pokemon-form' )
+        form( class='modal-content' id='pokemon-form' enctype="multipart/form-data")
           span.close &times;
           input(id='input_name' value='' placeholder='name' type='text' name='name' required)
           input(id='input_img' value='' placeholder='img' type='file' name='avatar' required)
