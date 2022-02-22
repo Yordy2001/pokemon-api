@@ -64,7 +64,7 @@ select {
     font-size: 14px;
     font-weight: 300;
 }
-.enviar {
+#enviar {
     display:block;
     margin-top: 50px;
     width: 100%;

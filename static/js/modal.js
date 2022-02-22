@@ -2,14 +2,15 @@ const handleLogout = async ()=>{
   await fetch('http://localhost:5000/auth/logout')
   window.location.href = '/login'
 }
+
 //Get Inpit value
-const inputName = document.getElementById('input_name')
-const inputImg = document.getElementById('input_img')
-const inputDescription = document.getElementById('input_description')
-const inputOwner = document.getElementById('input_owner')
-const inputPokemonType = document.getElementById('input_pokemonTypeId')
-const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
-const pokemonForm = document.getElementById('pokemon-form')
+const inputName = document.getElementById('input_name').value
+const inputImg = document.getElementById('input_img').value
+const inputDescription = document.getElementById('input_description').value
+const inputOwner = document.getElementById('input_owner').value
+const inputPokemonType = document.getElementById('input_pokemonTypeId').value
+const inputPokemonAbility = document.getElementById('input_pokemonAbilityId').value
+const pokemonForm = document.getElementById('pokemon-form').value
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -20,27 +21,25 @@ const deleteBtn = document.getElementById("deleteBtn");
 const span = document.getElementsByClassName("close")[0];
 const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
-const enviar = document.getElementsByClassName("enviar");
+const enviar = document.getElementById("enviar");
 
-const handleSubmit = (e) =>{
-  e.preventDefault();
-
-  if(e.target.value = "actualizar"){
-    console.log('actualizar')
-    fetch('http://localhost:5000/pokemon/id/4',{
-      method: 'PUT',
+if(enviar){
+  enviar.addEventListener('click', function(e){
+    e.preventDefault()
+    fetch('http://localhost:5000/pokemon/',{
+      method: 'POST',
       body: {
-        name: inputName.value,
-        img: inputImg.value,
-        description: inputDescription.value,
-        owner: inputOwner.value,
-        pokemonAbilityId: inputPokemonAbility.value,
-        pokemonTypeId: inputPokemonType.value,
+        name: inputName,
+        img: inputImg,
+        description: inputDescription,
+        owner: inputOwner,
+        pokemonAbilityId: inputPokemonAbility,
+        pokemonTypeId: inputPokemonType,
       }
     })
-  }
-  modal.style.display = "none"; 
+  })
 }
+
 
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
@@ -50,10 +49,12 @@ addBtn.addEventListener('click', function(){
 for (let e = 0; e < updateCardBtn.length; e++){
   updateCardBtn[e].addEventListener('click', function(e){
     const cardSelected = e.target.id
+    console.log(cardSelected)
     fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
         inputName.value = data[0].name
         inputImg.value = data[0].img
         inputDescription.value = data[0].description
