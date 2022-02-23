@@ -5,7 +5,6 @@ module.exports = async (req, res) =>{
     const { name, description, owner, pokemonAbilityId, pokemonTypeId } = req.body
     const img = req.file.path
     const UserId =  req.session.user.id
-
     try {
         // Get userId
         await Pokemon.create({
@@ -13,8 +12,8 @@ module.exports = async (req, res) =>{
             img,
             description,
             owner,
-            pokemonAbilityId :1,
-            pokemonTypeId: 3,
+            pokemonAbilityId,
+            pokemonTypeId,
             UserId,
         })
     } catch (error) {

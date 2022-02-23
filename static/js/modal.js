@@ -20,15 +20,15 @@ const deleteBtn = document.getElementById("deleteBtn");
 const span = document.getElementsByClassName("close")[0];
 const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
-const enviar = document.getElementsByClassName("enviar");
+const enviar = document.getElementById("enviar");
 
-const handleSubmit = (e) =>{
-  e.preventDefault();
 
-  if(e.target.value = "actualizar"){
-    console.log('actualizar')
-    fetch('http://localhost:5000/pokemon/id/4',{
-      method: 'PUT',
+
+if(enviar){
+  enviar.addEventListener('click', function(e){
+    e.preventDefault()
+    fetch('http://localhost:5000/pokemon/', {
+      method: 'POST',
       body: {
         name: inputName.value,
         img: inputImg.value,
@@ -38,8 +38,9 @@ const handleSubmit = (e) =>{
         pokemonTypeId: inputPokemonType.value,
       }
     })
-  }
-  modal.style.display = "none"; 
+    // modal.style.display = "none"; 
+  })
+   
 }
 
 // When the user clicks on the button, open the modal

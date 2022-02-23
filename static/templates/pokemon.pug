@@ -120,6 +120,6 @@ html
             each each in pokemonAbility
               option(value=each.pokemonAbilityId) #{each.id}
   
-          button.enviar(type='submit' value='enviar' onsubmit='handleSubmit()' ) Enviar
+          button#enviar(type='submit' value='enviar' ) Enviar
     
       script(type='text/javascript' src='http://localhost:5000/static/js/modal.js').
