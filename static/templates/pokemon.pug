@@ -106,16 +106,16 @@ html
         // Modal content    
         form(class='modal-content' id='pokemon-form' )
           span.close &times;
-          input(id='input_name' value='' placeholder='name' type='text' name='name' required)
-          input(id='input_img' value='' placeholder='img' type='text' name='img' required)
-          input(id='input_description' value='' placeholder='description' type='text' name='description' required)
-          input(id='input_owner' value='' placeholder='owner' type='text' name='owner' required)
-          select(id='input_pokemonTypeId' name='pokemonTypeId' required)
+          input(id='input_name' value='' placeholder='name' type='text' name='name' )
+          input(id='input_img' value='' placeholder='img' type='text' name='img' )
+          input(id='input_description' value='' placeholder='description' type='text' name='description' )
+          input(id='input_owner' value='' placeholder='owner' type='text' name='owner' )
+          select(id='input_pokemonTypeId' name='pokemonTypeId' )
             option(value="" selected='' disabled) pokemonTypeId
             each data in pokemonType
               option(value=data.pokemonTypeId) #{data.id}
           
-          select(id='input_pokemonAbilityId' name='pokemonAbilityId' required)
+          select(id='input_pokemonAbilityId' name='pokemonAbilityId' )
             option(value="" selected='' disabled) pokemonAbilityId
             each each in pokemonAbility
               option(value=each.pokemonAbilityId) #{each.id}

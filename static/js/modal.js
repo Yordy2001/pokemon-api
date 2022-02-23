@@ -23,23 +23,40 @@ const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementById("enviar");
 
+let cardSelected;
+
 if(enviar){
   enviar.addEventListener('click', function(e){
-    e.preventDefault()
-    fetch('http://localhost:5000/pokemon/',{
-      method: 'POST',
-      body: {
-        name: inputName,
-        img: inputImg,
-        description: inputDescription,
-        owner: inputOwner,
-        pokemonAbilityId: inputPokemonAbility,
-        pokemonTypeId: inputPokemonType,
-      }
-    })
+    if(enviar.textContent == 'Actualizar'){
+      console.log(cardSelected)
+      fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
+        method: 'PUT',
+        body: {
+          name: inputName,
+          img: inputImg,
+          description: inputDescription,
+          owner: inputOwner,
+          pokemonAbilityId: inputPokemonAbility,
+          pokemonTypeId: inputPokemonType,
+        }
+
+      })
+    }else if(enviar.textContent == 'Enviar'){
+      fetch(`http://localhost:5000/pokemon/`,{
+        method: 'POST',
+        body: {
+          name: inputName,
+          img: inputImg,
+          description: inputDescription,
+          owner: inputOwner,
+          pokemonAbilityId: inputPokemonAbility,
+          pokemonTypeId: inputPokemonType,
+        }
+      })
+    }
+
   })
 }
-
 
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
@@ -48,13 +65,14 @@ addBtn.addEventListener('click', function(){
 
 for (let e = 0; e < updateCardBtn.length; e++){
   updateCardBtn[e].addEventListener('click', function(e){
-    const cardSelected = e.target.id
-    console.log(cardSelected)
+    cardSelected = e.target.id
+    enviar.value = 'Actualizar' 
+    enviar.textContent = 'Actualizar' 
+
     fetch(`http://localhost:5000/pokemon/id/${cardSelected}`,{
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
         inputName.value = data[0].name
         inputImg.value = data[0].img
         inputDescription.value = data[0].description
@@ -62,6 +80,7 @@ for (let e = 0; e < updateCardBtn.length; e++){
         inputPokemonAbility.value = data[0].pokemonAbilityId
         inputPokemonType.value = data[0].pokemonTypeId
     })
+
     modal.style.display = "block";
   
   })
