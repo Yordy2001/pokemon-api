@@ -63,6 +63,7 @@ select {
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 300;
+    color: black;
 }
 #enviar {
     display:block;

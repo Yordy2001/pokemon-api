@@ -20,6 +20,9 @@ html
       img{
         width: 100%;
       }
+      body {
+        background-color: #F0F8FF;
+      }
       header{
         display: flex;
         justify-content: space-between;
@@ -104,7 +107,7 @@ html
               
       .modal#myModal
         // Modal content    
-        form(class='modal-content' id='pokemon-form' )
+        form(class='modal-content' id='pokemon-form' onsubmit='handleSubmit()' )
           span.close &times;
           input(id='input_name' value='' placeholder='name' type='text' name='name' )
           input(id='input_img' value='' placeholder='img' type='text' name='img' )
@@ -122,4 +125,3 @@ html
   
           button#enviar(type='submit' value='enviar') Enviar
   script(type='text/javascript' src='../static/js/modal.js').
-

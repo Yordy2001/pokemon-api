@@ -4,13 +4,13 @@ const handleLogout = async ()=>{
 }
 
 //Get Inpit value
-const inputName = document.getElementById('input_name').value
-const inputImg = document.getElementById('input_img').value
-const inputDescription = document.getElementById('input_description').value
-const inputOwner = document.getElementById('input_owner').value
-const inputPokemonType = document.getElementById('input_pokemonTypeId').value
-const inputPokemonAbility = document.getElementById('input_pokemonAbilityId').value
-const pokemonForm = document.getElementById('pokemon-form').value
+const inputName = document.getElementById('input_name')
+const inputImg = document.getElementById('input_img')
+const inputDescription = document.getElementById('input_description')
+const inputOwner = document.getElementById('input_owner')
+const inputPokemonType = document.getElementById('input_pokemonTypeId')
+const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
+const pokemonForm = document.getElementById('pokemon-form')
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -25,38 +25,42 @@ const enviar = document.getElementById("enviar");
 
 let cardSelected;
 
-if(enviar){
-  enviar.addEventListener('click', function(e){
-    if(enviar.textContent == 'Actualizar'){
-      console.log(cardSelected)
-      fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
-        method: 'PUT',
-        body: {
-          name: inputName,
-          img: inputImg,
-          description: inputDescription,
-          owner: inputOwner,
-          pokemonAbilityId: inputPokemonAbility,
-          pokemonTypeId: inputPokemonType,
-        }
-
-      })
-    }else if(enviar.textContent == 'Enviar'){
-      fetch(`http://localhost:5000/pokemon/`,{
-        method: 'POST',
-        body: {
-          name: inputName,
-          img: inputImg,
-          description: inputDescription,
-          owner: inputOwner,
-          pokemonAbilityId: inputPokemonAbility,
-          pokemonTypeId: inputPokemonType,
-        }
-      })
-    }
-
-  })
-}
+// ADD and UPDATE function
+enviar.addEventListener('click', async function(e){
+  if(enviar.textContent == 'Actualizar'){
+    await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        name: inputName.value,
+        img: inputImg.value,
+        description: inputDescription.value,
+        owner: inputOwner.value,
+        pokemonAbilityId: inputPokemonAbility.value,
+        pokemonTypeId: inputPokemonType.value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    window.location.reload()
+  }else if(enviar.textContent == 'Enviar'){
+    await fetch(`http://localhost:5000/pokemon`,{
+      method: 'POST',
+      body: JSON.stringify({
+        name: inputName.value,
+        img: inputImg.value,
+        description: inputDescription.value,
+        owner: inputOwner.value,
+        pokemonAbilityId: inputPokemonAbility.value,
+        pokemonTypeId: inputPokemonType.value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    window.location.reload()
+  }
+})
 
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
