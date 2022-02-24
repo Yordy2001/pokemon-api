@@ -23,26 +23,6 @@ const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementById("enviar");
 
 
-
-if(enviar){
-  enviar.addEventListener('click', function(e){
-    e.preventDefault()
-    fetch('http://localhost:5000/pokemon/', {
-      method: 'POST',
-      body: {
-        name: inputName.value,
-        img: inputImg.value,
-        description: inputDescription.value,
-        owner: inputOwner.value,
-        pokemonAbilityId: inputPokemonAbility.value,
-        pokemonTypeId: inputPokemonType.value,
-      }
-    })
-    // modal.style.display = "none"; 
-  })
-   
-}
-
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
   modal.style.display = "block";
