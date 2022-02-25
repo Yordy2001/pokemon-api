@@ -63,8 +63,9 @@ select {
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 300;
+    color: black;
 }
-.enviar {
+#enviar {
     display:block;
     margin-top: 50px;
     width: 100%;
