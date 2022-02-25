@@ -10,13 +10,14 @@ const inputDescription = document.getElementById('input_description')
 const inputOwner = document.getElementById('input_owner')
 const inputPokemonType = document.getElementById('input_pokemonTypeId')
 const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
-const pokemonForm = document.getElementById('pokemon-form')
+
 // Get the modal
 const modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 const addBtn = document.getElementById("addBtn");
 const deleteBtn = document.getElementById("deleteBtn");
+
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
@@ -25,7 +26,7 @@ const enviar = document.getElementById("enviar");
 
 let cardSelected;
 
-// ADD and UPDATE function
+// ADD pokemon function
 enviar.addEventListener('click', async function(e){
   if(enviar.textContent == 'Actualizar'){
     await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
@@ -43,6 +44,8 @@ enviar.addEventListener('click', async function(e){
       }
     })
     window.location.reload()
+
+    // UPDATE pokemon function
   }else if(enviar.textContent == 'Enviar'){
     await fetch(`http://localhost:5000/pokemon`,{
       method: 'POST',
