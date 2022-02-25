@@ -95,19 +95,19 @@ html
       .card__container
         each pokemon in pokemons
           .card__content
-            img(src=pokemon.img  alt='alola imagen')
+            img(src='images/'+pokemon.img  alt='alola imagen')
             .card_body
               button.icon.delete_card_btn
-                img(src="http://localhost:5000/static/images/x-button.png", alt="" id=pokemon.id)
+                img(src="http://localhost:5000/static/image-dev/x-button.png", alt="" id=pokemon.id)
               button.icon.update_card_btn
-                img(src="http://localhost:5000/static/images/pencil.png", alt="" id=pokemon.id)
+                img(src="http://localhost:5000/static/image-dev/pencil.png", alt="" id=pokemon.id)
               p.card__info.name #{pokemon.name}
               p.card__info2 #{pokemon.owner}
               p.card__info2 #{pokemon.pokemonTypeId}
               
       .modal#myModal
         // Modal content    
-        form( class='modal-content' id='pokemon-form' enctype="multipart/form-data")
+        form( action='/pokemon' method='POST' class='modal-content' id='pokemon-form' enctype="multipart/form-data")
           span.close &times;
           input(id='input_name' value='' placeholder='name' type='text' name='name' required)
           input(id='input_img' value='' placeholder='img' type='file' name='avatar' required)

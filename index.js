@@ -12,6 +12,7 @@ const router = require('./routers/index')
 app.set('trust proxy', 1) //cookie config
 app.use(bodyParser.urlencoded({extended:false}))
 app.use('/static', express.static('./static'))
+app.use('/images', express.static('./images'))
 app.set('templates', './static/templates') //templates config
 app.set('view engine', 'pug')
 app.use(bodyParser.json())

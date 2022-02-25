@@ -2,7 +2,7 @@ const handleLogout = async ()=>{
   await fetch('http://localhost:5000/auth/logout')
   window.location.href = '/login'
 }
-
+const formData = new FormData()
 //Get Inpit value
 const inputName = document.getElementById('input_name')
 const inputImg = document.getElementById('input_img')
@@ -24,6 +24,13 @@ const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementById("enviar");
 
+formData.append('avatar', inputImg.files[0],
+ inputName.value,
+  inputDescription.value,
+   inputOwner.value,
+    inputPokemonAbility.value,
+     inputPokemonType.value
+  )
 
 let cardSelected;
 
@@ -32,17 +39,7 @@ enviar.addEventListener('click', async function(e){
   if(enviar.textContent == 'Actualizar'){
     await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
       method: 'PUT',
-      body: JSON.stringify({
-        name: inputName.value,
-        img: inputImg.value,
-        description: inputDescription.value,
-        owner: inputOwner.value,
-        pokemonAbilityId: inputPokemonAbility.value,
-        pokemonTypeId: inputPokemonType.value,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
+      body: formData,
     })
     window.location.reload()
 
@@ -50,17 +47,7 @@ enviar.addEventListener('click', async function(e){
   }else if(enviar.textContent == 'Enviar'){
     await fetch(`http://localhost:5000/pokemon`,{
       method: 'POST',
-      body: JSON.stringify({
-        name: inputName.value,
-        img: inputImg.value,
-        description: inputDescription.value,
-        owner: inputOwner.value,
-        pokemonAbilityId: inputPokemonAbility.value,
-        pokemonTypeId: inputPokemonType.value,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
+      body: formData,
     })
     window.location.reload()
   }
