@@ -21,6 +21,6 @@ router.get('/', autenticate, getAll)
 
 router.post('/', autenticate, upload.single('avatar'), addPokemon)
 router.delete('/id/:id', autenticate, deletePokemon)
-router.put('/id/:id', updatePokemon)
+router.put('/id/:id', autenticate, upload.single('avatar'), updatePokemon)
 
 module.exports = router

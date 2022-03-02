@@ -1,5 +1,5 @@
 const { Pokemon } = require('../../../db')
-
+console.log("se actualizo")
 module.exports = async (req, res) =>{
     const { id } = req.params
     const { name, img, description, owner, pokemonAbilityId, pokemonTypeId } = req.body

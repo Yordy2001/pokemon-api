@@ -24,13 +24,7 @@ const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementById("enviar");
 
-formData.append('avatar', inputImg.files[0],
- inputName.value,
-  inputDescription.value,
-   inputOwner.value,
-    inputPokemonAbility.value,
-     inputPokemonType.value
-  )
+formData.append('avatar', inputImg.files[0])
 
 let cardSelected;
 
@@ -39,7 +33,10 @@ enviar.addEventListener('click', async function(e){
   if(enviar.textContent == 'Actualizar'){
     await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
       method: 'PUT',
-      body: formData,
+      body: {
+        img:formData
+        
+      },
     })
     window.location.reload()
 
