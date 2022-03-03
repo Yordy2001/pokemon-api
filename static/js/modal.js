@@ -2,7 +2,7 @@ const handleLogout = async ()=>{
   await fetch('http://localhost:5000/auth/logout')
   window.location.href = '/login'
 }
-const formData = new FormData()
+
 //Get Inpit value
 const inputName = document.getElementById('input_name')
 const inputImg = document.getElementById('input_img')
@@ -10,6 +10,7 @@ const inputDescription = document.getElementById('input_description')
 const inputOwner = document.getElementById('input_owner')
 const inputPokemonType = document.getElementById('input_pokemonTypeId')
 const inputPokemonAbility = document.getElementById('input_pokemonAbilityId')
+const form = document.getElementById('pokemon-form')
 
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -24,19 +25,18 @@ const deleteCardBtn = document.querySelectorAll(".delete_card_btn");
 const updateCardBtn = document.querySelectorAll(".update_card_btn");
 const enviar = document.getElementById("enviar");
 
-formData.append('avatar', inputImg.files[0])
 
 let cardSelected;
 
 // ADD pokemon function
-enviar.addEventListener('click', async function(e){
+form.addEventListener('submit', async function(e){
+  const formData = new FormData(this)
+  formData.set('avatar', inputImg.files[0])
+  
   if(enviar.textContent == 'Actualizar'){
     await fetch(`http://localhost:5000/pokemon/id/${cardSelected}`, {
       method: 'PUT',
-      body: {
-        img:formData
-        
-      },
+      body: formData
     })
     window.location.reload()
 
@@ -44,7 +44,7 @@ enviar.addEventListener('click', async function(e){
   }else if(enviar.textContent == 'Enviar'){
     await fetch(`http://localhost:5000/pokemon`,{
       method: 'POST',
-      body: formData,
+      body:formData
     })
     window.location.reload()
   }

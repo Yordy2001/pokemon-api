@@ -2,7 +2,8 @@ const { Pokemon } = require('../../../db')
 console.log("se actualizo")
 module.exports = async (req, res) =>{
     const { id } = req.params
-    const { name, img, description, owner, pokemonAbilityId, pokemonTypeId } = req.body
+    const img = req.file.filename
+    const { name, description, owner, pokemonAbilityId, pokemonTypeId } = req.body
     try {
         await Pokemon.update({ name, img, description, owner, pokemonAbilityId, pokemonTypeId }, {
             where: {
