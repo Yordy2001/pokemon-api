@@ -38,7 +38,6 @@ form.addEventListener('submit', async function(e){
       method: 'PUT',
       body: formData
     })
-    window.location.reload()
 
     // UPDATE pokemon function
   }else if(enviar.textContent == 'Enviar'){
@@ -46,12 +45,17 @@ form.addEventListener('submit', async function(e){
       method: 'POST',
       body:formData
     })
-    window.location.reload()
   }
 })
 
 // When the user clicks on the button, open the modal
 addBtn.addEventListener('click', function(){
+  inputName.value = ''
+  inputImg.value = ''
+  inputDescription.value =''
+  inputOwner.value=''
+  inputPokemonType.value=''
+  inputPokemonAbility.value=''
   modal.style.display = "block";
 })
 
@@ -66,7 +70,6 @@ for (let e = 0; e < updateCardBtn.length; e++){
     .then(response => response.json())
     .then(data => {
         inputName.value = data[0].name
-        // inputImg.value = data[0].img
         inputDescription.value = data[0].description
         inputOwner.value = data[0].owner
         inputPokemonAbility.value = data[0].pokemonAbilityId
