@@ -1,6 +1,5 @@
 node_modules
 package-lock.json   
-middware
 cookieValidator.js
 logger.js
 requestime.js
