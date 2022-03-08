@@ -1,0 +1,127 @@
+doctype html
+html 
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel="stylesheet", href="http://localhost:5000/static/styles/modal.css")
+    title Pokemon       
+
+    style.
+
+      *,
+      *::before,
+      *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+      }
+      img{
+        width: 100%;
+      }
+      body {
+        background-color: #F0F8FF;
+      }
+      header{
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        height: auto;
+        padding: .5rem;
+        width: 100%;
+        background-color: steelblue;
+      }
+      nav{
+        display: flex;
+        margin-bottom: 2rem;
+        width:100%;
+        padding:.5rem;
+        background-color: rgba(48, 115, 170, 0.63);;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button{
+        padding: 16px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+        margin-right:5px;
+      }
+
+      .button-logout{
+        border-radius: 20px;
+      }
+
+      .card__container{
+        display: grid;
+        grid-template-columns: repeat(3, 300px);
+        justify-content: space-evenly;
+      }
+
+      .card__content {
+        border-radius: 3px;
+        border: teal 2px solid;
+        background-color: teal;
+      }
+
+      .card_body {
+        display:flex; 
+        padding: .5rem;
+        text-align: center;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 1.3rem;
+      }
+   
+      //- .card_body .card__info2{
+      //-   display: none;
+      //- }
+      .card__button{
+        font-size: xx-large;
+      }
+  body 
+    header
+      h1 Pokemon-api
+      .button 
+        button.button.button-logout(onclick="handleLogout()") log out     
+    nav
+      button.button#addBtn ADD
+      button.button#deleteBtn DELETE
+      button.button UPDATE    
+    main
+      .card__container
+        each pokemon in pokemons
+          .card__content
+            img(src='images/'+pokemon.img  alt='alola imagen')
+            .card_body
+              button.icon.delete_card_btn
+                img(src="http://localhost:5000/static/image-dev/x-button.png", alt="" id=pokemon.id)
+              button.icon.update_card_btn
+                img(src="http://localhost:5000/static/image-dev/pencil.png", alt="" id=pokemon.id)
+              p.card__info.name #{pokemon.name}
+              p.card__info2 #{pokemon.owner}
+              p.card__info2 #{pokemon.pokemonTypeId}
+              
+      .modal#myModal
+        // Modal content    
+        form(class='modal-content' id='pokemon-form' )
+          span.close &times;
+          input(id='input_name' value='' placeholder='name' type='text' name='name' required)
+          input(id='input_img' value='' placeholder='img' type='file' name='avatar' required)
+          input(id='input_description' value='' placeholder='description' type='text' name='description' required)
+          input(id='input_owner' value='' placeholder='owner' type='text' name='owner' required)
+          select(id='input_pokemonTypeId' name='pokemonTypeId' required)
+            option(value="" selected='' disabled) pokemonTypeId
+            each data in pokemonType
+              option(value=data.pokemonTypeId) #{data.id}
+          
+          select(id='input_pokemonAbilityId' name='pokemonAbilityId' )
+            option(value="" selected='' disabled) pokemonAbilityId
+            each each in pokemonAbility
+              option(value=each.pokemonAbilityId) #{each.id}
+  
+          button#enviar(type='submit' value='enviar') Enviar
+  script(type='text/javascript' src='../static/js/modal.js').

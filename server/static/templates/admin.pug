@@ -1,0 +1,139 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  //- link(rel='stylesheet' href='admin.css')
+  title admin-site
+  script 
+    
+
+  script(type='text/javascript').
+    const handleLogout = async ()=>{
+      await fetch('http://localhost:5000/auth/logout')
+      window.location.href = '/login'
+    }  
+  style.
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    }
+    img {
+    width: 100%;
+    }
+    body{
+    background-image: url('http://localhost:5000/static/images/pokemon-backgound.webp');
+    background-position: center;
+    background-size: cover;
+    }
+    header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    padding: 1.2rem;
+    width: 100%;
+    background-color: steelblue;
+    }
+    .container {
+    display: grid;
+    grid-template-columns: 300px auto;
+    }
+    .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(70, 131, 180, 0.836);
+    border-right: 3px solid steelblue;
+    border-top: 3px solid steelblue;
+    }
+    .sidebar button {
+    margin: 1rem 2rem;
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    }
+    main {
+    border-radius: 4px;
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+    width: calc(90% - 5rem) ;
+    height: auto ;
+    }
+    form {
+    height: auto;
+    width: auto;
+    background-color: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 0px 35px;
+    }
+    label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    }
+    input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    }
+    .enviar {
+    display:block;
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;;
+    }
+header
+  h1 #{user}
+  button.button-logout(onclick="handleLogout()") log out
+section.container
+  section.sidebar
+    button ADD
+    button DELETE
+    button UPDATE
+    button GET
+  main
+    form(action='/pokemon' method='POST')
+      label(for='name') Name
+      input#username(type='text' name='name' require='')
+
+      label(for='img') Img
+      input#username(type='text' name='img' require='')
+
+      label(for='description') Description
+      input#username(type='text' name='description' require='')
+
+      label(for='owner') Owner
+      input#password(type='text' name='owner' require='')
+
+      label(for='pokemonTypeId') Type
+      input#username(type='number' name='pokemonTypeId' require='')
+
+      label(for='pokemonAbilityId') Ability
+      input#password(type='number'  name='pokemonAbilityId' require='')
+
+
+      button.enviar(type='submit') ENVIAR 
