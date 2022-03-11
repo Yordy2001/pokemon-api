@@ -6,19 +6,15 @@ module.exports = async (req, res, next)  =>{
     try {
 
         const user = await User.findOne( {where: {email}} )
-        if(!user){
-            return res.redirect('/login')
-        }
-
         const isMatch = await bcrypt.compare(password, user.password)
-
-        if(!isMatch){
-            res.redirect("/login")
-            return
+    
+        if(!user || !isMatch){
+            return res.send(400)
         }
+
         req.session.user = user
         req.session.isAuth = true
-        res.redirect('/pokemon')
+        res.json(user.email)
 
     } catch (error) {
         console.log(error)

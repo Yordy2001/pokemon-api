@@ -1,5 +1,6 @@
 const express = require('express')
 const port = 5000
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParse =require('cookie-parser')
 const cookieSession = require('./cookie')
@@ -18,6 +19,7 @@ app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(cookieParse())
 app.use(cookieSession)
+app.use(cors())
 
 
 // Routers
