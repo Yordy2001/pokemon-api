@@ -1,18 +1,18 @@
-/* *,
+*,
 *::before,
 *::after {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
 font-family: "Roboto", sans-serif;
-} */
+}
 img{
   width: 100%;
 }
 .body__home {
   background-color: #F0F8FF;
 }
-/* header{
+.header_home{
   display: flex;
   justify-content: space-between;
   align-items:center;
@@ -21,7 +21,7 @@ img{
   width: 100%;
   background-color: steelblue;
 }
-nav{
+.nav__home{
   display: flex;
   margin-bottom: 2rem;
   width:100%;
@@ -29,7 +29,7 @@ nav{
   background-color: rgba(48, 115, 170, 0.63);;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .button{
   padding: 16px;
@@ -70,4 +70,9 @@ nav{
 //- } */
 .card__button{
   font-size: xx-large;
+}
+
+.icon-box{
+  display: flex;
+  width: 4rem;
 }

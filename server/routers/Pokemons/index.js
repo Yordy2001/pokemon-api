@@ -1,6 +1,5 @@
 const express = require('express')
 const autenticate = require('../../middleware/authenticate')
-const path = require('path')
 const multer  = require('multer')
 
 
@@ -15,9 +14,9 @@ const updatePokemon = require('./headers/updatePokemon')
 
 const  router  = express.Router()
 
+router.get('/', autenticate, getAll)
 router.get('/id/:id', autenticate, getById)
 router.get('/name/:name', autenticate, getByName)
-router.get('/', autenticate, getAll)
 
 router.post('/', autenticate, upload.single('avatar'), addPokemon)
 router.delete('/id/:id', autenticate, deletePokemon)
