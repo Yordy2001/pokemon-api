@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import './style.css'
+import './login.css'
 
 export default function Login(type:any) {
 
@@ -43,8 +43,8 @@ export default function Login(type:any) {
       console.log(error);
     });
   }
-  return (
-    <div className=''>
+  return<>
+    <div className='body__login'>
       <div className='background'>
         <div className='shape'></div>
         <div className='shape'></div>
@@ -60,5 +60,5 @@ export default function Login(type:any) {
           <button type="submit">Log In</button>
       </form>
     </div>
-  )
+    </>
 }

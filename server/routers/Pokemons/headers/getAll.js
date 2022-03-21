@@ -2,18 +2,17 @@ const path = require('path')
 const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db');
 
 module.exports = async (req, res) => {
-    const UserId = req.session.user.id
+    console.log("entro")
+    // const UserId = req.session.user.id
     try {
-        const pokemons = await Pokemon.findAll({
-            where:{ UserId }
-        });
+        const pokemons = await Pokemon.findAll();
 
         // get pokemon ability
         const pokemonAbility = await pokemon_ability.findAll()
 
         const pokemonType = await pokemon_type.findAll()
 
-        res.render(path.resolve(__dirname, '../../../static/templates/pokemon.pug'), { pokemons, pokemonAbility, pokemonType })
+        res.send(pokemons)
     } catch (error) {
         console.log(error)
     }
