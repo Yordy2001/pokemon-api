@@ -24,16 +24,21 @@ export default function Home() {
 
     }, [])
     const handleLogout = ()=>{
-        console.log("salio")
+        axios.get('http://localhost:5000/auth/logout')
+                .then(()=>{
+                    localStorage.isAuthenticate = false
+                    window.location.href = '/login'
+                })
+                .catch(err=>{console.log(err)})
     }
     return<>
-        <header>
+        <div className='header__home'>
             <h1>Pokemon-api</h1>
-            <button className=' button button-logout' onClick={handleLogout} ></button>
-        </header>
-        <nav>
+            <button className='button button-logout' onClick={handleLogout} > logaout</button>
+        </div>
+        <div className='nav__home'>
             <button className='button' id='addBtn'>ADD</button>
-        </nav>
+        </div>
         <main>
             <div className='body__home'>
                 <div className="card__container">

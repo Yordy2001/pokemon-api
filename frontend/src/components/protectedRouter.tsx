@@ -1,10 +1,11 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom'
 
-// export default function protectedRouter() {
-//     let user= true
-//    if(!user) 
-//   return <Navigate to='/login' replace>
 
-//   </Navigate>
-  
-// }
+export default function PrivateRouter({children, isAuth}:any) {
+   
+    console.log(isAuth)
+    let auth = isAuth
+    return auth ? children : <Navigate to='/login' replace />
+
+}

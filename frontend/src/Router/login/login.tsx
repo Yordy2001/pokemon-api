@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 import './login.css'
+import { Navigate } from 'react-router-dom'
+import Home from '../home/home'
 
 export default function Login(type:any) {
 
@@ -34,31 +36,35 @@ export default function Login(type:any) {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
-      
     })
+
     .then(function (response:any) {
-      localStorage.setItem('session', JSON.stringify({'isAuthenticate': true}))
+      localStorage.setItem('isAuthenticate', JSON.stringify(true))
+      return <Home />
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-  return<>
-    <div className='body__login'>
-      <div className='background'>
-        <div className='shape'></div>
-        <div className='shape'></div>
+  return(
+    <div  className='body__login'>
+        <div>
+        <div className='background'>
+          <div className='shape'></div>
+          <div className='shape'></div>
+        </div>
+        <form onSubmit={handleSubmit}>
+            <h3>Login</h3>
+            <label htmlFor="email">E-mail</label>
+            <input onChange={handleChange} type='email' name='email' placeholder='Email'  required />
+
+            <label htmlFor="password">password</label>
+            <input  onChange={handleChange} type="password" name="password"  id="password" required/>
+
+            <button type="submit">Log In</button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-          <h3>Login</h3>
-          <label htmlFor="email">E-mail</label>
-          <input onChange={handleChange} type='email' name='email' placeholder='Email'  required />
-
-          <label htmlFor="password">password</label>
-          <input  onChange={handleChange} type="password" name="password"  id="password" required/>
-
-          <button type="submit">Log In</button>
-      </form>
     </div>
-    </>
+   
+  )
 }

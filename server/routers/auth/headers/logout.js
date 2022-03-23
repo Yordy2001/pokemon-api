@@ -1,6 +1,6 @@
 
 module.exports = (req, res) =>{
     req.session.isAuth = false
-    res.redirect('/login')
+    res.send(200)
     return
 }
