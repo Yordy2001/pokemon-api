@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
         const pokemonType = await pokemon_type.findAll()
 
-        res.send(pokemons)
+        res.send({"pokemon":pokemons, "pokemonAbility":pokemonAbility, "pokemonType":pokemonType})
     } catch (error) {
         console.log(error)
     }

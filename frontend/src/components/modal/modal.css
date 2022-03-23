@@ -1,0 +1,96 @@
+/* The Modal (background) */
+.modal {
+    position: fixed;/* Stay in place */
+    z-index: 1;/* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;/* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 30rem; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+.icon{
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+form {
+    height: 30rem;
+    width: 30rem;
+    background-color: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 0px 35px;
+}
+
+input,
+select {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+}
+#enviar {
+    display:block;
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;;
+}
+
+.modal-content {
+    background-color: rgba(48, 115, 170, 0.63);
+    background-color: rgba(70, 131, 180, 0.596);
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 32rem;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }

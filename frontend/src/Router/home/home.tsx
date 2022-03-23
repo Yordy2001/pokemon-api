@@ -15,13 +15,19 @@ export default function Home() {
         pokemonAbilityId: number,
         pokemonTypeId: number
     }]
+  
     const [pokemon, setPokemon] = useState<User>()
+    const [pokemonAbility, setPokemonAbility] = useState<any>()
+    const [pokemonType, setPokemonType] = useState<any>()
+
     const [modal, setmodal] = useState(false)
   
     useEffect(() => {
         axios.get('http://localhost:5000/pokemon')
-            .then(({ data }) => {
-                setPokemon(data)
+            .then(({data}) => {
+                setPokemon(data.pokemon)
+                setPokemonAbility(data.pokemonAbility)
+                setPokemonType(data.pokemonType)
             })
             .catch(err => { console.log(err) })
 
@@ -35,6 +41,7 @@ export default function Home() {
         setmodal(!modal)
     }
     return<>
+
     <div className="body__home">
         <header className='header_home'>
             <h1>Pokemon-api</h1>
@@ -68,7 +75,7 @@ export default function Home() {
             </div>
         </main>
         {
-            Boolean(modal) && <AddUpdatePokemon></AddUpdatePokemon>
+            Boolean(modal) && <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} />
         }
     </div>
     </>
