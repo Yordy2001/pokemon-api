@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import './login.css'
+import './login.css';
 
 export default function Login(type:any) {
 
@@ -34,31 +34,32 @@ export default function Login(type:any) {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }
-      
     })
-    .then(function (response:any) {
-      localStorage.setItem('session', JSON.stringify({'isAuthenticate': true}))
+
+    .then(function (type:any) {
+      localStorage.setItem('isAuthenticate', JSON.stringify(true))
+      window.location.href = '/'
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-  return<>
-    <div className='body__login'>
-      <div className='background'>
-        <div className='shape'></div>
-        <div className='shape'></div>
-      </div>
-      <form onSubmit={handleSubmit}>
-          <h3>Login</h3>
-          <label htmlFor="email">E-mail</label>
-          <input onChange={handleChange} type='email' name='email' placeholder='Email'  required />
+  return<div  className='bodyLogin' id='body__login'>
+        <div className='background'>
+          <div className='shape'></div>
+          <div className='shape'></div>
+        </div>
+        <form className='form_login' onSubmit={handleSubmit}>
+            <h3>Login</h3>
+            <label htmlFor="email">E-mail</label>
+            <input onChange={handleChange} type='email' name='email' placeholder='xxxxx@gmail.com'  required />
 
-          <label htmlFor="password">password</label>
-          <input  onChange={handleChange} type="password" name="password"  id="password" required/>
+            <label htmlFor="password">password</label>
+            <input  onChange={handleChange} type="password" name="password" placeholder='******'  id="password" required/>
 
-          <button type="submit">Log In</button>
-      </form>
+            <button type="submit" className='button-loging'>Log In</button>
+        </form>
     </div>
-    </>
+   
+
 }

@@ -34,7 +34,12 @@ export default function Home() {
     }, [])
 
     const handleLogout = ()=>{
-        console.log("salio")
+        axios.get('http://localhost:5000/auth/logout')
+                .then(()=>{
+                    localStorage.isAuthenticate = false
+                    window.location.href = '/login'
+                })
+                .catch(err=>{console.log(err)})
     }
 
     const openModal =()=>{
