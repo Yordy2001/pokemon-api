@@ -44,7 +44,7 @@ export default function Login(type:any) {
       console.log(error);
     });
   }
-  return<div  className='bodyLogin' id='body__login' style={{backgroundColor: "#080710"}}>
+  return<div  className='bodyLogin' id='body__login'>
         <div className='background'>
           <div className='shape'></div>
           <div className='shape'></div>
@@ -52,12 +52,12 @@ export default function Login(type:any) {
         <form className='form_login' onSubmit={handleSubmit}>
             <h3>Login</h3>
             <label htmlFor="email">E-mail</label>
-            <input onChange={handleChange} type='email' name='email' placeholder='Email'  required />
+            <input onChange={handleChange} type='email' name='email' placeholder='xxxxx@gmail.com'  required />
 
             <label htmlFor="password">password</label>
-            <input  onChange={handleChange} type="password" name="password"  id="password" required/>
+            <input  onChange={handleChange} type="password" name="password" placeholder='******'  id="password" required/>
 
-            <button type="submit">Log In</button>
+            <button type="submit" className='button-loging'>Log In</button>
         </form>
     </div>
    

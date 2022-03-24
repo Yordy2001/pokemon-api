@@ -31,39 +31,38 @@ export default function Home() {
                 })
                 .catch(err=>{console.log(err)})
     }
-    return<>
-        <div className='header__home'>
-            <h1>Pokemon-api</h1>
-            <button className='button button-logout' onClick={handleLogout} > logaout</button>
+    return<div className='body__home'>
+            <div className='header__home'>
+                <h1>Pokemon-api</h1>
+                <div className='nav__home'>
+                <button className='button' id='addBtn'>ADD</button>
+                <button className='button button-logout' onClick={handleLogout} > logaout</button>
+            </div>
         </div>
-        <div className='nav__home'>
-            <button className='button' id='addBtn'>ADD</button>
-        </div>
+      
         <main>
-            <div className='body__home'>
-                <div className="card__container">
-                    {
-                    pokemon?.map((element, index)=>{
-                        return <div className="card__content" key={index}>
-                        <img src={element.img} alt="asd" />
-                        <div className="card_body">
-                            <button className='icon delete_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/x-button.png" alt="" />
-                            </button>
+            <div className="card__container">
+                {
+                pokemon?.map((element, index)=>{
+                    return <div className="card__content" key={index}>
+                    <img src={element.img} alt="asd" />
+                    <div className="card_body">
+                        <button className='icon delete_card_btn'>
+                            <img id='pokemon.id' src="http://localhost:5000/static/image-dev/x-button.png" alt="" />
+                        </button>
 
-                            <button className='icon update_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
-                            </button>
-                            <p>{element.name} </p>
-                            <p>{element.owner}</p>
-                        </div>
+                        <button className='icon update_card_btn'>
+                            <img id='pokemon.id' src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
+                        </button>
+                        <p>{element.name} </p>
+                        <p>{element.owner}</p>
                     </div>
-                    })
-                    }
                 </div>
+                })
+                }
             </div>
         </main>
         
-    </>
+    </div>
 
 }
