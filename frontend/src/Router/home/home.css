@@ -1,14 +1,24 @@
+img{
+  width: 100%;
+}
+
 .body__home{
   background-color: aliceblue;
   height: 100vh;
 }
-.header__home{
+.header_home{
   width: 100%;
   height: auto;
-  padding: 1rem;
-  background-color: rgb(28, 91, 146);
   display: flex;
   justify-content: space-between;
+  background-color: rgb(28, 91, 146);
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+.nav__home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button{
@@ -19,13 +29,6 @@
   font-weight: bold;
   margin-right:5px;
   border-radius: 20px;
-}
-
-
-.nav__home{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .card__container{
@@ -58,6 +61,3 @@
   width: 4rem;
 }
 
-img{
-  width: 100%;
-}

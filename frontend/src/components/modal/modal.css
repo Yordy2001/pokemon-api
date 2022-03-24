@@ -40,7 +40,7 @@ cursor: pointer;
     background-color: transparent;
     cursor: pointer;
 }
-form {
+.form_pokemon {
     height: 30rem;
     width: 30rem;
     background-color: rgba(255,255,255,0.13);
@@ -63,7 +63,8 @@ select {
     font-size: 14px;
     font-weight: 300;
     color: black;
-}
+} 
+
 #enviar {
     display:block;
     margin-top: 50px;

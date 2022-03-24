@@ -49,12 +49,13 @@ export default function Home() {
 
     <div className="body__home">
         <header className='header_home'>
-            <h1>Pokemon-api</h1>
-            <button className=' button button-logout' onClick={handleLogout} >LOGAOUT</button>
+            <h1>Poke-api</h1>
+            <nav className='nav__home'>
+                <button className='button' id='addBtn' onClick={openModal}>ADD</button>
+                <button className=' button button-logout' onClick={handleLogout} >LOGAOUT</button>
+             </nav>
         </header>
-        <nav className='nav__home'>
-            <button className='button' id='addBtn' onClick={openModal}>ADD</button>
-        </nav>
+
         <main className='main__home'>
             <div className="card__container">
                 {

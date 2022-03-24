@@ -44,7 +44,7 @@ export default function Login(type:any) {
       console.log(error);
     });
   }
-  return<div  className='bodyLogin' id='body__login'>
+  return<div>
         <div className='background'>
           <div className='shape'></div>
           <div className='shape'></div>
