@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import './login.css'
-import { Navigate } from 'react-router-dom'
-import Home from '../home/home'
+import './login.css';
 
 export default function Login(type:any) {
 
@@ -38,22 +36,20 @@ export default function Login(type:any) {
       }
     })
 
-    .then(function (response:any) {
+    .then(function (type:any) {
       localStorage.setItem('isAuthenticate', JSON.stringify(true))
-      return <Home />
+      window.location.href = '/'
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-  return(
-    <div  className='body__login'>
-        <div>
+  return<div  className='bodyLogin' id='body__login' style={{backgroundColor: "#080710"}}>
         <div className='background'>
           <div className='shape'></div>
           <div className='shape'></div>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className='form_login' onSubmit={handleSubmit}>
             <h3>Login</h3>
             <label htmlFor="email">E-mail</label>
             <input onChange={handleChange} type='email' name='email' placeholder='Email'  required />
@@ -63,8 +59,7 @@ export default function Login(type:any) {
 
             <button type="submit">Log In</button>
         </form>
-      </div>
     </div>
    
-  )
+
 }
