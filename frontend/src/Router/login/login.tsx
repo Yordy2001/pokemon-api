@@ -45,21 +45,19 @@ export default function Login(type:any) {
     });
   }
   return<div>
-        <div className='background'>
-          <div className='shape'></div>
-          <div className='shape'></div>
-        </div>
-        <form className='form_login' onSubmit={handleSubmit}>
-            <h3>Login</h3>
-            <label htmlFor="email">E-mail</label>
-            <input onChange={handleChange} type='email' name='email' placeholder='xxxxx@gmail.com'  required />
+      <div className='background'>
+        <div className='shape'></div>
+        <div className='shape'></div>
+      </div>
+      <form className='form_login' onSubmit={handleSubmit}>
+          <h3>Login</h3>
+          <label className='label_login' htmlFor="email">E-mail</label>
+          <input className='input_login' onChange={handleChange} type='email' name='email' placeholder='xxxxx@gmail.com'  required />
 
-            <label htmlFor="password">password</label>
-            <input  onChange={handleChange} type="password" name="password" placeholder='******'  id="password" required/>
+          <label className='label_login' htmlFor="password">password</label>
+          <input className='input_login' onChange={handleChange} type="password" name="password" placeholder='******'  id="password" required/>
 
-            <button type="submit" className='button-loging'>Log In</button>
-        </form>
-    </div>
-   
-
+          <button type="submit" className='button-loging'>Log In</button>
+      </form>
+  </div>
 }

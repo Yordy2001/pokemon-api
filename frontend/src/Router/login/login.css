@@ -67,13 +67,13 @@ body{
     text-align: center;
 }
 
-label{
+.label_login{
     display: block;
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
 }
-input{
+.input_login{
     display: block;
     height: 50px;
     width: 100%;
@@ -84,9 +84,9 @@ input{
     font-size: 14px;
     font-weight: 300;
 }
-::placeholder{
+/* ::placeholder{
     color: #e5e5e5;
-}
+} */
 .button-loging{
     margin-top: 50px;
     width: 100%;

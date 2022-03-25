@@ -20,30 +20,33 @@ export default function Home() {
     const [pokemonAbility, setPokemonAbility] = useState<any>()
     const [pokemonType, setPokemonType] = useState<any>()
 
-    const [modal, setmodal] = useState(false)
-  
-    useEffect(() => {
-        axios.get('http://localhost:5000/pokemon')
-            .then(({data}) => {
-                setPokemon(data.pokemon)
-                setPokemonAbility(data.pokemonAbility)
-                setPokemonType(data.pokemonType)
-            })
-            .catch(err => { console.log(err) })
+    const [openModal, setOpenModal] = useState(false)
+    const handleClose=()=>{
+        setOpenModal(false)
+    }
+    const getData= async()=>{
+        const {data} = await axios.get('http://localhost:5000/pokemon')
+        
+        setPokemon(data.pokemon)
+        setPokemonAbility(data.pokemonAbility)
+        setPokemonType(data.pokemonType)
+    }
 
+    useEffect(() => {
+        getData()
     }, [])
 
     const handleLogout = ()=>{
         axios.get('http://localhost:5000/auth/logout')
-                .then(()=>{
-                    localStorage.isAuthenticate = false
-                    window.location.href = '/login'
-                })
-                .catch(err=>{console.log(err)})
+            .then(()=>{
+                localStorage.isAuthenticate = false
+                window.location.href = '/login'
+            })
+            .catch(err=>{console.log(err)})
     }
 
-    const openModal =()=>{
-        setmodal(!modal)
+    const handleOpenModal =()=>{
+        setOpenModal(true)
     }
     return<>
 
@@ -51,7 +54,7 @@ export default function Home() {
         <header className='header_home'>
             <h1>Poke-api</h1>
             <nav className='nav__home'>
-                <button className='button' id='addBtn' onClick={openModal}>ADD</button>
+                <button className='button' id='addBtn' onClick={handleOpenModal}>ADD</button>
                 <button className=' button button-logout' onClick={handleLogout} >LOGAOUT</button>
              </nav>
         </header>
@@ -81,7 +84,7 @@ export default function Home() {
             </div>
         </main>
         {
-            Boolean(modal) && <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} />
+           <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} onClose={handleClose} open={openModal}/>
         }
     </div>
     </>
