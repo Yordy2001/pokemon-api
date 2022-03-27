@@ -18,8 +18,8 @@ app.set('templates', './static/templates') //templates config
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(cookieParse())
-app.use(cookieSession)
 app.use(cors())
+app.use(cookieSession)
 
 
 // Routers

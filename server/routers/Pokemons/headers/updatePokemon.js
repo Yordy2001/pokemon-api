@@ -1,5 +1,5 @@
 const { Pokemon } = require('../../../db')
-console.log("se actualizo")
+
 module.exports = async (req, res) =>{
     const { id } = req.params
     const img = req.file.filename

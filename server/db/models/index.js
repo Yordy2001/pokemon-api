@@ -41,7 +41,10 @@ db.Sequelize = Sequelize;
 //     console.error("declaind", err)
 // }
 try {
-  sequelize.sync({alter:true})
+  sequelize.sync({
+    alter:true,
+    freezeTableName: true
+  })
   console.log("All models were synchronized successfully.")
 } catch (error) {
   console.log(error)

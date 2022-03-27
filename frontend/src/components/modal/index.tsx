@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 import "./modal.css";
 
@@ -24,11 +24,9 @@ export default function AddUpdatePokemon({
     name: "",
     description: "",
     owner: "",
-    pokemonTypeId: "",
-    pokemonAbilityId: "",
+    pokeTypeName: "",
+    pokeAbilityName: "",
   });
-
-  console.log(ability, type)
 
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     setFile(e.target.files?.[0]);
@@ -112,9 +110,9 @@ export default function AddUpdatePokemon({
           />
           <select
             onChange={handleChangeSelect}
-            value={formValue.pokemonTypeId}
+            value={formValue.pokeTypeName}
             id="input_pokemonTypeId"
-            name="pokemonTypeId"
+            name="pokeTypeName"
             required
           >
             <option value=""  disabled>
@@ -131,9 +129,9 @@ export default function AddUpdatePokemon({
 
           <select
             onChange={handleChangeSelect}
-            value={formValue.pokemonAbilityId}
+            value={formValue.pokeAbilityName}
             id="input_pokemonTypeId"
-            name="pokemonAbilityId"
+            name="pokeAbilityName"
             required
           >
             <option value=""  disabled>

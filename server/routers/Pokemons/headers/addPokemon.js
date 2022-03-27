@@ -2,31 +2,34 @@ const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db')
 
 module.exports = async (req, res) =>{
  
-    const { name, description, owner, pokemonAbilityId, pokemonTypeId } = req.body
+    const { name, description, owner, pokeAbilityName, pokeTypeName } = req.body
     const img = req.file.filename
 
-    // const UserId =  req.session.user.id
+    const UserId =  req.session.user.id
 
     try {
-        const pokeTypeId = await pokemon_type.findAll({attributes: ['id']},
-            {where:{ type: pokemonTypeId }}
-        );
+        const pokemonTypeId = await pokemon_type.findAll(
+            {attributes: ['id']},
+            { where: { type: pokeTypeName },
+        })
 
         // get pokemon ability
-        const pokeAbilityId = await pokemon_ability.findAll()
-        console.log(pokeAbilityId)
+        const pokemonAbilityId = await pokemon_ability.findAll(
+            {attributes: ['id']},
+            { where: { ability: pokeAbilityName }
+        })
         // Get userId
-        // await Pokemon.create({
-        //     name,
-        //     img,
-        //     description,
-        //     owner,
-        //     pokemonAbilityId,
-        //     pokemonTypeId ,
-        //     // UserId,
-        // })
+        await Pokemon.create({
+            name,
+            img,
+            description,
+            owner,
+            pokemonAbilityId:  JSON.stringify(pokemonAbilityId[0].id),
+            pokemonTypeId: JSON.stringify(pokemonTypeId[0].id) ,
+            UserId,
+        })
+        res.send(pokemonTypeId)
     } catch (error) {
         console.log(error)
     }
-    res.sendStatus(200)
 }
