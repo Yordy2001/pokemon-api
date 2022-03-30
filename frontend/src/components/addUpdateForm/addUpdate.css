@@ -1,0 +1,57 @@
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.icon {
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.form_pokemon {
+  height: 30rem;
+  width: 30rem;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 0px 35px;
+}
+
+input,
+select {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  color: black;
+}
+
+#enviar {
+  display: block;
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@ img{
 
 .body__home{
   background-color: aliceblue;
-  height: 100vh;
+  height: max-content;
 }
 .header_home{
   width: 100%;

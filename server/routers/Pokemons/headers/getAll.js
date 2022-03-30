@@ -1,18 +1,11 @@
-const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db');
+const { Pokemon } = require('../../../db');
 
 module.exports = async (req, res) => {
-    
+    console.log('enviado')
     // const UserId = req.session.user.id
     try {
         const pokemons = await Pokemon.findAll();
-
-        // get pokemon ability
-        const pokemonAbility = await pokemon_ability.findAll()
-
-        const pokemonType = await pokemon_type.findAll()
-
-
-        res.send({"pokemon":pokemons, "pokemonAbility":pokemonAbility, "pokemonType":pokemonType})
+        res.status(200).send(pokemons)
     } catch (error) {
         console.log(error)
     }

@@ -1,12 +1,16 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
-import AddUpdatePokemon from '../../components/modal'
+import { useEffect, useState } from 'react'
 
 import './home.css'
+import AddUpdatePokemon from '../../components/modal'
+import Pokemon from '../../utils/API/fetchPokemon'
+// import fetchApi from '../../utils/API/fetchApi'
+
 
 export default function Home() {
-    type User=[{
+
+
+    type Pokemon=[{
         id: number,
         name: string,
         img: any,
@@ -16,33 +20,44 @@ export default function Home() {
         pokemonTypeId: number
     }]
   
-    const [pokemon, setPokemon] = useState<User>()
+    const [pokemon, setPokemon] = useState<Pokemon>()
     const [pokemonAbility, setPokemonAbility] = useState<any>()
     const [pokemonType, setPokemonType] = useState<any>()
-
     const [openModal, setOpenModal] = useState(false)
-    const handleClose=()=>{
-        setOpenModal(false)
-    }
+
+
     const getData= async()=>{
-        const {data} = await axios.get('http://localhost:5000/pokemon')
-        
-        setPokemon(data.pokemon)
-        setPokemonAbility(data.pokemonAbility)
-        setPokemonType(data.pokemonType)
+        try {
+            const pokemonApi = new Pokemon();
+            const pokemons = pokemonApi.get()
+            const pokeAbility = await axios.get('http://localhost:5000/pokemon/poke-ability')
+            const pokeType= await axios.get('http://localhost:5000/pokemon/poke-type')
+            // setPokemon(pokemon)
+            // setPokemonAbility(pokeAbility.data)
+            // setPokemonType(pokeType.data)
+            console.log(pokemons)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
-        getData()
+        getData()  
     }, [])
 
-    const handleLogout = ()=>{
-        axios.get('http://localhost:5000/auth/logout')
-            .then(()=>{
-                localStorage.isAuthenticate = false
-                window.location.href = '/login'
-            })
-            .catch(err=>{console.log(err)})
+    const handleLogout = async ()=>{
+        try {
+            await axios.get('http://localhost:5000/auth/logout')
+            localStorage.isAuthenticate = false
+            window.location.href = '/login'
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleClose=()=>{
+        setOpenModal(false)
     }
 
     const handleOpenModal =()=>{
