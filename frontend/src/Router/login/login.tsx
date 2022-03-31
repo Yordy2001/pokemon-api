@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 import './login.css';
+import { IUser } from '../../interface';
 
 export default function Login(type:any) {
 
-  const [loginValue, setLoginValue] = useState({
+  const [loginValue, setLoginValue] = useState<IUser>({
     email:'',
     password:''
   })
   
   const handleChange =(e:any)=>{
     let value = e.target.value
+    
     setLoginValue({
       ...loginValue,
       [e.target.name]:value

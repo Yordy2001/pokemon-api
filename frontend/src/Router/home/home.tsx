@@ -5,24 +5,16 @@ import './home.css'
 import AddUpdatePokemon from '../../components/modal'
 import Pokemon from '../../utils/API/fetchPokemon'
 // import fetchApi from '../../utils/API/fetchApi'
+import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 
 
 export default function Home() {
 
+    const [pokemon, setPokemon] = useState<IPokemon[]>()
+    const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility>()
+    const [pokemonType, setPokemonType] = useState<IpokemonType>()
 
-    type Pokemon=[{
-        id: number,
-        name: string,
-        img: any,
-        description: string,
-        owner: string,
-        pokemonAbilityId: number,
-        pokemonTypeId: number
-    }]
-  
-    const [pokemon, setPokemon] = useState<Pokemon>()
-    const [pokemonAbility, setPokemonAbility] = useState<any>()
-    const [pokemonType, setPokemonType] = useState<any>()
+
     const [openModal, setOpenModal] = useState(false)
 
 
@@ -54,6 +46,7 @@ export default function Home() {
         } catch (error) {
             console.log(error)
         }
+        
     }
 
     const handleClose=()=>{
@@ -63,6 +56,7 @@ export default function Home() {
     const handleOpenModal =()=>{
         setOpenModal(true)
     }
+
     return<>
 
     <div className="body__home">
