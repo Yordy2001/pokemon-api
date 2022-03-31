@@ -3,16 +3,6 @@ import React, { ChangeEvent, useState } from "react";
 
 import "./modal.css";
 
-type PokemonAbility = {
-  id: number;
-  ability: string;
-};
-
-type PokemonType = {
-  id: number;
-  type: string;
-};
-
 export default function AddUpdatePokemon({
   type,
   ability,
@@ -115,16 +105,16 @@ export default function AddUpdatePokemon({
             name="pokeTypeName"
             required
           >
-            <option value=""  disabled>
+            <option value="" disabled>
               Pokemon Type
             </option>
-            {ability?.map((data:any, index:number) => {
-                return (
-                  <option value={data.ability} key={index}>
-                    {data.ability}
-                  </option>
-                );
-              })}
+            {ability?.map((data: any, index: number) => {
+              return (
+                <option value={data.ability} key={index}>
+                  {data.ability}
+                </option>
+              );
+            })}
           </select>
 
           <select
@@ -134,16 +124,16 @@ export default function AddUpdatePokemon({
             name="pokeAbilityName"
             required
           >
-            <option value=""  disabled>
+            <option value="" disabled>
               pokemon Ability
             </option>
-            {type?.map((data:any, index:number) => {
-                return (
-                  <option value={data.type} key={index}>
-                    {data.type}
-                  </option>
-                );
-              })}
+            {type?.map((data: any, index: number) => {
+              return (
+                <option value={data.type} key={index}>
+                  {data.type}
+                </option>
+              );
+            })}
           </select>
 
           <button type="submit" id="enviar">

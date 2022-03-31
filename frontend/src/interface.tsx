@@ -1,3 +1,5 @@
+"Intefaces for each server data"
+
 export interface Pokemon {
     id: number,
     name: string,
@@ -10,15 +12,15 @@ export interface Pokemon {
 
 export interface pokemonAbility{
     id: number,
-    ability: Text
+    ability: string
 } 
 
 export interface pokemonType{
     id: number,
-    type: Text
+    type: string
 }
 
 export interface User{
-    email: Text,
-    password: Text
+    email: string,
+    password: string
 }

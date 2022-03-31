@@ -1,29 +1,19 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import AddUpdatePokemon from '../../components/modal'
-
+import { Pokemon, pokemonAbility, pokemonType } from '../../interface'
 import './home.css'
 
 export default function Home() {
-    type User=[{
-        id: number,
-        name: string,
-        img: any,
-        description: string,
-        owner: string,
-        pokemonAbilityId: number,
-        pokemonTypeId: number
-    }]
-  
-    const [pokemon, setPokemon] = useState<User>()
-    const [pokemonAbility, setPokemonAbility] = useState<any>()
-    const [pokemonType, setPokemonType] = useState<any>()
+
+    const [pokemon, setPokemon] = useState<Pokemon[]>()
+    const [pokemonAbility, setPokemonAbility] = useState<pokemonAbility>()
+    const [pokemonType, setPokemonType] = useState<pokemonType>()
 
     const [openModal, setOpenModal] = useState(false)
-    const handleClose=()=>{
-        setOpenModal(false)
-    }
+
+
     const getData= async()=>{
         const {data} = await axios.get('http://localhost:5000/pokemon')
         
@@ -36,18 +26,26 @@ export default function Home() {
         getData()
     }, [])
 
-    const handleLogout = ()=>{
-        axios.get('http://localhost:5000/auth/logout')
-            .then(()=>{
-                localStorage.isAuthenticate = false
-                window.location.href = '/login'
-            })
-            .catch(err=>{console.log(err)})
+
+    const handleLogout = async ()=>{
+        try {
+            await axios.get('http://localhost:5000/auth/logout')
+            localStorage.isAuthenticate = false
+            window.location.href = '/login'
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
+    const handleClose=()=>{
+        setOpenModal(false)
     }
 
     const handleOpenModal =()=>{
         setOpenModal(true)
     }
+
     return<>
 
     <div className="body__home">
