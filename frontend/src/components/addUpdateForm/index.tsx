@@ -1,18 +1,10 @@
-import axios from 'axios';
-import React, { useState, ChangeEvent } from 'react'
+
+import { useState, ChangeEvent } from 'react'
 
 import './addUpdate.css'
+import Pokemon from '../../utils/API/fetchPokemon';
 
-type PokemonAbility = {
-    id: number;
-    ability: string;
-};
-
-type PokemonType = {
-    id: number;
-    type: string;
-};
-
+const PokemonApi = new Pokemon()
 export default function AddUpdatePokemon({ type, ability, onClose }: any) {
 
     const [file, setFile] = useState<File>();
@@ -56,7 +48,8 @@ export default function AddUpdatePokemon({ type, ability, onClose }: any) {
             formData.set(key, JSON.stringify(value));
         }
         try {
-            await axios.post("http://localhost:5000/pokemon", formData);
+            await PokemonApi.post('pokemon/', formData)
+            
         } catch (error) {
             console.log(error);
         }

@@ -1,7 +1,7 @@
 const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db')
 
 module.exports = async (req, res) =>{
- 
+    
     const { name, description, owner, pokeAbilityName, pokeTypeName } = req.body
     const img = req.file.filename
 
@@ -28,7 +28,7 @@ module.exports = async (req, res) =>{
             pokemonTypeId: JSON.stringify(pokemonTypeId[0].id) ,
             // UserId,
         })
-        res.send(pokemonTypeId)
+        res.sendStatus(200)
     } catch (error) {
         console.log(error)
     }

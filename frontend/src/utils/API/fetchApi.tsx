@@ -4,7 +4,7 @@ import axios, { AxiosInstance } from 'axios'
 export default class fetchApi{
     api!: AxiosInstance;
 
-    contructor(){
+    constructor(){
         this.api = axios.create({
             baseURL:"http://localhost:5000"
         })

@@ -1,16 +1,13 @@
 import fetchApi from "./fetchApi";
-
 export default class Pokemon extends fetchApi{
 
-    async get(){
-        const respose = await this.api?.get('/pokemon');
-        return respose
+    async get(endPoint:any){
+        const response = await this.api?.get(endPoint);
+        return response.data
     }
 
-    async post({ params, endPoint }:any){
-        const response = await this.api.post(endPoint,{
-            data: params
-        })
+    async post( endPoint: string, data: any){
+        const response = await this.api.post(endPoint, data)
         return response.data
     }
 

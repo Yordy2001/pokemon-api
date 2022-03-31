@@ -4,15 +4,16 @@ import { useEffect, useState } from 'react'
 import './home.css'
 import AddUpdatePokemon from '../../components/modal'
 import Pokemon from '../../utils/API/fetchPokemon'
-// import fetchApi from '../../utils/API/fetchApi'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 
+// Fetch Instance
+const pokemonApi = new Pokemon();
 
 export default function Home() {
 
     const [pokemon, setPokemon] = useState<IPokemon[]>()
-    const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility>()
-    const [pokemonType, setPokemonType] = useState<IpokemonType>()
+    const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
+    const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
 
 
     const [openModal, setOpenModal] = useState(false)
@@ -20,15 +21,13 @@ export default function Home() {
 
     const getData= async()=>{
         try {
-            const pokemonApi = new Pokemon();
-            const pokemons = pokemonApi.get()
-            const pokeAbility = await axios.get('http://localhost:5000/pokemon/poke-ability')
-            const pokeType= await axios.get('http://localhost:5000/pokemon/poke-type')
-            // setPokemon(pokemon)
-            // setPokemonAbility(pokeAbility.data)
-            // setPokemonType(pokeType.data)
-            console.log(pokemons)
-
+            const pokemons = await pokemonApi.get('/pokemon/')
+            const pokemonsAbility = await pokemonApi.get('/pokemon/poke-ability')
+            const pokemonsType = await pokemonApi.get('/pokemon/poke-type')
+         
+            setPokemon(pokemons)
+            setPokemonAbility(pokemonsAbility)
+            setPokemonType(pokemonsType)
         } catch (error) {
             console.log(error)
         }
