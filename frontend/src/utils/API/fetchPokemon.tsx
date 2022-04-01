@@ -18,7 +18,7 @@ export default class Pokemon extends fetchApi{
         return response.data
     }
 
-    async delete(id:any){
-        await this.api.delete(id)
+    async delete(endPoint:any){
+        await this.api.delete(endPoint)
     }
 }

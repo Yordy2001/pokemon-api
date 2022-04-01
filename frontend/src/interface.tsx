@@ -1,5 +1,3 @@
-"Intefaces for each server data"
-
 export interface IPokemon {
     id: number,
     name: string,

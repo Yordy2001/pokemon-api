@@ -1,7 +1,7 @@
 const { Pokemon } = require('../../../db')
 
 module.exports = async (req, res) =>{
-
+    console.log("elininado")
     const { id } = req.params
     try {
         await Pokemon.destroy({

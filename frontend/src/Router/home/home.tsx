@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import './home.css'
-import AddUpdatePokemon from '../../components/modal'
+import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 
@@ -14,10 +14,9 @@ export default function Home() {
     const [pokemon, setPokemon] = useState<IPokemon[]>()
     const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
     const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
-
+    const [id, setId] = useState<number>(0)
 
     const [openModal, setOpenModal] = useState(false)
-
 
     const getData= async()=>{
         try {
@@ -45,11 +44,20 @@ export default function Home() {
         } catch (error) {
             console.log(error)
         }
-        
+    }
+    const handleDelete = async(e:any)=>{
+        console.log(id)
+        // try {
+        //     await pokemonApi.delete(`/pokemon/id/${id}`) 
+        //     window.location.reload()
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
 
-    const handleClose=()=>{
+    const handleClose= async()=>{
         setOpenModal(false)
+        await getData()
     }
 
     const handleOpenModal =()=>{
@@ -71,16 +79,19 @@ export default function Home() {
             <div className="card__container">
                 {
                 pokemon?.map((element, index)=>{
-                    return <div className="card__content" key={index}>
+                    return <div className="card__content" key={element.id}>
                     <img src={ 'http://localhost:5000/images/'+element.img } alt="asd" />
                     <div className="card_body">
                         <div className="icon-box">
-                            <button className='icon delete_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/x-button.png" alt="" />
+                            <button className='icon delete_card_btn' onClick={()=>{
+                                handleDelete(Event)
+                                setId(element.id)}
+                            }>
+                                <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
 
                             <button className='icon update_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
+                                <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
                         </div>
                         <p>{element.name} </p>

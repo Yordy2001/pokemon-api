@@ -3,9 +3,10 @@ import { useState, ChangeEvent } from 'react'
 
 import './addUpdate.css'
 import Pokemon from '../../utils/API/fetchPokemon';
+import Modal from '../modal';
 
 const PokemonApi = new Pokemon()
-export default function AddUpdatePokemon({ type, ability, onClose }: any) {
+export default function AddUpdatePokemon({ type, ability, onClose, open }: any) {
 
     const [file, setFile] = useState<File>();
     const [formValue, setformValue] = useState<any>({
@@ -49,14 +50,16 @@ export default function AddUpdatePokemon({ type, ability, onClose }: any) {
         }
         try {
             await PokemonApi.post('pokemon/', formData)
+            onClose()
             
         } catch (error) {
             console.log(error);
         }
     }
-
+    
     return (
-        <form action="" onSubmit={handleSubmit}>
+        <Modal open={open}>
+            <form action="" onSubmit={handleSubmit}>
             <span className="close" onClick={onClose}>
                 &times;
             </span>
@@ -135,5 +138,7 @@ export default function AddUpdatePokemon({ type, ability, onClose }: any) {
                 Enviar
             </button>
         </form>
+        </Modal>
+        
     )
 }

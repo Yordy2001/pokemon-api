@@ -1,13 +1,10 @@
-import axios from "axios";
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 
 import "./modal.css";
-import AddUpdatePokemon from "../addUpdateForm";
 
 
 export default function Modal({
-  type,
-  ability,
+  children,
   open,
   onClose,
 }: any) {
@@ -15,10 +12,13 @@ export default function Modal({
   if (!open) {
     return null;
   }
+  console.log(open)
+  console.log(children)
   return (
     <div className="modal">
       <div className="modal-content">
-        <AddUpdatePokemon type={type} ability={ability} onClose={onClose} />
+        {children}
+  
       </div>
     </div>
   );
