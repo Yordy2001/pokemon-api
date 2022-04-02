@@ -2,14 +2,13 @@ import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
 
 import Home from './Router/home/home';
 import Login from './Router/login/login';
-import PrivateRouter from './components/protectedRouter';
+import PrivateRouter from './utils/protectedRouter';
 
 
 function App() {
 
   const user:any =  localStorage.getItem('isAuthenticate')
   const isAuth = JSON.parse(user)
-
 
   return (
     <div className="App">

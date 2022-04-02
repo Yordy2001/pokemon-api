@@ -2,11 +2,11 @@ import { useState } from 'react'
 import axios from 'axios'
 
 import './login.css';
-import { User } from '../../interface';
+import { IUser } from '../../interface';
 
 export default function Login(type:any) {
 
-  const [loginValue, setLoginValue] = useState<User>({
+  const [loginValue, setLoginValue] = useState<IUser>({
     email:'',
     password:''
   })

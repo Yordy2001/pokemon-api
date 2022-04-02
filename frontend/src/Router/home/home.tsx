@@ -1,31 +1,39 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-import AddUpdatePokemon from '../../components/modal'
-import { Pokemon, pokemonAbility, pokemonType } from '../../interface'
 import './home.css'
+import AddUpdatePokemon from '../../components/addUpdateForm'
+import Pokemon from '../../utils/API/fetchPokemon'
+import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
+
+// Fetch Instance
+const pokemonApi = new Pokemon();
 
 export default function Home() {
 
-    const [pokemon, setPokemon] = useState<Pokemon[]>()
-    const [pokemonAbility, setPokemonAbility] = useState<pokemonAbility>()
-    const [pokemonType, setPokemonType] = useState<pokemonType>()
+    const [pokemon, setPokemon] = useState<IPokemon[]>()
+    const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
+    const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
 
     const [openModal, setOpenModal] = useState(false)
 
-
     const getData= async()=>{
-        const {data} = await axios.get('http://localhost:5000/pokemon')
-        
-        setPokemon(data.pokemon)
-        setPokemonAbility(data.pokemonAbility)
-        setPokemonType(data.pokemonType)
+        try {
+            const pokemons = await pokemonApi.getPokemon()
+            const pokemonsAbility = await pokemonApi.getPokemonAbility()
+            const pokemonsType = await pokemonApi.getPokemonType()
+         
+            setPokemon(pokemons)
+            setPokemonAbility(pokemonsAbility)
+            setPokemonType(pokemonsType)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
-        getData()
+        getData()  
     }, [])
-
 
     const handleLogout = async ()=>{
         try {
@@ -35,19 +43,28 @@ export default function Home() {
         } catch (error) {
             console.log(error)
         }
-        
+    }
+    const handleDelete = async(e:any, id:number)=>{
+
+        try {
+            await pokemonApi.deletePokemon(id)
+            await getData()
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    const handleClose=()=>{
+    const handleClose = async()=>{
         setOpenModal(false)
+        await getData()
     }
 
-    const handleOpenModal =()=>{
+    const handleOpenModal = ()=>{
         setOpenModal(true)
     }
 
     return<>
-
     <div className="body__home">
         <header className='header_home'>
             <h1>Poke-api</h1>
@@ -61,16 +78,18 @@ export default function Home() {
             <div className="card__container">
                 {
                 pokemon?.map((element, index)=>{
-                    return <div className="card__content" key={index}>
+                    return <div className="card__content" key={element.id}>
                     <img src={ 'http://localhost:5000/images/'+element.img } alt="asd" />
                     <div className="card_body">
                         <div className="icon-box">
-                            <button className='icon delete_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/x-button.png" alt="" />
+                            <button className='icon delete_card_btn' onClick={()=>{
+                                handleDelete(Event, element.id);}
+                            }>
+                                <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
 
                             <button className='icon update_card_btn'>
-                                <img id='pokemon.id' src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
+                                <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
                         </div>
                         <p>{element.name} </p>
