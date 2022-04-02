@@ -14,15 +14,14 @@ export default function Home() {
     const [pokemon, setPokemon] = useState<IPokemon[]>()
     const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
     const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
-    const [id, setId] = useState<number>(0)
 
     const [openModal, setOpenModal] = useState(false)
 
     const getData= async()=>{
         try {
-            const pokemons = await pokemonApi.get('/pokemon/')
-            const pokemonsAbility = await pokemonApi.get('/pokemon/poke-ability')
-            const pokemonsType = await pokemonApi.get('/pokemon/poke-type')
+            const pokemons = await pokemonApi.getPokemon()
+            const pokemonsAbility = await pokemonApi.getPokemonAbility()
+            const pokemonsType = await pokemonApi.getPokemonType()
          
             setPokemon(pokemons)
             setPokemonAbility(pokemonsAbility)
@@ -45,27 +44,27 @@ export default function Home() {
             console.log(error)
         }
     }
-    const handleDelete = async(e:any)=>{
-        console.log(id)
-        // try {
-        //     await pokemonApi.delete(`/pokemon/id/${id}`) 
-        //     window.location.reload()
-        // } catch (error) {
-        //     console.log(error)
-        // }
+    const handleDelete = async(e:any, id:number)=>{
+
+        try {
+            await pokemonApi.deletePokemon(id)
+            await getData()
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    const handleClose= async()=>{
+    const handleClose = async()=>{
         setOpenModal(false)
         await getData()
     }
 
-    const handleOpenModal =()=>{
+    const handleOpenModal = ()=>{
         setOpenModal(true)
     }
 
     return<>
-
     <div className="body__home">
         <header className='header_home'>
             <h1>Poke-api</h1>
@@ -84,8 +83,7 @@ export default function Home() {
                     <div className="card_body">
                         <div className="icon-box">
                             <button className='icon delete_card_btn' onClick={()=>{
-                                handleDelete(Event)
-                                setId(element.id)}
+                                handleDelete(Event, element.id);}
                             }>
                                 <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
