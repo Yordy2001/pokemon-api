@@ -5,15 +5,15 @@ const multer  = require('multer')
 const autenticate = require('../../middleware/authenticate')
 const upload = multer({ dest: 'images/' })
 
-const getAll = require('./controller/getAll')
-const getByName = require('./controller/getByName')
-const getById = require('./controller/getById')
-const getAbilities = require('./controller/getPokeAbility')
-const getType = require('./controller/getPokeType')
+const getAll = require('./controllers/getAll')
+const getByName = require('./controllers/getByName')
+const getById = require('./controllers/getById')
+const getAbilities = require('./controllers/getPokeAbility')
+const getType = require('./controllers/getPokeType')
 
-const addPokemon = require('./controller/addPokemon')
-const deletePokemon = require('./controller/deletePokemon')
-const updatePokemon = require('./controller/updatePokemon')
+const addPokemon = require('./controllers/addPokemon')
+const deletePokemon = require('./controllers/deletePokemon')
+const updatePokemon = require('./controllers/updatePokemon')
 
 const  router  = express.Router()
 
