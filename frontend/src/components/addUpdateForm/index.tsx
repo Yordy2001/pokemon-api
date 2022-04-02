@@ -49,7 +49,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: any) 
             formData.set(key, JSON.stringify(value));
         }
         try {
-            await PokemonApi.post('pokemon/', formData)
+            await PokemonApi.postPokemon(formData)
             onClose()
             
         } catch (error) {
