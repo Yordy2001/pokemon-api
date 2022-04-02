@@ -12,8 +12,7 @@ export default function Modal({
   if (!open) {
     return null;
   }
-  console.log(open)
-  console.log(children)
+
   return (
     <div className="modal">
       <div className="modal-content">
