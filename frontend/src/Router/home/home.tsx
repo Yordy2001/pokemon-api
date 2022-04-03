@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
+import '../../style/main.css'
 import './home.css'
-import fetchAuth from '../../utils/API/fetchAuth'
 
+import fetchAuth from '../../utils/API/fetchAuth'
 import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
+import Header from '../../components/header'
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
@@ -67,14 +69,8 @@ export default function Home() {
     }
 
     return<>
-    <div className="body__home">
-        <header className='header_home'>
-            <h1>Poke-api</h1>
-            <nav className='nav__home'>
-                <button className='button' id='addBtn' onClick={handleOpenModal}>ADD</button>
-                <button className=' button button-logout' onClick={handleLogout} >LOGAOUT</button>
-             </nav>
-        </header>
+    <div>
+        <Header handleLogOut={handleLogout} handleOpenModal={handleOpenModal}></Header>
 
         <main className='main__home'>
             <div className="card__container">
@@ -102,9 +98,9 @@ export default function Home() {
                 }
             </div>
         </main>
-        {
-           <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} onClose={handleClose} open={openModal}/>
-        }
+        
+        <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} onClose={handleClose} open={openModal}/>
+        
     </div>
     </>
 

@@ -1,0 +1,26 @@
+.header_home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(28, 91, 146);
+  padding: 1rem;
+}
+ul li{
+  border: 2px solid black;
+  text-decoration: none;
+  color: aliceblue;
+  padding: 16px;
+  text-align: center;  
+}
+
+.nav__home {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 50vh;
+  z-index: 1;
+  background-color: rgb(33, 80, 121);
+  /* justify-content: center;
+  align-items: center; */
+}

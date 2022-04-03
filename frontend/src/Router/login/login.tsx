@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import '../../style/main.css'
 import './login.css';
 
 import { IUser } from '../../interface';
@@ -39,7 +40,7 @@ export default function Login() {
     } 
 
   }
-  return<div>
+  return<div className='login_body'>
       <div className='background'>
         <div className='shape'></div>
         <div className='shape'></div>
