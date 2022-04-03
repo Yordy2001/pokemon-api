@@ -19,6 +19,7 @@ export interface IpokemonType{
 }
 
 export interface IUser{
+    firstName:string,
     email: string,
     password: string
 }

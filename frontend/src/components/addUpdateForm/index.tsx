@@ -4,9 +4,19 @@ import { useState, ChangeEvent } from 'react'
 import './addUpdate.css'
 import Pokemon from '../../utils/API/fetchPokemon';
 import Modal from '../modal';
+import { IpokemonAbility, IpokemonType } from '../../interface'
 
+type Props = {
+    type?: IpokemonType[],
+    ability?: IpokemonAbility[], 
+    onClose: () => void,
+    open: Boolean 
+}
+
+// pokemon fetch instance
 const PokemonApi = new Pokemon()
-export default function AddUpdatePokemon({ type, ability, onClose, open }: any) {
+
+export default function AddUpdatePokemon({ type, ability, onClose, open }:Props ) {
 
     const [file, setFile] = useState<File>();
     const [formValue, setformValue] = useState<any>({
@@ -58,7 +68,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: any) 
     }
     
     return (
-        <Modal open={open}>
+        <Modal open={open} onClose={onClose}>
             <form action="" onSubmit={handleSubmit}>
             <span className="close" onClick={onClose}>
                 &times;
@@ -134,7 +144,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: any) 
             </select>
 
             <button type="submit" id="enviar">
-                {" "}
+                {handleSubmit}
                 Enviar
             </button>
         </form>

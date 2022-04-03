@@ -1,12 +1,17 @@
 import { useState } from 'react'
-import axios from 'axios'
 
 import './login.css';
-import { IUser } from '../../interface';
 
-export default function Login(type:any) {
+import { IUser } from '../../interface';
+import fetchAuth from '../../utils/API/fetchAuth';
+
+
+const AuthApi = new fetchAuth()
+
+export default function Login() {
 
   const [loginValue, setLoginValue] = useState<IUser>({
+    firstName:'',
     email:'',
     password:''
   })
@@ -21,30 +26,18 @@ export default function Login(type:any) {
 
   }
 
-  const handleSubmit = (e:any) =>{
+  const handleSubmit = async (e:any) =>{
     e.preventDefault();
 
-    axios({
-      method: 'post',
-      url: 'http://localhost:5000/auth/login',
-      // withCredentials: true,
-      data: JSON.stringify({
-        email: loginValue.email,
-        password: loginValue.password
-      }),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      }
-    })
-
-    .then(function (type:any) {
+    try {
+      await AuthApi.logIn( loginValue )
       localStorage.setItem('isAuthenticate', JSON.stringify(true))
       window.location.href = '/'
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+    } catch (error) {
+      console.log(error)
+    } 
+
   }
   return<div>
       <div className='background'>

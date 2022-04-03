@@ -1,13 +1,15 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './home.css'
+import fetchAuth from '../../utils/API/fetchAuth'
+
 import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
+const AuthApi = new fetchAuth();
 
 export default function Home() {
 
@@ -15,7 +17,7 @@ export default function Home() {
     const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
     const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
 
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState<Boolean>(false)
 
     const getData= async()=>{
         try {
@@ -37,7 +39,7 @@ export default function Home() {
 
     const handleLogout = async ()=>{
         try {
-            await axios.get('http://localhost:5000/auth/logout')
+            await AuthApi.logOut()
             localStorage.isAuthenticate = false
             window.location.href = '/login'
         } catch (error) {
@@ -78,7 +80,7 @@ export default function Home() {
             <div className="card__container">
                 {
                 pokemon?.map((element, index)=>{
-                    return <div className="card__content" key={element.id}>
+                    return <div className="card__content" key={index}>
                     <img src={ 'http://localhost:5000/images/'+element.img } alt="asd" />
                     <div className="card_body">
                         <div className="icon-box">

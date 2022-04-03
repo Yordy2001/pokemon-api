@@ -1,8 +1,9 @@
 const {User}= require('../../../db')
 const bcrypt = require('bcrypt')
 
-module.exports = async (req, res, next)  =>{
+module.exports = async (req, res)  =>{
     const {email, password} = req.body
+    
     try {
 
         const user = await User.findOne( {where: {email}} )
