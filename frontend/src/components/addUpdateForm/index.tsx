@@ -11,13 +11,12 @@ type Props = {
     ability?: IpokemonAbility[], 
     onClose: () => void,
     open: Boolean,
-    addUpdate: string 
 }
 
 // pokemon fetch instance
 const PokemonApi = new Pokemon()
 
-export default function AddUpdatePokemon({ type, ability, onClose, open, addUpdate }:Props ) {
+export default function AddUpdatePokemon({ type, ability, onClose, open}:Props ) {
 
     const [file, setFile] = useState<File>();
     const [formValue, setformValue] = useState<any>({
@@ -60,12 +59,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addUpda
             formData.set(key, JSON.stringify(value));
         }
         try {
-            if(addUpdate === 'ADD'){
-                await PokemonApi.postPokemon(formData)
-            }
-            else if(addUpdate === 'UPDATE'){
-                await PokemonApi.putPokemon( 1,formData)
-            }
+            await PokemonApi.postPokemon(formData)
             onClose()
             
         } catch (error) {
@@ -151,7 +145,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addUpda
 
             <button type="submit" id="enviar">
                 {handleSubmit}
-                {addUpdate}
+                ADD
             </button>
         </form>
         </Modal>
