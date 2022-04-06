@@ -17,11 +17,13 @@ export default function Modal({
   if (!open) {
     return null;
   }
-
-  return (
-    <div className="modal" onClick={()=>{
+  const target =(e:any)=>{
+    if(e.target.className === 'modal'){
       onClose()
-      }}>
+    }
+  }
+  return (
+    <div className="modal" onClick={ target }>
       <div className="modal-content">
         {children}
   

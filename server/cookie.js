@@ -4,5 +4,5 @@ module.exports = cookieSession({
     name: 'session',
     keys: ['key1', 'key2'],
     signed: false,
-    maxAge: new Date(Date.now() + 8 * 3600000)
+    expires: new Date(Date.now() + 8 * 3600000)
 })
