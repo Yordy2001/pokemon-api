@@ -17,10 +17,13 @@
 .card__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+
 }
 
 .card__content {
+  width: 20rem;
+  height: auto;
   border-radius: 3px;
   border: teal 2px solid;
   background-color: teal;

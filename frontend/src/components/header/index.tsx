@@ -11,27 +11,28 @@ type Props = {
 export default function Header( {handleLogOut, handleOpenModal}: Props) {
 
 
- const [IsOpen, setIsOpen] = useState(false)
+ const [IsOpen, setIsOpen] = useState(true)
 
  const handleNav = ( ) =>{
+    
     setIsOpen(!IsOpen)
  }
 
   return (
     <>
     <div className='header_home'>
-      <h1>Poke-api</h1>
+      <h1 className='title'>Poke-api</h1>
 
-      <div className='open_nav' ><button className='button button-logout' onClick={handleNav}>&equiv;</button> </div>
-      { IsOpen && <div className='nav__home'>
-        <p onClick={handleNav}>&equiv;</p>
+      <p className='open_nav' onClick={handleNav}>&equiv;</p>
+
+      <div className= {IsOpen ? 'nav__home' : "hidden_menu"}>
+        <p className='open_nav'  onClick={handleNav}>&equiv;</p>
         <ul>
           <li><button className='button' id='addBtn' onClick={handleOpenModal}>ADD</button></li>
-          <li><button className=' button button-logout' onClick={handleLogOut} >LOGAOUT</button> </li>
+          <li><button className=' button button-logout' onClick={handleLogOut}> Log Out </button> </li>
         </ul>
-      
-        </div>
-      }
+
+      </div> 
     </div>
     
     

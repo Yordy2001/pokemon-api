@@ -8,6 +8,7 @@ import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 import Header from '../../components/header'
+import Hero from '../../components/hero/hero'
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
@@ -71,13 +72,15 @@ export default function Home() {
     return<>
     <div>
         <Header handleLogOut={handleLogout} handleOpenModal={handleOpenModal}></Header>
+        
+        <Hero pokemons={pokemon}></Hero>
 
         <main className='main__home'>
             <div className="card__container">
                 {
                 pokemon?.map((element, index)=>{
                     return <div className="card__content" key={index}>
-                    <img src={ 'http://localhost:5000/images/'+element.img } alt="asd" />
+                    <img src={ 'http://localhost:5000/images/'+element.img } alt={`imagen de ${element.name}`} />
                     <div className="card_body">
                         <div className="icon-box">
                             <button className='icon delete_card_btn' onClick={()=>{
