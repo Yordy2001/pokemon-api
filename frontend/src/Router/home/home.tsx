@@ -18,6 +18,7 @@ export default function Home() {
     const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
 
     const [openModal, setOpenModal] = useState<Boolean>(false)
+    const [addOrUpdate, setaAdOrUpdate] = useState<string>('ADD')
 
     const getData= async()=>{
         try {
@@ -37,6 +38,10 @@ export default function Home() {
         getData()  
     }, [])
 
+    const HandleAddOrUpdate =()=>{
+        setaAdOrUpdate('UPDATE')
+        setOpenModal(true)
+    }
     const handleLogout = async ()=>{
         try {
             await AuthApi.logOut()
@@ -47,7 +52,6 @@ export default function Home() {
         }
     }
     const handleDelete = async(e:any, id:number)=>{
-
         try {
             await pokemonApi.deletePokemon(id)
             await getData()
@@ -63,6 +67,7 @@ export default function Home() {
     }
 
     const handleOpenModal = ()=>{
+        setaAdOrUpdate('ADD')
         setOpenModal(true)
     }
 
@@ -90,7 +95,7 @@ export default function Home() {
                                 <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
 
-                            <button className='icon update_card_btn'>
+                            <button className='icon update_card_btn' onClick={HandleAddOrUpdate} >
                                 <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
                         </div>
@@ -103,7 +108,7 @@ export default function Home() {
             </div>
         </main>
         {
-           <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} onClose={handleClose} open={openModal}/>
+           <AddUpdatePokemon type={pokemonType} ability={pokemonAbility} onClose={handleClose} open={openModal} addUpdate={addOrUpdate} />
         }
     </div>
     </>
