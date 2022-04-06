@@ -10,13 +10,11 @@ type Props = {
 
 export default function Header( {handleLogOut, handleOpenModal}: Props) {
 
+  const [IsOpen, setIsOpen] = useState(true)
 
- const [IsOpen, setIsOpen] = useState(true)
-
- const handleNav = ( ) =>{
-    
+  const handleNav = ( ) =>{
     setIsOpen(!IsOpen)
- }
+  }
 
   return (
     <>

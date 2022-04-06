@@ -47,7 +47,6 @@ ul li{
     position: absolute;
     height: 50vh;
     top: 0;
-    right: 0;
     width: 100%;
     z-index: 1;
   }
@@ -83,7 +82,7 @@ ul li{
   
 @keyframes slidein {
   from {
-    margin-right: -100%;
+    margin-left: -100%;
     width: 300%;
   }
 
