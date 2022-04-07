@@ -25,7 +25,7 @@ export default function Modal({
   return (
     <div className="modal" onClick={ target }>
       <div className="modal-content">
-        {children}
+        {...children}
   
       </div>
     </div>

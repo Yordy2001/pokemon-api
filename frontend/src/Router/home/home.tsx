@@ -6,9 +6,10 @@ import './home.css'
 import fetchAuth from '../../utils/API/fetchAuth'
 import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
-import { IPokemon, IpokemonAbility, IpokemonType } from '../../interface'
 import Header from '../../components/header'
 import Hero from '../../components/hero/hero'
+import useFetch from '../../utils/getData'
+import UpdatePokemon from '../../components/updatePokemon/UpdatePokemonForm'
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
@@ -16,33 +17,12 @@ const AuthApi = new fetchAuth();
 
 export default function Home() {
 
-    const [pokemon, setPokemon] = useState<IPokemon[]>()
-    const [pokemonAbility, setPokemonAbility] = useState<IpokemonAbility[]>()
-    const [pokemonType, setPokemonType] = useState<IpokemonType[]>()
+    const {pokemons, pokemonsAbility, pokemonsType} = useFetch()
 
-    const [openModal, setOpenModal] = useState<Boolean>(false)
+    const [pokeId, setPokeId] = useState<number>(0)
+    const [addOrUpdate, setaddOrUpdate] = useState('ADD')
+    const [openModal, setOpenModal] = useState<boolean>(false)
 
-    const getData= async()=>{
-        try {
-            const pokemons = await pokemonApi.getPokemon()
-            const pokemonsAbility = await pokemonApi.getPokemonAbility()
-            const pokemonsType = await pokemonApi.getPokemonType()
-         
-            setPokemon(pokemons)
-            setPokemonAbility(pokemonsAbility)
-            setPokemonType(pokemonsType)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        getData()  
-    }, [])
-
-    const HandleAddOrUpdate =(e:any, id:number)=>{
-        console.log('first')
-    }
     const handleLogout = async ()=>{
         try {
             await AuthApi.logOut()
@@ -55,7 +35,7 @@ export default function Home() {
     const handleDelete = async(e:any, id:number)=>{
         try {
             await pokemonApi.deletePokemon(id)
-            await getData()
+            // useFetch()
 
         } catch (error) {
             console.log(error)
@@ -64,10 +44,10 @@ export default function Home() {
 
     const handleClose = async()=>{
         setOpenModal(false)
-        await getData()
     }
 
     const handleOpenModal = ()=>{
+        // setaddOrUpdate("ADD")
         setOpenModal(true)
     }
 
@@ -75,12 +55,12 @@ export default function Home() {
     <div>
         <Header handleLogOut={handleLogout} handleOpenModal={handleOpenModal}></Header>
         
-        <Hero pokemons={pokemon}></Hero>
+        <Hero pokemons={pokemons}></Hero>
 
         <main className='main__home'>
             <div className="card__container">
                 {
-                pokemon?.map((element, index)=>{
+                pokemons?.map((element, index)=>{
                     return <div className="card__content" key={index}>
                     <img src={ 'http://localhost:5000/images/'+element.img } alt={`imagen de ${element.name}`} />
                     <div className="card_body">
@@ -91,7 +71,11 @@ export default function Home() {
                                 <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
 
-                            <button className='icon update_card_btn'>
+                            <button className='icon update_card_btn' onClick={()=>{
+                                setPokeId(element.id)
+                                setaddOrUpdate("UPDATE")
+                                setOpenModal(true)
+                            }}>
                                 <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
                         </div>
@@ -103,13 +87,27 @@ export default function Home() {
                 }
             </div>
         </main>
-        {
-           <AddUpdatePokemon
-                type={pokemonType}
-                ability={pokemonAbility}
+        { 
+
+            // (addOrUpdate ==="UPDATE")
+            //    ? 
+            //    <UpdatePokemon
+            //         pokeId={pokeId}
+            //         open={openModal}
+            //         onClose={handleClose}>
+            //     </UpdatePokemon>
+            
+            //     :
+                <AddUpdatePokemon
+                type={pokemonsType}
+                ability={pokemonsAbility}
                 onClose={handleClose}
                 open={openModal}
+                addOrDelete={addOrUpdate}
+                pokeId={pokeId}
             />
+        
+
         }       
     </div>
     </>
