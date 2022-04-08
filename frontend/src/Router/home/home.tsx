@@ -22,6 +22,7 @@ export default function Home() {
     const [pokeId, setPokeId] = useState<number>(0)
     const [addOrUpdate, setaddOrUpdate] = useState('ADD')
     const [openModal, setOpenModal] = useState<boolean>(false)
+    const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false)
 
     const handleLogout = async ()=>{
         try {
@@ -46,14 +47,15 @@ export default function Home() {
         setOpenModal(false)
     }
 
-    const handleOpenModal = ()=>{
-        // setaddOrUpdate("ADD")
+    const handleAddModal = ()=>{
         setOpenModal(true)
     }
-
+    const handleUpdateModal = ()=>{
+        setOpenUpdatePokemon(true)
+    }
     return<>
     <div>
-        <Header handleLogOut={handleLogout} handleOpenModal={handleOpenModal}></Header>
+        <Header handleLogOut={handleLogout} handleOpenModal={handleAddModal}></Header>
         
         <Hero pokemons={pokemons}></Hero>
 
@@ -73,8 +75,7 @@ export default function Home() {
 
                             <button className='icon update_card_btn' onClick={()=>{
                                 setPokeId(element.id)
-                                setaddOrUpdate("UPDATE")
-                                setOpenModal(true)
+                                handleUpdateModal()
                             }}>
                                 <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
@@ -87,18 +88,21 @@ export default function Home() {
                 }
             </div>
         </main>
-        { 
 
-            // (addOrUpdate ==="UPDATE")
-            //    ? 
-            //    <UpdatePokemon
-            //         pokeId={pokeId}
-            //         open={openModal}
-            //         onClose={handleClose}>
-            //     </UpdatePokemon>
+        {
+                
+               
+            <UpdatePokemon
+                pokeId={pokeId}
+                open={openUpdateModal}
+                onClose={handleClose}
+            />
             
-            //     :
-                <AddUpdatePokemon
+                
+        }
+
+        {
+            <AddUpdatePokemon
                 type={pokemonsType}
                 ability={pokemonsAbility}
                 onClose={handleClose}
@@ -106,8 +110,6 @@ export default function Home() {
                 addOrDelete={addOrUpdate}
                 pokeId={pokeId}
             />
-        
-
         }       
     </div>
     </>

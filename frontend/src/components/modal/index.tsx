@@ -3,7 +3,7 @@ import React from "react";
 import "./modal.css";
 
 type Props ={
-  children: any,
+  children: JSX.Element,
   open: Boolean
   onClose: () => void
 }
@@ -25,7 +25,7 @@ export default function Modal({
   return (
     <div className="modal" onClick={ target }>
       <div className="modal-content">
-        {...children}
+        {children}
   
       </div>
     </div>
