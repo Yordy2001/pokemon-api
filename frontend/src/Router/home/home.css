@@ -1,5 +1,7 @@
 .main__home {
-  background-color: rgb(220, 223, 226);
+  margin: auto;
+  width: calc(100% - 4rem);
+  /* background-color: rgb(220, 223, 226); */
   height: 100vh;
   padding: 2rem;
 }
