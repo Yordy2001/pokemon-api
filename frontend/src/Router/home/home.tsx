@@ -17,14 +17,14 @@ const AuthApi = new fetchAuth();
 
 export default function Home() {
 
-    const {pokemons, pokemonsAbility, pokemonsType} = useFetch()
+    const { pokemons, pokemonsAbility, pokemonsType } = useFetch()
 
     const [pokeId, setPokeId] = useState<number>(0)
     const [addOrUpdate, setaddOrUpdate] = useState('ADD')
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false)
 
-    const handleLogout = async ()=>{
+    const handleLogout = async () => {
         try {
             await AuthApi.logOut()
             localStorage.isAuthenticate = false
@@ -33,7 +33,7 @@ export default function Home() {
             console.log(error)
         }
     }
-    const handleDelete = async(e:any, id:number)=>{
+    const handleDelete = async (e: any, id: number) => {
         try {
             await pokemonApi.deletePokemon(id)
             // useFetch()
@@ -43,75 +43,85 @@ export default function Home() {
         }
     }
 
-    const handleClose = async()=>{
+    const handleClose = async () => {
         setOpenModal(false)
     }
 
-    const handleAddModal = ()=>{
+    const handleAddModal = () => {
         setOpenModal(true)
     }
-    const handleUpdateModal = ()=>{
+    const handleUpdateModal = () => {
         setOpenUpdatePokemon(true)
     }
-    return<>
-    <div>
-        <Header handleLogOut={handleLogout} handleOpenModal={handleAddModal}></Header>
-        
-        <Hero pokemons={pokemons}></Hero>
+    return <>
+        <div>
+            <Header handleLogOut={handleLogout} handleOpenModal={handleAddModal}></Header>
 
-        <main className='main__home'>
-            <div className="card__container">
-                {
-                pokemons?.map((element, index)=>{
-                    return <div className="card__content" key={index}>
-                    <img src={ 'http://localhost:5000/images/'+element.img } alt={`imagen de ${element.name}`} />
-                    <div className="card_body">
-                        <div className="icon-box">
-                            <button className='icon delete_card_btn' onClick={()=>{
-                                handleDelete(Event, element.id);}
-                            }>
-                                <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
-                            </button>
+            <Hero pokemons={pokemons}></Hero>
 
-                            <button className='icon update_card_btn' onClick={()=>{
-                                setPokeId(element.id)
-                                handleUpdateModal()
-                            }}>
-                                <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
-                            </button>
-                        </div>
-                        <p>{element.name} </p>
-                        <p>{element.owner}</p>
-                    </div>
+            <main className='main__home'>
+                <div className="card__container">
+                    {
+                        pokemons?.map((pokemon, index) => {
+                            return <div className='grid_pokemon'>
+                            <div className="card__content" key={index}>
+                                <img src={'http://localhost:5000/images/' + pokemon.img} alt={`imagen de ${pokemon.name}`} />
+                                <div className={`card_body ${pokemon.pokemonAbilityId}`}>
+                                    <div className="icon-box">
+                                        <button className='icon delete_card_btn' onClick={() => {
+                                            handleDelete(Event, pokemon.id);
+                                        }
+                                        }>
+                                            <img key={pokemon.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
+                                        </button>
+
+                                        <button className='icon update_card_btn' onClick={() => {
+                                            setPokeId(pokemon.id)
+                                            handleUpdateModal()
+                                        }}>
+                                            <img src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
+                                        </button>
+                                    </div>
+                                    <p>{pokemon.name} </p>
+                                </div>
+                                
+                            </div>
+                            <div className='poke_description'>
+                                <h1>{pokemon.name}</h1> 
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis sapiente voluptatibus veniam enim dolore illum assumenda hic ex provident fugit sed, beatae numquam, ab deserunt excepturi saepe asperiores explicabo eligendi?</p>
+
+                                <div className='foother-card'>
+                                    <p>{pokemon.owner}</p>
+                                    <p>{pokemon.pokemonAbilityId}</p>
+                                    <p>{pokemon.pokemonTypeId}</p>
+                                </div>
+    
+                            </div>
+                            </div>
+                        })
+                    }
                 </div>
-                })
-                }
-            </div>
-        </main>
+            </main>
 
-        {
-                
-               
-            <UpdatePokemon
-                pokeId={pokeId}
-                open={openUpdateModal}
-                onClose={handleClose}
-            />
-            
-                
-        }
+            {
+                <UpdatePokemon
+                    pokeId={pokeId}
+                    open={openUpdateModal}
+                    onClose={handleClose}
+                />
+            }
 
-        {
-            <AddUpdatePokemon
-                type={pokemonsType}
-                ability={pokemonsAbility}
-                onClose={handleClose}
-                open={openModal}
-                addOrDelete={addOrUpdate}
-                pokeId={pokeId}
-            />
-        }       
-    </div>
+            {
+                <AddUpdatePokemon
+                    type={pokemonsType}
+                    ability={pokemonsAbility}
+                    onClose={handleClose}
+                    open={openModal}
+                    addOrDelete={addOrUpdate}
+                    pokeId={pokeId}
+                />
+            }
+        </div>
     </>
 
 }
