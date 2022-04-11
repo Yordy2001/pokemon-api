@@ -90,15 +90,12 @@ export default function Home() {
         </main>
 
         {
-                
-               
+  
             <UpdatePokemon
                 pokeId={pokeId}
                 open={openUpdateModal}
                 onClose={handleClose}
-            />
-            
-                
+            />            
         }
 
         {
