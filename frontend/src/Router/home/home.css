@@ -1,4 +1,6 @@
 .main__home {
+  max-width: 100%;
+  box-sizing: border-box;
   margin: auto;
   /* width: calc(100% - 4rem); */
   background-color: rgba(26, 26, 26, 0.836);
@@ -18,9 +20,11 @@
   height: 100;
   padding: 2rem;
 }
+
 img {
   width: 100%;
 }
+
 .button {
   padding: 16px;
   border: none;
@@ -36,23 +40,27 @@ img {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .grid_pokemon {
   display: flex;
-  box-shadow: rgba(192, 192, 192, 0.664) 0px 30px 35px -20px;
   margin-bottom: 2rem;
   margin-right: 1rem;
 }
 
 .poke_description {
+  width: 20rem;
+  position: relative;
+  z-index: 0;
+  left: -20rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: aliceblue;
   padding: 1rem 1rem 0rem 1rem;
-  width: 20rem;
   text-align: justify;
 }
-.poke_description > h1 {
+
+.poke_description>h1 {
   height: 15%;
   text-transform: uppercase;
   text-align: center;
@@ -67,18 +75,20 @@ img {
 }
 
 .card__content {
-  height: auto;
-  width: 18rem;
-  border-radius: 3px;
   background-color: teal;
+  border-radius: 3px;
+  box-shadow: rgba(192, 192, 192, 0.664) 0px 30px 35px -20px;
+  height: auto;
+  width: 20rem;
+  z-index: 1;
 }
 
 .card_body {
-  height: 3rem;
+  align-items: center;
   display: flex;
+  height: 3rem;
   padding: 0.5rem;
   text-align: center;
-  align-items: center;
   justify-content: space-evenly;
   font-size: 1.3rem;
 }
@@ -86,6 +96,7 @@ img {
 .card__button {
   font-size: xx-large;
 }
+
 .icon-box {
   display: flex;
   width: 4rem;
@@ -93,4 +104,14 @@ img {
 
 .card__content:hover {
   cursor: pointer;
+
+}
+
+.grid_pokemon:hover .poke_description {
+  max-width: 100%;
+  animation: 3s;
+  left: 0;
+  background-color: rgba(99, 139, 139, 0.836);
+  transition: all 0.3s 0s ease-out;
+  box-shadow: rgba(192, 192, 192, 0.664) 0px 30px 35px -20px;
 }

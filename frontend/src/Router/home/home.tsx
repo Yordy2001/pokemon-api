@@ -64,39 +64,39 @@ export default function Home() {
                     {
                         pokemons?.map((pokemon, index) => {
                             return <div className='grid_pokemon'>
-                            <div className="card__content" key={index}>
-                                <img src={'http://localhost:5000/images/' + pokemon.img} alt={`imagen de ${pokemon.name}`} />
-                                <div className={`card_body ${pokemon.pokemonAbilityId}`}>
-                                    <div className="icon-box">
-                                        <button className='icon delete_card_btn' onClick={() => {
-                                            handleDelete(Event, pokemon.id);
-                                        }
-                                        }>
-                                            <img key={pokemon.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
-                                        </button>
+                                <div className="card__content" key={index}>
+                                    <img src={'http://localhost:5000/images/' + pokemon.img} alt={`imagen de ${pokemon.name}`} />
+                                    <div className={`card_body ${pokemon.pokemonAbilityId}`}>
+                                        <div className="icon-box">
+                                            <button className='icon delete_card_btn' onClick={() => {
+                                                handleDelete(Event, pokemon.id);
+                                            }
+                                            }>
+                                                <img key={pokemon.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
+                                            </button>
 
-                                        <button className='icon update_card_btn' onClick={() => {
-                                            setPokeId(pokemon.id)
-                                            handleUpdateModal()
-                                        }}>
-                                            <img src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
-                                        </button>
+                                            <button className='icon update_card_btn' onClick={() => {
+                                                setPokeId(pokemon.id)
+                                                handleUpdateModal()
+                                            }}>
+                                                <img src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
+                                            </button>
+                                        </div>
+                                        <p>{pokemon.name} </p>
                                     </div>
-                                    <p>{pokemon.name} </p>
-                                </div>
-                                
-                            </div>
-                            <div className='poke_description'>
-                                <h1>{pokemon.name}</h1> 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis sapiente voluptatibus veniam enim dolore illum assumenda hic ex provident fugit sed, beatae numquam, ab deserunt excepturi saepe asperiores explicabo eligendi?</p>
 
-                                <div className='foother-card'>
-                                    <p>{pokemon.owner}</p>
-                                    <p>{pokemon.pokemonAbilityId}</p>
-                                    <p>{pokemon.pokemonTypeId}</p>
                                 </div>
-    
-                            </div>
+                                <div className='poke_description'>
+                                    <h1>{pokemon.name}</h1>
+                                    {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis sapiente voluptatibus veniam enim dolore illum assumenda hic ex provident fugit sed, beatae numquam, ab deserunt excepturi saepe asperiores explicabo eligendi?</p> */}
+                                    {pokemon.description}
+                                    <div className='foother-card'>
+                                        <p>{pokemon.owner}</p>
+                                        <p>{pokemon.pokemonAbilityId}</p>
+                                        <p>{pokemon.pokemonTypeId}</p>
+                                    </div>
+
+                                </div>
                             </div>
                         })
                     }

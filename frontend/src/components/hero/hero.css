@@ -4,6 +4,7 @@
     /* animation-name: slider; */
     /* animation-timing-function: ease-in-out; */
     /* animation-duration: 20s; */
+    background-attachment: fixed;
     animation: 10s ease-in 1s infinite reverse both running slider;
     background-position: center;
     background-size: cover;
