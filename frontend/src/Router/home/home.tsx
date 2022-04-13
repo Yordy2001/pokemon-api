@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import '../../style/main.css'
 import './home.css'
 
 import fetchAuth from '../../utils/API/fetchAuth'
+import  { useFetch }  from '../../utils/getData'
 import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import Header from '../../components/header'
 import Hero from '../../components/hero/hero'
-import useFetch from '../../utils/getData'
 import UpdatePokemon from '../../components/updatePokemon/UpdatePokemonForm'
 
 // Fetch Instance
@@ -18,11 +18,9 @@ const AuthApi = new fetchAuth();
 export default function Home() {
 
     const {pokemons, pokemonsAbility, pokemonsType} = useFetch()
-
-    const [pokeId, setPokeId] = useState<number>(0)
-    const [addOrUpdate, setaddOrUpdate] = useState('ADD')
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false)
+    const [pokeId, setpokeId] = useState(0)
 
     const handleLogout = async ()=>{
         try {
@@ -36,7 +34,6 @@ export default function Home() {
     const handleDelete = async(e:any, id:number)=>{
         try {
             await pokemonApi.deletePokemon(id)
-            // useFetch()
 
         } catch (error) {
             console.log(error)
@@ -74,8 +71,8 @@ export default function Home() {
                             </button>
 
                             <button className='icon update_card_btn' onClick={()=>{
-                                setPokeId(element.id)
                                 handleUpdateModal()
+                                setpokeId(element.id)
                             }}>
                                 <img  src="http://localhost:5000/static/image-dev/pencil.png" alt="" />
                             </button>
@@ -90,11 +87,12 @@ export default function Home() {
         </main>
 
         {
-  
             <UpdatePokemon
                 pokeId={pokeId}
                 open={openUpdateModal}
                 onClose={handleClose}
+                type={pokemonsType}
+                ability={pokemonsAbility}
             />            
         }
 
@@ -104,8 +102,6 @@ export default function Home() {
                 ability={pokemonsAbility}
                 onClose={handleClose}
                 open={openModal}
-                addOrDelete={addOrUpdate}
-                pokeId={pokeId}
             />
         }       
     </div>

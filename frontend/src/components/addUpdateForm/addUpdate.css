@@ -43,7 +43,7 @@ select {
   color: black;
 }
 
-#enviar {
+.enviar {
   display: block;
   margin-top: 50px;
   width: 100%;

@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import fetchPokemon from './API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../interface'
 
-
 const getPokemons = new fetchPokemon()
 
-export default function useFetch() {
+export function useFetch() {
 
     const [pokemons, setPokemons] = useState<IPokemon[]>()
     const [pokemonsAbility, setPokemonsAbility] = useState<IpokemonAbility[]>()
@@ -30,8 +29,7 @@ export default function useFetch() {
     useEffect(() => {
         getData()
     }, [])
-    
 
     return {pokemons, pokemonsAbility, pokemonsType}
-
 }
+
