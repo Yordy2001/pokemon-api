@@ -97,12 +97,12 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
                     placeholder="img"
                     required
                 />
-                <input
-                    onChange={handleChangeInput}
+                <textarea
+                    // onChange={handleChangeInput}
                     id="input_description"
-                    type="text"
+                    // type="text"
                     name="description"
-                    placeholder="description"
+                    placeholder="Description"
                     required
                 />
                 <input
@@ -123,10 +123,11 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
                     <option value="" disabled>
                         Pokemon Type
                     </option>
-                    {ability?.map((data: any, index: number) => {
+                    
+                    {type?.map((data: any, index: number) => {
                         return (
-                            <option value={data.ability} key={index}>
-                                {data.ability}
+                            <option className='pokemon_type' value={data.type} key={index}>
+                                {data.type}
                             </option>
                         );
                     })}
@@ -142,16 +143,16 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
                     <option value="" disabled>
                         pokemon Ability
                     </option>
-                    {type?.map((data: any, index: number) => {
+                    {ability?.map((data: any, index: number) => {
                         return (
-                            <option value={data.type} key={index}>
-                                {data.type}
+                            <option value={data.ability} key={index}>
+                                {data.ability}
                             </option>
                         );
                     })}
                 </select>
 
-                <button type="submit" id="enviar">
+                <button type="submit" className="enviar">
                     {handleSubmit}
                     {addOrDelete}
                 </button>

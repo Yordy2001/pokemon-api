@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 .form_pokemon {
-  height: 30rem;
+  height: auto;
   width: 30rem;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
@@ -30,7 +30,8 @@
 }
 
 input,
-select {
+select,
+textarea{
   display: block;
   height: 50px;
   width: 100%;
@@ -43,7 +44,7 @@ select {
   color: black;
 }
 
-#enviar {
+.enviar {
   display: block;
   margin-top: 50px;
   width: 100%;
@@ -54,4 +55,8 @@ select {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.pokemon_type{
+  text-transform: capitalize;
 }

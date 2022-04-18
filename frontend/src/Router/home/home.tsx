@@ -8,7 +8,7 @@ import AddUpdatePokemon from '../../components/addUpdateForm'
 import Pokemon from '../../utils/API/fetchPokemon'
 import Header from '../../components/header'
 import Hero from '../../components/hero/hero'
-import useFetch from '../../utils/getData'
+import { useFetch } from '../../utils/getData'
 import UpdatePokemon from '../../components/updatePokemon/UpdatePokemonForm'
 
 // Fetch Instance
@@ -93,7 +93,8 @@ export default function Home() {
                                     <div className='foother-card'>
                                         <p>{pokemon.owner}</p>
                                         <p>{pokemon.pokemonAbilityId}</p>
-                                        <p>{pokemon.pokemonTypeId}</p>
+                                        {/* <p> {pokemon.pokemonTypeId}</p> */}
+                                        <p> <img src=  {`http://localhost:5000/static/image-dev/icons_type/${pokemon.pokemonTypeId}.png`} alt="" /></p>
                                     </div>
 
                                 </div>
