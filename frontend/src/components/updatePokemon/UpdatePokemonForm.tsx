@@ -8,7 +8,7 @@ type Props = {
     type?: IpokemonType[],
     ability?: IpokemonAbility[], 
     pokeId: number,
-    open: Boolean,
+    open: boolean,
     onClose: () => void
 }
 
@@ -25,23 +25,6 @@ export default function UpdatePokemon({ ability , type, pokeId, open, onClose }:
     }
     const [PokemonForm, setPokemonForm] = useState(inicialState)
     const [file, setFile] = useState<File>();
-
-    // const getData = async () => {
-    //     try {
-    //         const {data} = await pokemonApi.getPokemonById(pokeId)
-    //         // pokemon.forEach(({data}:any) => {
-    //         //     // setPokemons(data)
-    //         //     console.log(data)
-    //         // })
-    //         console.log(data)
-    //     } catch (error) {
-
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getData()
-    // }, [pokeId])
 
     const handleSubmit = async (e:any) =>{
         e.preventDefault();
@@ -85,7 +68,7 @@ export default function UpdatePokemon({ ability , type, pokeId, open, onClose }:
 
     return (
         <Modal open={open} onClose={onClose}>
-            <form action="" onSubmit={ handleSubmit }>
+            <form  onSubmit={ handleSubmit }>
                 <span className="close" onClick={onClose}>
                     &times;
                 </span>

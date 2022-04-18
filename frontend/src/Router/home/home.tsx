@@ -42,6 +42,7 @@ export default function Home() {
 
     const handleClose = async()=>{
         setOpenModal(false)
+        setOpenUpdatePokemon(false)
     }
 
     const handleAddModal = ()=>{
@@ -65,8 +66,8 @@ export default function Home() {
                     <div className="card_body">
                         <div className="icon-box">
                             <button className='icon delete_card_btn' onClick={()=>{
-                                handleDelete(Event, element.id);}
-                            }>
+                                handleDelete(Event, element.id);
+                            }}>
                                 <img key={element.id} src="http://localhost:5000/static/image-dev/x-button.png" alt='' />
                             </button>
 
@@ -106,5 +107,4 @@ export default function Home() {
         }       
     </div>
     </>
-
 }

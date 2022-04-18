@@ -48,7 +48,6 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }:Props 
         });
     };
 
-
     async function handleSubmit(e: any) {
         e.preventDefault();
 
@@ -66,7 +65,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }:Props 
             console.log(error);
         }
     }
-    
+
     return (
         <Modal open={open} onClose={onClose}>
             <form action="" onSubmit={handleSubmit}>
@@ -149,6 +148,6 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }:Props 
             </button>
         </form>
         </Modal>
-        
+
     )
 }
