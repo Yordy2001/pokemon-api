@@ -1,37 +1,38 @@
 .hero{
-    /* background-image: url(../../../public/ash-y-pikachu-artwork_2880x1800_xtrafondos.com.jpg); */
-    /* background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); */
-    /* animation-name: slider; */
-    /* animation-timing-function: ease-in-out; */
-    /* animation-duration: 20s; */
-    background-attachment: fixed;
-    animation: 10s ease-in 1s infinite reverse both running slider;
-    background-position: center;
-    background-size: cover;
+
     width: 100%;
-    height: 60vh;
-    background-attachment:local
+    height: 70vh;
+    background-color: aqua;
+    /* background-attachment:local */
+    /* z-index: 4; */
 }
 
-
-.hero-content{
+.image-hero{
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    z-index: 4;
 }
 
-.poke-description,
-.poke-portada
-{
-    background-color: rgb(128, 120, 120);
-    margin: auto;
-    width: calc(90% - 2rem);
-    height: calc(100% - 2rem);
+.change_slider_box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position:relative;
+    bottom: 3rem;
 }
 
-@keyframes slider{
-    from{background-image: url(../../../public/ash-y-pikachu-artwork_2880x1800_xtrafondos.com.jpg);}
-    to{background-image: url(../../../public/greninja-ash-contra-mega-charizard_4183x2236_xtrafondos.com.jpg);}
+.change_slider_button{
+    border-radius: 50%;
+    padding: .5rem;
+    margin-left: .5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
 }
 
-
+.change_slider_button:focus,
+.change_slider_button:hover{
+    background-color: aqua;
+}

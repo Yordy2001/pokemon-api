@@ -1,4 +1,3 @@
-
 import { useState, ChangeEvent } from 'react'
 
 import './addUpdate.css'
@@ -11,14 +10,13 @@ type Props = {
     ability?: IpokemonAbility[],
     onClose: () => void,
     open: Boolean,
-    addOrDelete: string,
     pokeId: number
 }
 
 // pokemon fetch instance
 const PokemonApi = new Pokemon()
 
-export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDelete, pokeId }: Props) {
+export default function AddUpdatePokemon({ type, ability, onClose, open }: Props) {
 
     const [file, setFile] = useState<File>();
     const [formValue, setformValue] = useState<any>({
@@ -33,7 +31,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
         setFile(e.target.files?.[0]);
     };
 
-    const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeInput = ( e: ChangeEvent<HTMLInputElement> ) => {
         let value = e.target.value;
 
         setformValue({
@@ -61,18 +59,9 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
         for (let [key, value] of Object.entries(formValue)) {
             formData.set(key, JSON.stringify(value));
         }
-        try {
-            if (addOrDelete === "ADD") {
-                await PokemonApi.postPokemon(formData)
-            }
-            else if (addOrDelete === "UPDATE") {
-                await PokemonApi.putPokemon(pokeId, formData)
-            }
-            onClose()
 
-        } catch (error) {
-            console.log(error);
-        }
+        await PokemonApi.postPokemon(formData)
+        onClose()
     }
 
     return (
@@ -97,10 +86,10 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
                     placeholder="img"
                     required
                 />
-                <textarea
-                    // onChange={handleChangeInput}
+                <input
+                    onChange={handleChangeInput}
                     id="input_description"
-                    // type="text"
+                    type="text"
                     name="description"
                     placeholder="Description"
                     required
@@ -154,7 +143,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open, addOrDe
 
                 <button type="submit" className="enviar">
                     {handleSubmit}
-                    {addOrDelete}
+                    ADD
                 </button>
             </form>
         </Modal>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import '../../style/main.css'
+import '../../assets/style/main.css'
 import './login.css';
 
 import { IUser } from '../../interface';

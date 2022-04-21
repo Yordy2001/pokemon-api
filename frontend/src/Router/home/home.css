@@ -1,22 +1,9 @@
+
 .main__home {
   max-width: 100%;
   box-sizing: border-box;
   margin: auto;
-  /* width: calc(100% - 4rem); */
-  background-color: rgba(26, 26, 26, 0.836);
-  /* background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(0, 0, 0, 0.15) 100%
-    ),
-    radial-gradient(
-        at top center,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(0, 0, 0, 0.4) 120%
-      )
-      #989898;
-  background-blend-mode: multiply, multiply;
-  background-attachment: fixed; */
+  background-color: rgba(5, 5, 5, 0.493);
   height: 100vh;
   padding: 2rem;
 }
@@ -31,58 +18,67 @@ img {
   outline: none;
   cursor: pointer;
   font-weight: bold;
-  /* margin-right: 5px; */
   border-radius: 20px;
 }
 
 .card__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+
 }
 
-.grid_pokemon {
-  display: flex;
+.card-box {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s linear;
   margin-bottom: 2rem;
   margin-right: 1rem;
+  cursor: pointer;
+}
+
+.card-box:hover .card_display {
+  transform: rotateY(30deg);
+}
+
+.card-box:active .card_display{
+  transform: rotateY(180deg);
+}
+
+.card_display {
+  transform-style: preserve-3d;
+  transition: all 0.5s linear;
+}
+
+.card__content {
+  background-color: teal;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  height: auto;
+  width: 20rem;
+  height: 23rem;
+  z-index: 1;
+  position: absolute;
+  backface-visibility: hidden;
 }
 
 .poke_description {
   width: 20rem;
-  position: relative;
+  height: 23rem;
   z-index: 0;
-  left: -20rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: aliceblue;
   padding: 1rem 1rem 0rem 1rem;
   text-align: justify;
+  transform: rotateY(180deg);
 }
 
 .poke_description>h1 {
-  height: 15%;
   text-transform: uppercase;
   text-align: center;
 }
-
-.foother-card {
-  height: 15%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
-
-.card__content {
-  background-color: teal;
-  border-radius: 3px;
-  box-shadow: rgba(192, 192, 192, 0.664) 0px 30px 35px -20px;
-  height: auto;
-  width: 20rem;
-  z-index: 1;
-}
-
 .card_body {
   align-items: center;
   display: flex;
@@ -93,25 +89,19 @@ img {
   font-size: 1.3rem;
 }
 
-.card__button {
-  font-size: xx-large;
-}
-
 .icon-box {
   display: flex;
   width: 4rem;
 }
 
-.card__content:hover {
-  cursor: pointer;
-
+.foother-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
-.grid_pokemon:hover .poke_description {
-  max-width: 100%;
-  animation: 3s;
-  left: 0;
-  background-color: rgba(99, 139, 139, 0.836);
-  transition: all 0.3s 0s ease-out;
-  box-shadow: rgba(192, 192, 192, 0.664) 0px 30px 35px -20px;
+.foother-card p{
+  text-transform: capitalize;
+  font-size:medium;
 }
