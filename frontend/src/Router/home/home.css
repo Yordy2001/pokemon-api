@@ -37,13 +37,13 @@ img {
   cursor: pointer;
 }
 
-.card-box:hover .card_display {
+ .card-box:hover .card_display {
   transform: rotateY(30deg);
 }
 
-.card-box:active .card_display{
+/* .card-box:active .card_display{
   transform: rotateY(180deg);
-}
+} */
 
 .card_display {
   transform-style: preserve-3d;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import '../../assets/style/main.css'
 import './home.css'
@@ -23,6 +23,7 @@ export default function Home() {
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false)
 
+
     const handleLogout = async () => {
         try {
             await AuthApi.logOut()
@@ -36,7 +37,6 @@ export default function Home() {
     const handleDelete = async (e: any, id: number) => {
         try {
             await pokemonApi.deletePokemon(id)
-            // useFetch()
 
         } catch (error) {
             console.log(error)
@@ -45,6 +45,7 @@ export default function Home() {
 
     const handleClose = async () => {
         setOpenModal(false)
+        setOpenUpdatePokemon(false)
     }
 
     const handleAddModal = () => {
@@ -108,6 +109,8 @@ export default function Home() {
 
             {
                 <UpdatePokemon
+                    type={pokemonsType}
+                    ability={pokemonsAbility}
                     pokeId={pokeId}
                     open={openUpdateModal}
                     onClose={handleClose}
@@ -125,5 +128,4 @@ export default function Home() {
             }
         </div>
     </>
-
 }

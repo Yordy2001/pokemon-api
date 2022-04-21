@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import fetchPokemon from './API/fetchPokemon'
 import { IPokemon, IpokemonAbility, IpokemonType } from '../interface'
 
-
 const getPokemons = new fetchPokemon()
 
 export function useFetch() {
@@ -30,8 +29,7 @@ export function useFetch() {
     useEffect(() => {
         getData()
     }, [])
-    
 
     return {pokemons, pokemonsAbility, pokemonsType}
-
 }
+

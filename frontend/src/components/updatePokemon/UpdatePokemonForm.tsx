@@ -1,56 +1,81 @@
-import React, { useEffect, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
+
 import Pokemon from '../../utils/API/fetchPokemon'
-import { IPokemon } from '../../interface'
+import { IPokemon, IpokemonType, IpokemonAbility } from '../../interface'
 import Modal from '../modal'
 
+
 type Props = {
+    type?: IpokemonType[],
+    ability?: IpokemonAbility[], 
     pokeId: number,
-    open: Boolean,
+    open: boolean,
     onClose: () => void
 }
 
 const pokemonApi = new Pokemon()
 
-export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
+export default function UpdatePokemon({ ability , type, pokeId, open, onClose }: Props ) {
 
-    const [PokemonForm, setPokemonForm] = useState({
+    let inicialState = {
         name: '',
         description: "",
         owner: "",
         pokemonAbility: '',
         pokemonType: ''
-    })
+    }
+    const [PokemonForm, setPokemonForm] = useState(inicialState)
+    const [file, setFile] = useState<File>();
 
-    const [pokemon, setPokemon] = useState<IPokemon[]>()
+    const handleSubmit = async (e:any) =>{
+        e.preventDefault();
 
-    const getData = async () => {
+        const formData = new FormData();
+        formData.set("avatar", file!);
+
+        for (let [key, value] of Object.entries(PokemonForm)) {
+            formData.set(key, JSON.stringify(value));
+        }
+
         try {
-            const pokemon = await pokemonApi.getPokemonById(pokeId)
-            setPokemonForm(pokemon)
+            await pokemonApi.putPokemon(pokeId, formData )
+            onClose()
         } catch (error) {
-
+            console.log(error)
         }
     }
 
-    useEffect(() => {
-        getData()
-    }, [pokeId])
+    const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+        setFile(e.target.files?.[0]);
+    };
 
-    pokemon?.forEach(data => {
-        console.log(data.name)
-    })
+    const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        let value = e.target.value;
+
+        setPokemonForm({
+            ...PokemonForm,
+            [e.target.name]: value,
+        });
+    };
+
+    const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+        let value = e.target.value;
+
+        setPokemonForm({
+            ...PokemonForm,
+            [e.target.name]: value,
+        });
+    };
 
     return (
         <Modal open={open} onClose={onClose}>
-            <div>
-                UPDATED
-            </div>
-            {/* <form action="" onSubmit={ }>
+            <form  onSubmit={ handleSubmit }>
                 <span className="close" onClick={onClose}>
                     &times;
                 </span>
                 <input
-                    onChange={ }
+                    onChange={ handleChangeInput }
+                    // value={}
                     id="input_name"
                     type="text"
                     name="name"
@@ -58,7 +83,7 @@ export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
                     required
                 />
                 <input
-                    onChange={ }
+                    onChange={ handleFile }
                     id="input_img"
                     type="file"
                     name="avatar"
@@ -66,7 +91,8 @@ export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
                     required
                 />
                 <input
-                    onChange={ }
+                    onChange={ handleChangeInput }
+                    // value={}
                     id="input_description"
                     type="text"
                     name="description"
@@ -74,7 +100,8 @@ export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
                     required
                 />
                 <input
-                    onChange={ }
+                    onChange={ handleChangeInput }
+                    value={PokemonForm.owner}
                     id="input_owner"
                     type="text"
                     name="owner"
@@ -82,33 +109,14 @@ export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
                     required
                 />
                 <select
-                    onChange={ }
-                    value={ }
+                    onChange={ handleChangeSelect}
+                    value={PokemonForm.pokemonType }
                     id="input_pokemonTypeId"
                     name="pokeTypeName"
                     required
                 >
                     <option value="" disabled>
                         Pokemon Type
-                    </option>
-                    {ability?.map((data: any, index: number) => {
-                        return (
-                            <option value={data.ability} key={index}>
-                                {data.ability}
-                            </option>
-                        );
-                    })}
-                </select>
-
-                <select
-                    onChange={ }
-                    value={ }
-                    id="input_pokemonTypeId"
-                    name="pokeAbilityName"
-                    required
-                >
-                    <option value="" disabled>
-                        pokemon Ability
                     </option>
                     {type?.map((data: any, index: number) => {
                         return (
@@ -117,15 +125,31 @@ export default function UpdatePokemon({ pokeId, open, onClose }: Props) {
                             </option>
                         );
                     })}
+                   
                 </select>
-                <button type="submit">
-                    { }
-                    { }
+
+                <select
+                    onChange={ handleChangeSelect}
+                    value={PokemonForm.pokemonAbility }
+                    id="input_pokemonTypeId"
+                    name="pokeAbilityName"
+                    required
+                >
+                    <option value="" disabled>
+                        pokemon Ability
+                    </option>
+                    {ability?.map((data: any, index: number) => {
+                        return (
+                            <option value={data.ability} key={index}>
+                                {data.ability}
+                            </option>
+                        );
+                    })}
+                </select> 
+                <button type="submit" className='enviar'>
+                    UPDATE
                 </button> 
-            </form>    */}
-
+            </form>   
         </Modal>
-
     )
 }
-
