@@ -10,8 +10,10 @@ export function useFetch() {
     const [pokemons, setPokemons] = useState<IPokemon[]>()
     const [pokemonsAbility, setPokemonsAbility] = useState<IpokemonAbility[]>()
     const [pokemonsType, setPokemonsType] = useState<IpokemonType[]>()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(true)
 
-    const getData = async () =>{
+    const getData = async () => {
         try {
             const pokemons = await getPokemons.getPokemon()
             const ability = await getPokemons.getPokemonAbility()
@@ -20,9 +22,11 @@ export function useFetch() {
             setPokemons(pokemons)
             setPokemonsAbility(ability)
             setPokemonsType(type)
+            setLoading(false)
+            
 
         } catch (error) {
-            console.log(error)
+            setError(`Ha ocurrido un error, ${error}`)
         }
     }
 
@@ -30,6 +34,6 @@ export function useFetch() {
         getData()
     }, [])
 
-    return {pokemons, pokemonsAbility, pokemonsType}
+    return { pokemons, pokemonsAbility, pokemonsType, loading, getData }
 }
 
