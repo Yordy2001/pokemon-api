@@ -5,55 +5,58 @@ import './login.css';
 
 import { IUser } from '../../interface';
 import fetchAuth from '../../utils/API/fetchAuth';
+import { useForm } from 'react-hook-form';
 
 
 const AuthApi = new fetchAuth()
 
 export default function Login() {
 
-  const [loginValue, setLoginValue] = useState<IUser>({
-    firstName:'',
-    email:'',
-    password:''
-  })
-  
-  const handleChange =(e:any)=>{
-    let value = e.target.value
-    
-    setLoginValue({
-      ...loginValue,
-      [e.target.name]:value
-    })
+  const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
 
-  }
-
-  const handleSubmit = async (e:any) =>{
+  const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
 
     try {
-      await AuthApi.logIn( loginValue )
+      await AuthApi.logIn(data)
       localStorage.setItem('isAuthenticate', JSON.stringify(true))
       window.location.href = '/'
 
     } catch (error) {
       console.log(error)
-    } 
-
+    }
   }
-  return<div className='login_body'>
-      <div className='background'>
-        <div className='shape'></div>
-        <div className='shape'></div>
-      </div>
-      <form className='form_login' onSubmit={handleSubmit}>
-          <h3>Login</h3>
-          <label className='label_login' htmlFor="email">E-mail</label>
-          <input className='input_login' onChange={handleChange} type='email' name='email' placeholder='xxxxx@gmail.com'  required />
 
-          <label className='label_login' htmlFor="password">password</label>
-          <input className='input_login' onChange={handleChange} type="password" name="password" placeholder='******'  id="password" required/>
+  return <div className='login_body'>
+    <div className='background'>
+      <div className='shape'></div>
+      <div className='shape'></div>
+    </div>
+    <form className='form_login' onSubmit={handleSubmit(onSubmit)}>
+      <label
+        className='label_login'
+        htmlFor="email">
+        E-mail
+      </label>
+      <input
+        className='input_login'
+        type="text" placeholder="Email"
+        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+      />
+      <label
+        className='label_login'
+        htmlFor="password">
+        password
+      </label>
 
-          <button type="submit" className='button-loging'>Log In</button>
-      </form>
+      <input
+        className='input_login'
+        type="password"
+        placeholder="password"
+        {...register("password", { required: true, maxLength: 80 })}
+      />
+
+      <button type="submit" className='button-loging'>Log In</button>
+    </form>
   </div>
 }

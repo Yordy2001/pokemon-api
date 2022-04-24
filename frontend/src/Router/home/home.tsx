@@ -135,9 +135,9 @@ export default function Home() {
         <AddUpdatePokemon
           type={pokemonsType}
           ability={pokemonsAbility}
-          onClose={handleClose}
-          open={openModal}
           pokeId={pokeId}
+          open={openModal}
+          onClose={handleClose}
         />
       }
     </div>

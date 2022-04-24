@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react'
+import { useForm } from 'react-hook-form';
 
 import './addUpdate.css'
 import Pokemon from '../../utils/API/fetchPokemon';
@@ -13,103 +14,78 @@ type Props = {
     pokeId: number
 }
 
+type formValues = {
+    name: string,
+    description: string,
+    owner: string,
+    pokeTypeName: string,
+    pokeAbilityName: string,
+}
+
 // pokemon fetch instance
-const PokemonApi = new Pokemon()
+const pokemonApi = new Pokemon()
 
 export default function AddUpdatePokemon({ type, ability, onClose, open }: Props) {
 
+    const { register, handleSubmit } = useForm<formValues>()
     const [file, setFile] = useState<File>();
-    const [formValue, setformValue] = useState<any>({
-        name: "",
-        description: "",
-        owner: "",
-        pokeTypeName: "",
-        pokeAbilityName: "",
-    });
 
     const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
         setFile(e.target.files?.[0]);
     };
 
-    const handleChangeInput = ( e: ChangeEvent<HTMLInputElement> ) => {
-        let value = e.target.value;
-
-        setformValue({
-            ...formValue,
-            [e.target.name]: value,
-        });
-    };
-    const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-        let value = e.target.value;
-
-        setformValue({
-            ...formValue,
-            [e.target.name]: value,
-        });
-    };
-
-
-    async function handleSubmit(e: any) {
+    const onSubmit = handleSubmit(async (data, e:any) => {
         e.preventDefault();
-
-        // add image to formData
+        
         const formData = new FormData();
-        formData.set("avatar", file!);
+        try {   
+            formData.set("avatar", file!);
 
-        for (let [key, value] of Object.entries(formValue)) {
-            formData.set(key, JSON.stringify(value));
+            for (let [key, value] of Object.entries(data)) {
+                formData.set(key, value);
+            }
+
+            await pokemonApi.postPokemon(formData)
+            onClose()
+        } catch (error) {
+            console.log(error)
         }
+    });
 
-        await PokemonApi.postPokemon(formData)
-        onClose()
-    }
 
     return (
         <Modal open={open} onClose={onClose}>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={onSubmit}>
                 <span className="close" onClick={onClose}>
                     &times;
                 </span>
                 <input
-                    onChange={handleChangeInput}
-                    id="input_name"
-                    type="text"
-                    name="name"
+                    {...register("name")}
                     placeholder="name"
                     required
                 />
                 <input
                     onChange={handleFile}
-                    id="input_img"
                     type="file"
                     name="avatar"
                     placeholder="img"
                     required
                 />
                 <input
-                    onChange={handleChangeInput}
-                    id="input_description"
-                    type="text"
-                    name="description"
+                    {...register("description")}
                     placeholder="Description"
                     required
                 />
                 <input
-                    onChange={handleChangeInput}
-                    id="input_owner"
-                    type="text"
-                    name="owner"
+                    {...register("owner")}
                     placeholder="owner"
                     required
                 />
                 <select
-                    onChange={handleChangeSelect}
-                    value={formValue.pokeTypeName}
-                    id="input_pokemonTypeId"
-                    name="pokeTypeName"
+                    {...register("pokeTypeName")}
                     required
                 >
-                    <option value="" disabled>
+                    <option value="" selected disabled>
                         Pokemon Type
                     </option>
                     
@@ -123,13 +99,10 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: Props
                 </select>
 
                 <select
-                    onChange={handleChangeSelect}
-                    value={formValue.pokeAbilityName}
-                    id="input_pokemonTypeId"
-                    name="pokeAbilityName"
+                    {...register("pokeAbilityName")}
                     required
                 >
-                    <option value="" disabled>
+                    <option value="" selected disabled>
                         pokemon Ability
                     </option>
                     {ability?.map((data: any, index: number) => {
@@ -142,11 +115,10 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: Props
                 </select>
 
                 <button type="submit" className="enviar">
-                    {handleSubmit}
+                    {onSubmit}
                     ADD
                 </button>
             </form>
         </Modal>
-
     )
 }
