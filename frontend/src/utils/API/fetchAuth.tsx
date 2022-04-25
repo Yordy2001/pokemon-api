@@ -5,10 +5,14 @@ export default class fetchAuth extends fetchApi{
 
     async logOut(){
         await this.api.get( '/auth/logout' )
+        localStorage.isAuthenticate = false
+        window.location.href = '/login'
     }
     
     async logIn( data:IUser ){
-        await this.api.post( '/auth/login', data )}
+        await this.api.post( '/auth/login', data )
+        localStorage.setItem('isAuthenticate', JSON.stringify(true))
+    }
 
     async authRegister( data:IUser ){
        await this.api.post('/auth/register', data)

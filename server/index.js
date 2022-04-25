@@ -3,7 +3,7 @@ const port = 5000
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParse =require('cookie-parser')
-const cookieSession = require('./cookie')
+const cookieSession = require('./utils/cookie')
 const app = express()
 
 // ROUTERS

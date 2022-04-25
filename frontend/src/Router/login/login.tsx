@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import '../../assets/style/main.css'
 import './login.css';
 
@@ -19,7 +17,6 @@ export default function Login() {
 
     try {
       await AuthApi.logIn(data)
-      localStorage.setItem('isAuthenticate', JSON.stringify(true))
       window.location.href = '/'
 
     } catch (error) {
@@ -39,9 +36,9 @@ export default function Login() {
         E-mail
       </label>
       <input
+        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         className='input_login'
         type="text" placeholder="Email"
-        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
       />
       <label
         className='label_login'
@@ -50,10 +47,10 @@ export default function Login() {
       </label>
 
       <input
+        {...register("password", { required: true, maxLength: 80 })}
         className='input_login'
         type="password"
         placeholder="password"
-        {...register("password", { required: true, maxLength: 80 })}
       />
 
       <button type="submit" className='button-loging'>Log In</button>

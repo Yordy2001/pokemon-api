@@ -8,15 +8,8 @@
   padding: 2rem;
 }
 
-img {
-  width: 100%;
-}
-
 .button {
   padding: 16px;
-  border: none;
-  outline: none;
-  cursor: pointer;
   font-weight: bold;
   border-radius: 20px;
 }
@@ -25,15 +18,13 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  padding: 1rem;
 }
 
 .card-box {
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.5s linear;
-  margin-bottom: 2rem;
-  margin-right: 1rem;
   cursor: pointer;
 }
 
@@ -54,7 +45,6 @@ img {
   background-color: teal;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-  height: auto;
   width: 20rem;
   height: 23rem;
   z-index: 1;
