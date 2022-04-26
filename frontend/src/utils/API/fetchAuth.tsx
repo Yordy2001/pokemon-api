@@ -14,7 +14,7 @@ export default class fetchAuth extends fetchApi{
         localStorage.setItem('isAuthenticate', JSON.stringify(true))
     }
 
-    async authRegister( data:IUser ){
+    async register( data:IUser ){
        await this.api.post('/auth/register', data)
     }
 

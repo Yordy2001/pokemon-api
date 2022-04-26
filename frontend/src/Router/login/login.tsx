@@ -1,9 +1,11 @@
-import '../../assets/style/main.css'
-import './login.css';
+import React from 'react';
 
+import { useForm } from 'react-hook-form';
 import { IUser } from '../../interface';
 import fetchAuth from '../../utils/API/fetchAuth';
-import { useForm } from 'react-hook-form';
+
+import '../../assets/style/main.css'
+import './login.css';
 
 
 const AuthApi = new fetchAuth()
@@ -43,17 +45,18 @@ export default function Login() {
       <label
         className='label_login'
         htmlFor="password">
-        password
+        Password
       </label>
 
       <input
         {...register("password", { required: true, maxLength: 80 })}
         className='input_login'
         type="password"
-        placeholder="password"
+        placeholder="*******"
       />
 
       <button type="submit" className='button-loging'>Log In</button>
+      <button type="submit" className='button-loging'>Register</button>
     </form>
   </div>
 }

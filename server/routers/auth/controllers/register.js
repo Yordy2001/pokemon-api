@@ -3,6 +3,7 @@ const bycript = require('bcrypt')
 
 module.exports = async (req, res)  =>{
     const {firstName, password, email} = req.body
+
     try {
 
         const user = await User.findOne({where:{email} })
@@ -18,7 +19,7 @@ module.exports = async (req, res)  =>{
             password: hashdPsw,
         })
 
-        res.redirect("/login")
+        res.sendStatus(201)
 
     } catch (error) {
         console.log(error)
