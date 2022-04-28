@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { IUser } from '../../interface';
 import fetchAuth from '../../utils/API/fetchAuth';
 
@@ -13,6 +14,7 @@ const AuthApi = new fetchAuth()
 export default function Login() {
 
   const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
+  let navigate = useNavigate()
 
   const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
@@ -56,7 +58,15 @@ export default function Login() {
       />
 
       <button type="submit" className='button-loging'>Log In</button>
-      <button type="submit" className='button-loging'>Register</button>
+      <button 
+      type="submit" 
+      className='button-loging register'
+      onClick={()=>{
+        navigate('/register')
+      }}
+      >
+        Register
+      </button>
     </form>
   </div>
 }

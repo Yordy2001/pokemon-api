@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import "../../assets/style/main.css";
 import "./home.css";
@@ -6,7 +6,7 @@ import "./home.css";
 import fetchAuth from "../../utils/API/fetchAuth";
 import { useFetch } from "../../utils/getData";
 import Pokemon from "../../utils/API/fetchPokemon";
-import AddUpdatePokemon from "../../components/addForm";
+import AddPokemon from "../../components/addForm";
 import Header from "../../components/header";
 import Hero from "../../components/hero/hero";
 import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
@@ -27,6 +27,8 @@ export default function Home() {
   const [pokeId, setPokeId] = useState<number>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false);
+
+  const currentInput:any = useRef();
 
   const handleLogout = async () => {
     try {
@@ -54,9 +56,15 @@ export default function Home() {
   const handleAddModal = () => {
     setOpenModal(true);
   };
+
   const handleUpdateModal = () => {
     setOpenUpdatePokemon(true);
   };
+
+  const handleAnimation = () =>{
+    // console.log(currentInput)
+    // currentInput.current.style.transform = 'rotateY(180deg)'
+  }
 
   return (
     <>
@@ -74,8 +82,12 @@ export default function Home() {
             <div className="card__container">
               {pokemons?.map((pokemon, index) => {
                 return (
-                  <div className="card-box" key={index}>
-                    <div className="card_display">
+                  <div className="card-box" key={index} onClick={()=>{
+                  console.log(index)
+                  handleAnimation()
+                }}
+                  >
+                    <div className={`card_display `} ref={currentInput}>
                       <div className="card__content" key={index}>
                         <img
                           src={"http://localhost:5000/images/" + pokemon.img}
@@ -155,7 +167,7 @@ export default function Home() {
         }
 
         {
-          <AddUpdatePokemon
+          <AddPokemon
             type={pokemonsType}
             ability={pokemonsAbility}
             pokeId={pokeId}

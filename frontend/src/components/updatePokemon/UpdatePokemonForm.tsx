@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+
+import '../addForm/addUpdate.css'
 import Pokemon from '../../utils/API/fetchPokemon'
 import { IpokemonType, IpokemonAbility } from '../../interface'
 import Modal from '../modal'

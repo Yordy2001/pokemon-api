@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom';
 import { IUser } from '../../interface';
 import fetchAuth from '../../utils/API/fetchAuth';
 
@@ -10,6 +11,7 @@ const AuthApi = new fetchAuth()
 export default function Register() {
 
     const { register, handleSubmit } = useForm<IUser>();
+    let navigate = useNavigate()
 
     const onSubmit = async (data: any, e: any) => {
         e.preventDefault();
@@ -17,7 +19,6 @@ export default function Register() {
         try {
             await AuthApi.register(data)
             window.location.href = '/login'
-
         } catch (error) {
             console.log(error)
         }
@@ -65,13 +66,14 @@ export default function Register() {
                 placeholder="*******"
             />
 
-            <button type="submit" className='button-loging'>Register</button>
+            <button type="submit" className='button-loging register'>Register</button>
+
             <button
                 type="submit"
                 className='button-loging'
-                onClick={()=>{
-
-            }}>Login</button>
+                onClick={() => {
+                    navigate('/login')
+                }}>Login</button>
         </form>
     </div>
 }
