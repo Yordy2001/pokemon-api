@@ -62,7 +62,6 @@ export default function Home() {
   };
 
   const handleAnimation = () =>{
-    // console.log(currentInput)
     // currentInput.current.style.transform = 'rotateY(180deg)'
   }
 
