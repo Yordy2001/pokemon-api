@@ -26,8 +26,21 @@ type formValues = {
 const pokemonApi = new Pokemon()
 
 export default function AddUpdatePokemon({ type, ability, onClose, open }: Props) {
+    const initialState = {
+        name: '',
+        description: '',
+        owner: '',
+        pokeTypeName: '',
+        pokeAbilityName: '',
+    }
 
-    const { register, handleSubmit } = useForm<formValues>()
+    const { 
+        register, 
+        handleSubmit,
+        reset
+    } = useForm<formValues>({
+        defaultValues:initialState
+    })
     const [file, setFile] = useState<File>();
 
     const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,8 +58,9 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: Props
                 formData.set(key, value);
             }
 
-            await pokemonApi.postPokemon(formData)
+            await pokemonApi.postPokemon(formData)    
             onClose()
+            reset(initialState)
         } catch (error) {
             console.log(error)
         }

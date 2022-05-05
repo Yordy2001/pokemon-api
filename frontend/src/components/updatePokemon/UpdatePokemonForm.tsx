@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 
@@ -28,7 +28,10 @@ const pokemonApi = new Pokemon()
 
 export default function UpdatePokemon({ ability , type, pokeId, open, onClose }: Props ) {
 
-    const { register, handleSubmit } = useForm<formValues>()
+    const { 
+        register,
+        handleSubmit,
+    } = useForm<formValues>()
     const [file, setFile] = useState<File>();
 
     const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +48,6 @@ export default function UpdatePokemon({ ability , type, pokeId, open, onClose }:
             for (let [key, value] of Object.entries(data)) {
                 formData.set(key, value);
             }
-
             await pokemonApi.putPokemon(pokeId, formData)
             onClose()
         } catch (error) {
