@@ -28,8 +28,6 @@ export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false);
 
-  const currentInput:any = useRef();
-
   const handleLogout = async () => {
     try {
       await AuthApi.logOut();
@@ -61,10 +59,9 @@ export default function Home() {
     setOpenUpdatePokemon(true);
   };
 
-  const handleAnimation = () =>{
-    // currentInput.current.style.transform = 'rotateY(180deg)'
+  const flipCard= (e:any)=>{
+    e.currentTarget.classList.toggle('card_flip')
   }
-
   return (
     <>
       <div>
@@ -81,15 +78,13 @@ export default function Home() {
             <div className="card__container">
               {pokemons?.map((pokemon, index) => {
                 return (
-                  <div className="card-box" key={index} onClick={()=>{
-                  console.log(index)
-                  handleAnimation()
-                }}
+                  <div className="card-box" key={index} 
+                    onClick={flipCard}
                   >
-                    <div className={`card_display `} ref={currentInput}>
+                    <div className={`card_display`} >
                       <div className="card__content" key={index}>
                         <img
-                          src={"http://localhost:5000/images/" + pokemon.img}
+                          src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
                           alt={`imagen de ${pokemon.name}`}
                         />
                         <div
@@ -104,7 +99,7 @@ export default function Home() {
                             >
                               <img
                                 key={pokemon.id}
-                                src="http://localhost:5000/static/image-dev/x-button.png"
+                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
                                 alt=""
                               />
                             </button>
@@ -117,7 +112,7 @@ export default function Home() {
                               }}
                             >
                               <img
-                                src="http://localhost:5000/static/image-dev/pencil.png"
+                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
                                 alt=""
                               />
                             </button>
@@ -141,7 +136,7 @@ export default function Home() {
                           <p>
                             {" "}
                             <img
-                              src={`http://localhost:5000/static/image-dev/icons_type/${pokemon.pokemonTypeId}.png`}
+                              src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemonTypeId}.png`}
                               alt=""
                             />
                           </p>

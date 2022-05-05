@@ -29,7 +29,7 @@ export default function Hero() {
 
     return (<>
         <div className='hero'>
-            <img className='image-hero' src={`http://localhost:5000/static/image-dev/banner-image/${slider[sliderPosition]}`} alt="" />
+            <img className='image-hero' src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/banner-image/${slider[sliderPosition]}`} alt="" />
             <div className='change_slider_box'>
                 {
                     slider.map((each, index) => {
