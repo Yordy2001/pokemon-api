@@ -6,7 +6,10 @@ module.exports = async (req, res)=> {
             where: {id: req.params.id}
         });
         
-      return res.send( pokemon )
+        if(pokemon){
+           res.status(200).json(pokemon)
+        }
+        res.sendStatus(404)
     } catch (error) {
         console.log(error)
     }  
