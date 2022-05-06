@@ -18,14 +18,14 @@ const updatePokemon = require('./controllers/updatePokemon')
 const  router  = express.Router()
 
 router.get('/', autenticate, getAll)
-router.get('/id/:id', autenticate, getById)
-router.get('/name/:name', autenticate, getByName)
 router.get('/poke-ability', getAbilities)
 router.get('/poke-type',  getType)
+router.get('/:name', autenticate, getByName)
+router.get('/:id', autenticate, getById)
 
 
 router.post('/', autenticate, upload.single('avatar'), addPokemon)
-router.delete('/id/:id', autenticate, deletePokemon)
-router.put('/id/:id', autenticate, upload.single('avatar'), updatePokemon)
+router.delete('/:id', autenticate, deletePokemon)
+router.put('/:id', autenticate, upload.single('avatar'), updatePokemon)
 
 module.exports = router

@@ -10,8 +10,9 @@ module.exports = async (req, res) =>{
                 id
             }   
         })
+    
+        res.sendStatus(200)
     } catch (error) {
         console.log(error)
     }
-    res.redirect('/pokemon')
 }

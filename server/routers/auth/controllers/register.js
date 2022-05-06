@@ -8,7 +8,7 @@ module.exports = async (req, res)  =>{
 
         const user = await User.findOne({where:{email} })
         if(user){
-            return res.redirect('/register')
+            return res.sendStatus(404)
         }
 
         const hashdPsw = await bycript.hash(password, 12)

@@ -15,8 +15,6 @@ module.exports = async (req, res) =>{
             where: { ability: pokeAbilityName }
         })
 
-        console.log(pokemonTypeId, pokemonAbilityId)
-
         // Get userId
         await Pokemon.create({
             name,

@@ -10,7 +10,11 @@ module.exports = async (req, res)=> {
               }
             }
         });
-        return res.status(201).send({data: pokemon})
+        if(pokemon){
+            return res.status(200).json({data: pokemon})
+        }
+
+        return res.sendStatus(404)
     } catch (error) {
         console.log(error)
     }  

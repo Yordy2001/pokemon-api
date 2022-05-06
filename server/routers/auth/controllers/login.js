@@ -15,7 +15,7 @@ module.exports = async (req, res)  =>{
 
         req.session.user = user
         req.session.isAuth = true
-        res.json(user.email)
+        res.Status(200).json(user.email)
 
     } catch (error) {
         console.log(error)
