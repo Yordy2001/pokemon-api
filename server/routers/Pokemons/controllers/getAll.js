@@ -1,7 +1,6 @@
 const { Pokemon } = require('../../../db');
 
 module.exports = async (req, res) => {
-    console.log('enviado')
     // const UserId = req.session.user.id
     try {
         const pokemons = await Pokemon.findAll();

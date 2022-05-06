@@ -6,7 +6,7 @@ module.exports = async ( req, res ) =>{
         const pokemonsType = await pokemon_type.findAll();
         
         if(pokemon_type){
-            return res.Status(200).json(pokemonsType)
+            return res.status(200).json(pokemonsType)
         }
 
         res.sendStatus(404)
