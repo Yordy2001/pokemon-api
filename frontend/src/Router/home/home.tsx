@@ -10,12 +10,14 @@ import AddPokemon from "../../components/addForm";
 import Header from "../../components/header";
 import Hero from "../../components/hero/hero";
 import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
+import { useNavigate } from "react-router-dom";
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
 const AuthApi = new fetchAuth();
 
 export default function Home() {
+  const navigate = useNavigate()
   const { 
     pokemons,
     pokemonsAbility,
@@ -31,6 +33,8 @@ export default function Home() {
   const handleLogout = async () => {
     try {
       await AuthApi.logOut();
+      localStorage.isAuthenticate = false
+      navigate('/login')
     } catch (error) {
       console.log(error);
     }

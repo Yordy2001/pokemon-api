@@ -16,7 +16,6 @@
 
 .card__container {
   display: grid;
-  /* height: 100px; */
   grid-template-columns: repeat(4, 1fr);
   padding: 1rem;
 }
@@ -31,7 +30,7 @@
 }
 
 .card-box:hover .card_display {
-  transform: translate3d(0, -1.7rem, 1rem);
+  transform: translate3d(0, -1rem, 1rem);
 }
 
 .card_flip{

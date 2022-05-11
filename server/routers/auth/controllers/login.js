@@ -1,21 +1,21 @@
-const {User}= require('../../../db')
+const { User } = require('../../../db')
 const bcrypt = require('bcrypt')
 
-module.exports = async (req, res)  =>{
-    const {email, password} = req.body
-    
+module.exports = async (req, res) => {
+    const { email, password } = req.body
+
     try {
 
-        const user = await User.findOne( {where: {email}} )
+        const user = await User.findOne({ where: { email } })
         const isMatch = await bcrypt.compare(password, user.password)
-    
-        if(!user || !isMatch){
+
+        if (!user || !isMatch) {
             return res.send(400)
         }
 
         req.session.user = user
         req.session.isAuth = true
-        res.Status(200).json(user.email)
+        res.status(200).json(user.email)
 
     } catch (error) {
         console.log(error)

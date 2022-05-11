@@ -12,17 +12,17 @@ import './login.css';
 const AuthApi = new fetchAuth()
 
 export default function Login() {
-
   const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
   let navigate = useNavigate()
+
 
   const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
 
     try {
       await AuthApi.logIn(data)
-      window.location.href = '/'
-
+      localStorage.setItem('isAuthenticate', JSON.stringify(true))
+      navigate("/")
     } catch (error) {
       console.log(error)
     }

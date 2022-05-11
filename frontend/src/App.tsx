@@ -8,9 +8,6 @@ import PrivateRouter from './utils/protectedRouter';
 
 function App() {
 
-  const user:any =  localStorage.getItem('isAuthenticate')
-  const isAuth = JSON.parse(user)
-
   return (
     <div className="App">
 
@@ -18,7 +15,7 @@ function App() {
       <Route
           path='/'
           element={
-            <PrivateRouter isAuth={isAuth}>
+            <PrivateRouter>
               <Home />
             </PrivateRouter>
           } 

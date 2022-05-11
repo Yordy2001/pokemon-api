@@ -5,6 +5,7 @@ export default class fetchApi{
 
     constructor(){
         this.api = axios.create({
+            withCredentials:true,
             baseURL:`${process.env.REACT_APP_SERVER_URL}`
         })
     }

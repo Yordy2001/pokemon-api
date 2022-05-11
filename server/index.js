@@ -18,7 +18,10 @@ app.set('templates', './static/templates') //templates config
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(cookieParse())
-app.use(cors())
+app.use(cors({
+    credentials:true,
+    origin: 'http://localhost:3000'
+}))
 app.use(cookieSession)
 
 

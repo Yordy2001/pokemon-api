@@ -1,12 +1,12 @@
 
 module.exports = async(req, res, next ) =>{
+    console.log(req.session.user)
     try {
-        console.log('paso el meddleware')
-        // if(req.session.isAuth){
-        await next()
-        // }else{
-        //     res.redirect('/login')
-        // }
+        if(req.session.isAuth){
+            await next()
+        }else{
+            res.sendStatus(401)
+        }
     } catch (error) {
         console.log(error)
     }
