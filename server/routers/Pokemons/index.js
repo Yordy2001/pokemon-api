@@ -17,7 +17,7 @@ const updatePokemon = require('./controllers/updatePokemon')
 
 const  router  = express.Router()
 
-router.get('/', autenticate, getAll)
+router.get('/', getAll)
 router.get('/poke-ability', getAbilities)
 router.get('/poke-type',  getType)
 router.get('/:name', autenticate, getByName)

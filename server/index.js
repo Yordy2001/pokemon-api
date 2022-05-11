@@ -38,6 +38,8 @@ app.use(router)
 // Error handler
 app.use((err, req, res, next) => res.status(400).send(err.menssage))
 
-app.listen(port, ()=>{
+const server = app.listen(port, ()=>{
     console.log(`this project is running on http://localhost:${port}/`)
 })
+
+module.exports = {app, server};
