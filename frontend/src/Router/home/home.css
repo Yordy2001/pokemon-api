@@ -4,95 +4,50 @@
   box-sizing: border-box;
   margin: auto;
   background-color: rgba(5, 5, 5, 0.493);
-  height: 100%;
-  padding: 2rem;
+  height: 1000vh;
 }
 
-.button {
-  padding: 16px;
-  font-weight: bold;
-  border-radius: 20px;
+.image{
+  margin: 0;
+  padding: 0;
+  height: 80%;
+  padding: .5rem;
+  background-color: rgb(0, 128, 128);
 }
 
 .card__container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+ display: flex;
+ justify-content: space-evenly;
+ flex-wrap: wrap;
   padding: 1rem;
 }
 
 .card-box {
   position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
   cursor: pointer;
   margin-bottom: 1.5rem;
   margin-right: 1rem;
 }
 
-.card-box:hover .card_display {
-  transform: translate3d(0, -1rem, 1rem);
-}
-
-.card_flip{
-  transform: rotateY(180deg);
-}
-
-.card_display {
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
-}
-
-.card__content {
-  background-color: rgb(0, 128, 128);
+.card{
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   width: 20rem;
-  height: 23rem;
-  z-index: 1;
-  position: absolute;
-  backface-visibility: hidden;
+  cursor: pointer;
 }
 
-.poke_description {
-  width: 20rem;
-  height: 23rem;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: aliceblue;
-  padding: 1rem 1rem 0rem 1rem;
-  text-align: justify;
-  transform: rotateY(180deg);
-}
-
-.poke_description>h1 {
-  text-transform: uppercase;
-  text-align: center;
-}
 .card_body {
   align-items: center;
   display: flex;
-  height: 3rem;
+  height: 20%;
   padding: 0.5rem;
   text-align: center;
   justify-content: space-evenly;
   font-size: 1.3rem;
+  background-color: rgb(0, 128, 128);
 }
-
-.icon-box {
-  display: flex;
-  width: 4rem;
-}
-
-.foother-card {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
-
-.foother-card p{
-  text-transform: capitalize;
-  font-size:medium;
+.card:hover{
+  transform: translate3d(0, -1rem, 1rem);
+  transform-style: preserve-3d;
+  transition: all 0.4s linear;
 }

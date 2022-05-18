@@ -18,11 +18,11 @@ const AuthApi = new fetchAuth();
 
 export default function Home() {
   const navigate = useNavigate()
-  const { 
+  const {
     pokemons,
     pokemonsAbility,
-    pokemonsType, 
-    loading, 
+    pokemonsType,
+    loading,
     getData
   } = useFetch();
 
@@ -63,7 +63,7 @@ export default function Home() {
     setOpenUpdatePokemon(true);
   };
 
-  const flipCard= (e:any)=>{
+  const flipCard = (e: any) => {
     e.currentTarget.classList.toggle('card_flip')
   }
   return (
@@ -82,19 +82,16 @@ export default function Home() {
             <div className="card__container">
               {pokemons?.map((pokemon, index) => {
                 return (
-                  <div className="card-box" key={index} 
-                    onClick={flipCard}
-                  >
-                    <div className={`card_display`} >
-                      <div className="card__content" key={index}>
-                        <img
-                          src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
-                          alt={`imagen de ${pokemon.name}`}
-                        />
-                        <div
-                          className={`card_body ${pokemon.pokemonAbilityId}`}
-                        >
-                          <div className="icon-box">
+                   
+                      <div className="card" key={index}>
+                        <div className="image">
+                          <img
+                            src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
+                            alt={`imagen de ${pokemon.name}`}
+                          />
+                        </div>
+                        <div className='card_body'>
+                          <footer>
                             <button
                               className="icon delete_card_btn"
                               onClick={() => {
@@ -120,34 +117,10 @@ export default function Home() {
                                 alt=""
                               />
                             </button>
-                          </div>
+                          </footer>
                           <p>{pokemon.name} </p>
                         </div>
                       </div>
-                      <div className="poke_description">
-                        <h1>{pokemon.name}</h1>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Perferendis sapiente voluptatibus veniam enim
-                          dolore illum assumenda hic ex provident fugit sed,
-                          beatae numquam, ab deserunt excepturi saepe asperiores
-                          explicabo eligendi?
-                        </p>
-                        {/* {pokemon.description} */}
-                        <div className="foother-card">
-                          <p>{pokemon.owner}</p>
-                          {/* <p>{pokemon.pokemonAbilityId}</p> */}
-                          <p>
-                            {" "}
-                            <img
-                              src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemonTypeId}.png`}
-                              alt=""
-                            />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 );
               })}
             </div>
