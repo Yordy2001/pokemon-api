@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../../assets/style/main.css";
 import "./home.css";
@@ -10,7 +11,6 @@ import AddPokemon from "../../components/addForm";
 import Header from "../../components/header";
 import Hero from "../../components/hero/hero";
 import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
-import { useNavigate } from "react-router-dom";
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
@@ -63,9 +63,6 @@ export default function Home() {
     setOpenUpdatePokemon(true);
   };
 
-  const flipCard = (e: any) => {
-    e.currentTarget.classList.toggle('card_flip')
-  }
   return (
     <>
       <div>

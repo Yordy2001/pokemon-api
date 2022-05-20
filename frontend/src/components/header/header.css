@@ -6,7 +6,10 @@
   align-items: center;
   background-color: #024959;
 }
-
+.button{
+  padding: 1rem;
+  border-radius: 16px;
+}
 .title,
 .open_nav{
   padding: 1rem;

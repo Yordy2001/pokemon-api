@@ -1,4 +1,5 @@
 import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
+import Dashboard from './Router/dashboard/dashboard';
 
 import Home from './Router/home/home';
 import Login from './Router/login/login';
@@ -12,18 +13,26 @@ function App() {
     <div className="App">
 
       <Routes>
-      <Route
+        <Route
           path='/'
           element={
             <PrivateRouter>
               <Home />
             </PrivateRouter>
-          } 
-        /> 
-        <Route path='/login' element={ <Login /> }></Route>
-        <Route path='/register' element={ <Register />}></Route>
-        
-        <Route path='*' element={ <p>There's nothing here: 404!</p> } />
+          }
+        />
+        <Route
+          path='/dashboard'
+          element={
+            <PrivateRouter>
+              <Dashboard />
+            </PrivateRouter>
+          }
+        />
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
+
+        <Route path='*' element={<p>There's nothing here: 404!</p>} />
       </Routes>
 
     </div>
