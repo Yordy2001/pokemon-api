@@ -56,17 +56,34 @@ hr::after{
     border: solid 2px aqua;
 }
 .container{
+    height: 100vh;
+    background-color: rgb(100, 97, 97);
     padding: .1rem;
     width: 85%;
     float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+.heading{
+    padding: .5rem;
+    width: 51rem;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.form-dash{
+    width: 100%;
+}
+
 .icon-lupa{
     width: 50px;
     border: 1px solid black;
+    /* border-radius: 60px; */
 }
 .bars_container{
     width: 100%;
-    height: 20rem;
+    height: 50%;
     background-color: aquamarine;
 }
 .heading{
@@ -88,6 +105,7 @@ hr::after{
     cursor: pointer;
 }
 table{
+    background-color: white;
     width: 50%;
     height:20rem;
 }
