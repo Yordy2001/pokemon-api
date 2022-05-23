@@ -1,30 +1,35 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { DataGrid } from '@mui/x-data-grid';
+
 
 import './dashboard.css'
-
-import Header from '../../components/header/index'
 import { useFetch } from '.././../utils/getData'
-import fetchAuth from '../../utils/API/fetchAuth'
+import { IPokemon } from '../../interface';
 import Pokemon from "../../utils/API/fetchPokemon";
 
 type Props = {}
 
-const pokemonApi = new Pokemon();
-const AuthApi = new fetchAuth();
 
+const columns = [
+    { field: 'name', width: 150 },
+    { field: 'type', width: 150 },
+    { field: 'ability', width: 150 },
+    { field: 'owner', width: 150 },
+    { field: 'img', width: 150 },
+];
+const rows = [
+    { id: 1, name: 'Hello', },
+    { id: 2, type: 'DataGridPro', },
+    { id: 4, ability: 'MUI', },
+    { id: 5, owner: 'MUI', },
+    { id: 6, img: 'MUI', },
+];
+
+const pokemonApi = new Pokemon();
 const Dashboard = (props: Props) => {
-    const initialState = {
-        id:0,
-        name: '',
-        description: '',
-        owner: '',
-        pokeTypeName: '',
-        pokeAbilityName: '',
-    }
 
     const [search, setsearch] = useState<string>('')
-    const [pokemon, setpokemon] = useState(initialState)
+    const [pokemon, setpokemon] = useState()
     const {
         pokemons,
     } = useFetch();
@@ -44,13 +49,13 @@ const Dashboard = (props: Props) => {
         let value = e.target.value
         setsearch(value)
     }
-    console.log(pokemon?.id)
+    console.log(pokemons)
     return (
         <div className='page_dashboard'>
             <aside>
                 <div className="user_profile">
                     <img src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/charizard.png`} alt="" />
-                    <form onClick={handleSubmit}>
+                    <form>
                         <input onChange={handleChange} type="text" defaultValue={'User Name'} />
                     </form>
                     <hr />
@@ -64,48 +69,25 @@ const Dashboard = (props: Props) => {
                         <li>Pokemons</li>
                     </ul>
                 </nav>
+
             </aside>
+            <div className='top-container'>
+                <h2>Admin Site</h2>
+                {/* <form className='form-dash' onSubmit={handleSubmit}>
+                    <input onChange={handleChange} type="text" />
+                </form> */}
+                {/* <img className='icon-lupa' src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/lupa.png`} alt="" /> */}
+            </div>
             <div className='container'>
-                <header>
-                    <div className='heading'>
-                        <form className='form-dash' onSubmit={handleSubmit}>
-                            <input onChange={handleChange} type="text" />
-                        </form>
-                        <img className='icon-lupa' src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/lupa.png`} alt="" />
-                    </div>
-                </header>
-                <div className='bars_container'>
-                    {/* <img src={`${process.env.REACT_APP_SERVER_URL}/images/${pokemon?.img}`} alt={`imagen de ${pokemon?.name}`} /> */}
-
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Owner</th>
-                            <th>Ability</th>
-                            <th>type</th>
-                            <th>Img</th>
-                        </tr>
-                    </thead>
-
-                    {pokemons?.map((pokemon, index) => {
-                        return (
-                            <tbody>
-                                <tr key={index}>
-                                    <td>{pokemon.name}</td>
-                                    <td>{pokemon.description}</td>
-                                    <td>{pokemon.owner}</td>
-                                    <td>{pokemon.pokemonAbilityId}</td>
-                                    <td>{pokemon.pokemonTypeId}</td>
-                                    <td>{pokemon.img}</td>
-                                </tr>
-                            </tbody>
-                        )
-                    })}
-                </table>
-
+                
+                <DataGrid style={{height:400}}
+                    rows={rows}
+                    columns={columns}
+                    // pageSize={5}
+                    // rowsPerPageOptions={[5]}
+                    checkboxSelection
+                />
+            
             </div>
 
         </div>
