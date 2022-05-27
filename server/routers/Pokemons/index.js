@@ -23,7 +23,7 @@ router.get('/poke-type',  getType)
 router.get('/filter', ordering )
 router.get('/:name', autenticate, getByName)
 router.get('/:id', autenticate, getById)
-router.get('/', autenticate, getAll)
+router.get('/', getAll)
 
 router.post('/', autenticate, upload.single('avatar'), addPokemon)
 router.delete('/:id', autenticate, deletePokemon)

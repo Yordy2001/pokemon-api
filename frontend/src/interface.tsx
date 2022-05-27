@@ -6,6 +6,8 @@ export interface IPokemon {
     owner: string,
     pokemonAbilityId: number,
     pokemonTypeId: number
+    pokemon_ability: IpokemonAbility,
+    pokemon_type: IpokemonType,
 }
 
 export interface IpokemonAbility{

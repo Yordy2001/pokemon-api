@@ -1,17 +1,18 @@
-.page_dashboard{
+.page_dashboard {
     height: 100vh;
     max-height: 100vh;
     background-color: white;
 }
 
-aside{
+aside {
     float: left;
     height: 100%;
     background-color: rgb(37, 37, 37);
     width: 15%;
 }
-.user_profile{
-    display:  flex;
+
+.user_profile {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -20,50 +21,47 @@ aside{
     border-bottom: 1px blanchedalmond dashed;
     color: white;
 }
-.user_profile img{
-    width: 10rem;
-    border-radius: 50%;
-    margin-bottom: .5rem;
-  
+
+.input_profile {
+    display: none;
 }
-.user_profile img:hover{
-    filter: opacity(80%); 
+
+.user_profile img {
+    border-radius: 50%;
+    width: 10rem;
+    margin-bottom: .5rem;
     cursor: pointer;
 }
-.user_profile input{
+
+.user_profile .profile {
+    margin-bottom: .5rem;
+}
+
+.user_profile .perfil:hover {
+    filter: opacity(80%);
+    cursor: pointer;
+}
+
+.user_profile input {
+    margin: 0;
+    padding: 0;
     cursor: pointer;
     border: none;
     outline: none;
     color: white;
     text-align: center;
-    padding: 0;
     background-color: transparent;
-    margin: 0;
+    border-bottom: 2px solid white;
+    padding-top: 1.8rem;
 }
-.user_profile input:focus{
+
+.user_profile input:focus {
+    animation: .5s ease;
     text-align: start;
+    border-bottom: solid 2px aqua;
 }
-hr{
-    width: 100%;
-    position: relative;
-    top: -16px;
-    border: solid 2px white;
-}
-hr::after{
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border: solid 2px aqua;
-}
-.container{
-    height: 100vh;
-    background-color: rgb(209, 209, 209);
-    padding: .1rem;
-    width: 85%;
-    float: right;
-}
-.top-container{
+
+.top-container {
     width: 85%;
     height: 4rem;
     background-color: rgb(37, 37, 37);
@@ -71,32 +69,115 @@ hr::after{
     text-align: center;
     color: aliceblue;
     padding: 1rem;
-}
-.form-dash{
-    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
-.nav_dashboard ul{
+.form-dash {
+    width: 12rem;
+}
+
+.form-dash input{
+    height:2rem ;
+}
+
+.nav_dashboard ul {
     display: flex;
     flex-direction: column;
     border-bottom: 1px blanchedalmond dashed;
 }
-.nav_dashboard ul li{
+
+.nav_dashboard .link {
     display: block;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
 }
-.nav_dashboard ul li:hover{
+
+.nav_dashboard ul .link:hover {
     background-color: rgb(0, 0, 0);
     color: teal;
     cursor: pointer;
 }
-table{
+
+.container {
+    background-color: rgb(224, 224, 224);
+    padding: .4rem;
+    padding-right: 1rem;
+    width: 85%;
+    height: 92.5%;
+    float: right;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-rows: minmax(100px, auto)
+}
+
+.manage_data{
+    grid-row: 1/4;
+    grid-column: 1/4;
+}
+.show_data{
+    background-color: rgb(136, 136, 134);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.poke_info{
+    width: 45%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, 5rem);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: .8rem;
+}
+.badge{
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 15px;
+    border-bottom: 3px solid rgb(181, 184, 47);
     background-color: white;
-    width: 50%;
-    height:20rem;
 }
-table, th, td{
-    border: 1px solid;   
+.badge:hover{
+    border-bottom: 3px solid rgb(0, 153, 255);
 }
-td:hover{
-    background-color: aqua;
+.poke_img{
+    width: 20rem;
+    height: 100%;
+}
+.bars_container{
+    text-align: center;
+    grid-column: 3/4;
+    grid-row: 4/5;
+    padding: 2rem;
+}
+.bars{
+    background-color: rgb(136, 136, 134);
+    border-radius: 1rem;
+}
+.table{
+    background-color: rgb(33, 110, 110);
+    grid-column: 1/3;
+    grid-row: 4/5;
+}
+
+.light-grey{
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: .5rem;
+    background-color: lightgray;
+}
+
+.bars_type{
+    border-radius: 4px;
+    height: 1.5rem;
+    font-size: .5rem;
+    text-align: center;
 }

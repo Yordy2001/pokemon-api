@@ -10,12 +10,12 @@ module.exports = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password)
 
         if (!user || !isMatch) {
-            return res.send(400)
+            return res.sendStatus(400)
         }
 
         req.session.user = user
         req.session.isAuth = true
-        res.status(200).json(user.email)
+        res.status(200).json(user)
 
     } catch (error) {
         console.log(error)

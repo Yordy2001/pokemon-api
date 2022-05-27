@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -15,19 +15,19 @@ export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
   let navigate = useNavigate()
 
-
   const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
 
     try {
-      await AuthApi.logIn(data)
-      localStorage.setItem('isAuthenticate', JSON.stringify(true))
+      let user = await AuthApi.logIn(data)
+      console.log(user)
+      localStorage.setItem('poke-session', JSON.stringify({isAuthenticate:true}))
       navigate("/")
     } catch (error) {
       console.log(error)
     }
   }
-
+  
   return <div className='login_body'>
     <div className='background'>
       <div className='shape'></div>
