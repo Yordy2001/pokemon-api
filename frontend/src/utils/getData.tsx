@@ -22,6 +22,7 @@ export function useFetch() {
             setPokemonsAbility(ability)
             setPokemonsType(type)
             setLoading(false)
+            
         } catch (error) {
             console.log(error)
         }

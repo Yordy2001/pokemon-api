@@ -9,7 +9,6 @@ import { useFetch } from "../../utils/getData";
 import Pokemon from "../../utils/API/fetchPokemon";
 import AddPokemon from "../../components/addForm";
 import Header from "../../components/header";
-import Hero from "../../components/hero/hero";
 import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
 
 // Fetch Instance
@@ -39,7 +38,6 @@ export default function Home() {
       console.log(error);
     }
   };
-
   const handleDelete = async (e: any, id: number) => {
     try {
       await pokemonApi.deletePokemon(id);
@@ -62,7 +60,6 @@ export default function Home() {
   const handleUpdateModal = () => {
     setOpenUpdatePokemon(true);
   };
-
   return (
     <>
       <div>
@@ -71,7 +68,6 @@ export default function Home() {
           handleOpenModal={handleAddModal}
         ></Header>
 
-        <Hero></Hero>
         {loading ? (
           <h1>LOADING...</h1>
         ) : (
@@ -79,45 +75,27 @@ export default function Home() {
             <div className="card__container">
               {pokemons?.map((pokemon, index) => {
                 return (
-                   
-                      <div className="card" key={index}>
-                        <div className="image">
-                          <img
-                            src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
-                            alt={`imagen de ${pokemon.name}`}
-                          />
-                        </div>
-                        <div className='card_body'>
-                          <footer>
-                            <button
-                              className="icon delete_card_btn"
-                              onClick={() => {
-                                handleDelete(Event, pokemon.id);
-                              }}
-                            >
-                              <img
-                                key={pokemon.id}
-                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
-                                alt=""
-                              />
-                            </button>
 
-                            <button
-                              className="icon update_card_btn"
-                              onClick={() => {
-                                setPokeId(pokemon.id);
-                                handleUpdateModal();
-                              }}
-                            >
-                              <img
-                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
-                                alt=""
-                              />
-                            </button>
-                          </footer>
-                          <p>{pokemon.name} </p>
-                        </div>
-                      </div>
+                  <div className="card" key={index}>
+                    <div className="image">
+                      <img
+                        src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
+                        alt={`imagen de ${pokemon.name}`}
+                      />
+                    </div>
+                    <div className='card_body'>
+                      <p>{pokemon.name.toUpperCase()} </p>
+                      <footer>
+                        <h5>type:</h5>
+                        <img
+                          className="icon-type"
+                          src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemon_type.type}.png`}
+                          alt=""
+                        />
+
+                      </footer>
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -147,3 +125,31 @@ export default function Home() {
     </>
   );
 }
+
+{/* <footer>
+                        <button
+                          className="icon delete_card_btn"
+                          onClick={() => {
+                            handleDelete(Event, pokemon.id);
+                          }}
+                        >
+                          <img
+                            key={pokemon.id}
+                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
+                            alt=""
+                          />
+                        </button>
+
+                        <button
+                          className="icon update_card_btn"
+                          onClick={() => {
+                            setPokeId(pokemon.id);
+                            handleUpdateModal();
+                          }}
+                        >
+                          <img
+                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
+                            alt=""
+                          />
+                        </button>
+                      </footer> */}

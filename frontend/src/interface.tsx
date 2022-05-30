@@ -1,14 +1,3 @@
-export interface IPokemon {
-    id: number,
-    name: string,
-    img: any,
-    description: string,
-    owner: string,
-    pokemonAbilityId: number,
-    pokemonTypeId: number
-    pokemon_ability: IpokemonAbility,
-    pokemon_type: IpokemonType,
-}
 
 export interface IpokemonAbility{
     id: number,
@@ -20,6 +9,17 @@ export interface IpokemonType{
     type: string
 }
 
+export interface IPokemon {
+    id: number,
+    name: string,
+    img: any,
+    description: string,
+    owner: string,
+    pokemonAbilityId: number,
+    pokemonTypeId: number
+    pokemon_ability: IpokemonAbility,
+    pokemon_type: IpokemonType,
+}
 export interface IUser{
     firstName:string,
     email: string,
