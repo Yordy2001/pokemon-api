@@ -38,7 +38,7 @@ aside {
 }
 
 .user_profile .perfil:hover {
-    filter: opacity(80%);
+    filter: brightness(80%);
     cursor: pointer;
 }
 

@@ -22,7 +22,7 @@ export function useFetch() {
             setPokemonsAbility(ability)
             setPokemonsType(type)
             setLoading(false)
-            
+
         } catch (error) {
             console.log(error)
         }
@@ -32,5 +32,5 @@ export function useFetch() {
         getData()
     }, [])
 
-    return { pokemons, pokemonsAbility, pokemonsType, loading, getData }
+    return { pokemons, pokemonsAbility, pokemonsType, loading, getData, setPokemons }
 }

@@ -41,7 +41,6 @@ const Dashboard = (_props: Props) => {
     const getPokemon = async () => {
         let data = await pokemonApi.getPokemonByName(search)
         setpokemon(data)
-        console.log(pokemon)
     }
 
     const handleChange = (e: any) => {
@@ -49,20 +48,12 @@ const Dashboard = (_props: Props) => {
         setsearch(value)
     }
 
-    const reduce = () =>{
-        console.log(pokemons[0]?.pokemon_ability)
-
-        
-        // let fivePokemos = [ ]
-        // for(let i = 0; i <= 5; i++){
-        //     fivePokemos.push(pokemonsType)
-        // }
-        // console.log(fivePokemos)
-        // // setFivePokemos(fivePokemos && fivePokemos)
-    }
+    // const reduce = () =>{
+      
+    // }
     useEffect(() => {
         setpokemon(initialState)
-        reduce()
+        // reduce()
     },[initialState])
     
     return (
@@ -110,7 +101,7 @@ const Dashboard = (_props: Props) => {
                 </div>
                 <div className='bars bars_container'>
                     <h4>Types</h4>
-                    <div className='bars'>
+                    {/* <div className='bars'>
                         {pokemonsType?.map((type, index) =>{
                             return <div className='light-grey' key={index}>
                                 <div className="bars_type" style={{
@@ -119,7 +110,7 @@ const Dashboard = (_props: Props) => {
                                 }}>{type.type}</div>
                             </div>
                         })}
-                    </div>
+                    </div> */}
                 </div>
                 <DataGrid className='table' style={{ height: 400, width: 950, }}
                     rows={pokemons}

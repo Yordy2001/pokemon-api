@@ -7,12 +7,15 @@ module.exports = async (req, res) =>{
     const UserId =  req.session.user.id
     try {
         const pokemonTypeId = await pokemon_type.findOne({
+            attributes: ['id'],
             where: { type: pokeTypeName },
         })
 
         // get pokemon ability
-        const pokemonAbilityId = await pokemon_ability.findOne(
-            {where: { ability: pokeAbilityName }}
+        const pokemonAbilityId = await pokemon_ability.findOne({
+                attributes: ['id'],
+                where: { ability: pokeAbilityName }
+            }
         )
 
         // Get userId
@@ -21,12 +24,10 @@ module.exports = async (req, res) =>{
             img,
             description,
             owner,
-            ability:  pokemonAbilityId,
-            pokemonType: pokemonTypeId,
+            pokemonAbilityId:  JSON.stringify(pokemonAbilityId.id),
+            pokemonTypeId: JSON.stringify(pokemonTypeId.id),
             UserId,
-        }),{
-            include: Pokemon.pokemon_ability,
-        }
+        })
         res.sendStatus(201)
     } catch (error) {
         console.log(error)
