@@ -63,14 +63,15 @@ export default function Home() {
     getData();
   };
 
-  // const handleDelete = async (e: any, id: number) => {
-  //   try {
-  //     await pokemonApi.deletePokemon(id);
-  //     getData();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleDelete = async (e: any, id: number) => {
+    try {
+      await pokemonApi.deletePokemon(id);
+      getData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleLogout = async () => {
     try {
       await AuthApi.logOut();
@@ -85,9 +86,9 @@ export default function Home() {
     setOpenModal(true);
   };
 
-  // const handleUpdateModal = () => {
-  //   setOpenUpdatePokemon(true);
-  // };
+  const handleUpdateModal = () => {
+    setOpenUpdatePokemon(true);
+  };
 
   return (
     <>
@@ -108,10 +109,33 @@ export default function Home() {
                 return (
                   <>
                     <div className="card" key={index}>
-                      <div className="animation">
-                       
-                      </div>
+                      <div className="dlt_upt_icons">
+                        <button
+                          className="icon delete_card_btn"
+                          onClick={() => {
+                            handleDelete(Event, pokemon.id);
+                          }}
+                        >
+                          <img
+                            key={pokemon.id}
+                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
+                            alt=""
+                          />
+                        </button>
 
+                        <button
+                          className="icon update_card_btn"
+                          onClick={() => {
+                            setPokeId(pokemon.id);
+                            handleUpdateModal();
+                          }}
+                        >
+                          <img
+                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
+                            alt=""
+                          />
+                        </button>
+                      </div>
                       <div className={`image ${pokemon.pokemon_type.type}`} >
                         <img
                           src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
@@ -162,31 +186,3 @@ export default function Home() {
     </>
   );
 }
-
-{/* <footer>
-                        <button
-                          className="icon delete_card_btn"
-                          onClick={() => {
-                            handleDelete(Event, pokemon.id);
-                          }}
-                        >
-                          <img
-                            key={pokemon.id}
-                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
-                            alt=""
-                          />
-                        </button>
-
-                        <button
-                          className="icon update_card_btn"
-                          onClick={() => {
-                            setPokeId(pokemon.id);
-                            handleUpdateModal();
-                          }}
-                        >
-                          <img
-                            src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
-                            alt=""
-                          />
-                        </button>
-                      </footer> */}
