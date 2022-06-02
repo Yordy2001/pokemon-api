@@ -90,3 +90,11 @@
   padding: .5rem;
   top: 0;
 }
+
+.card-box:hover .card_display {
+  transform: translate3d(0, -1rem, 1rem);
+}
+
+.card_flip{
+  transform: rotateY(180deg);
+}
