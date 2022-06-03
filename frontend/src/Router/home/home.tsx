@@ -24,7 +24,6 @@ export default function Home() {
     pokemonsType,
     loading,
     getData,
-    setPokemons
   } = useFetch();
 
   const initialState = pokemons
@@ -49,7 +48,6 @@ export default function Home() {
   const getPokemon = async () => {
     let data = await pokemonApi.getPokemonByName(search)
     setPokemon([data])
-    console.log(pokemon)
   }
 
   const handleSubmit = (e: any) => {
@@ -167,16 +165,12 @@ export default function Home() {
                       <div className="poke_description">
                         <h1>{pokemon.name}</h1>
                         <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Perferendis sapiente voluptatibus veniam enim
-                          dolore illum assumenda hic ex provident fugit sed,
-                          beatae numquam, ab deserunt excepturi saepe asperiores
-                          explicabo eligendi?
+                          {pokemon.description}
                         </p>
-                        {/* {pokemon.description} */}
-                        <div className="foother-card">
-                          {/* <p>{pokemon.owner}</p> */}
-                          <p>{pokemon.pokemon_ability.ability}</p>
+
+                        <div className="footer-card">
+                          <p>{pokemon.owner.toUpperCase()}</p>
+                          <p>{pokemon.pokemon_ability.ability.toUpperCase()}</p>
                           <p>
                             {" "}
                             <img
