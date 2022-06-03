@@ -9,7 +9,7 @@
   "test": {
     "username": "postgres",
     "password": "Yonmarlin1905",
-    "database": "pokemon-api",
+    "database": "pokemon_api_test",
     "host": "localhost",
     "dialect": "postgres"
   },
