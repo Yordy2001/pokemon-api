@@ -91,7 +91,7 @@ export default function Home() {
   };
 
   const handleFlip = (e: any) => {
-    console.log("first")
+    e.currentTarget.classList.toggle('card_flip')
   }
 
   return (
@@ -116,34 +116,7 @@ export default function Home() {
                     onClick={handleFlip}
                   >
                     <div className="card_display">
-                      <div className="card" key={index}>
-                        <div className="dlt_upt_icons">
-                          <button
-                            className="icon delete_card_btn"
-                            onClick={() => {
-                              handleDelete(Event, pokemon.id);
-                            }}
-                          >
-                            <img
-                              key={pokemon.id}
-                              src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
-                              alt=""
-                            />
-                          </button>
-
-                          <button
-                            className="icon update_card_btn"
-                            onClick={() => {
-                              setPokeId(pokemon.id);
-                              handleUpdateModal();
-                            }}
-                          >
-                            <img
-                              src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
-                              alt=""
-                            />
-                          </button>
-                        </div>
+                      <div className="card_front" key={index}>
                         <div className={`image ${pokemon.pokemon_type.type}`} >
                           <img
                             src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
@@ -152,14 +125,65 @@ export default function Home() {
                         </div>
                         <div className='card_body'>
                           <p>{pokemon.name.toUpperCase()} </p>
-                          <footer>
-                            <h5>Type:</h5>
+                          <footer className="footer_home">
+                            <div className="type_des">
+                              <h5>Type:</h5>
+                              <img
+                                className="icon-type"
+                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemon_type.type}.png`}
+                                alt=""
+                              />
+                            </div>
+                            <div className="dlt_upt_icons">
+                              <button
+                                className="icon delete_card_btn"
+                                onClick={() => {
+                                  handleDelete(Event, pokemon.id);
+                                }}
+                              >
+                                <img
+                                  key={pokemon.id}
+                                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
+                                  alt=""
+                                />
+                              </button>
+
+                              <button
+                                className="icon update_card_btn"
+                                onClick={() => {
+                                  setPokeId(pokemon.id);
+                                  handleUpdateModal();
+                                }}
+                              >
+                                <img
+                                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
+                                  alt=""
+                                />
+                              </button>
+                            </div>
+                          </footer>
+                        </div>
+                      </div>
+                      <div className="poke_description">
+                        <h1>{pokemon.name}</h1>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Perferendis sapiente voluptatibus veniam enim
+                          dolore illum assumenda hic ex provident fugit sed,
+                          beatae numquam, ab deserunt excepturi saepe asperiores
+                          explicabo eligendi?
+                        </p>
+                        {/* {pokemon.description} */}
+                        <div className="foother-card">
+                          {/* <p>{pokemon.owner}</p> */}
+                          <p>{pokemon.pokemon_ability.ability}</p>
+                          <p>
+                            {" "}
                             <img
-                              className="icon-type"
                               src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemon_type.type}.png`}
                               alt=""
                             />
-                          </footer>
+                          </p>
                         </div>
                       </div>
                     </div>
