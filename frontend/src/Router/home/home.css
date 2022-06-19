@@ -1,12 +1,12 @@
-.main__home {
-  max-width: 100%;
+.home{
   box-sizing: border-box;
-  margin: auto;
-  background-color: rgba(5, 5, 5, 0.795);
-  height: 100%;
-  max-height: 100%;
+  width: 100%;
 }
-
+.main-home{
+  box-sizing: border-box;
+  height: fit-content;
+  background-color: rgba(5, 5, 5, 0.795);
+}
 .form-dash {
   width: 20rem;
   margin-right: auto;
@@ -18,125 +18,9 @@
   padding: 1rem;
   outline: 0;
   border: none;
-  /* border: 2px solid  rgb(39, 39, 138); */
 }
 
 .form-dash input:focus {
   outline: 2px solid rgba(9, 131, 231, 0.877);
-
-}
-
-.image {
-  margin: 0;
-  padding: 0;
-  height: 80%;
-  padding: 0.5rem;
-}
-
-.card__container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 1rem;
-}
-
-.card-box:hover .card_display {
-  transform: translate3d(0, -1rem, 1rem);
-}
-
-.card_flip{
-  transform: rotateY(180deg);
-}
-
-.card_display {
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
-}
-
-.type_des .icon-type {
-  width: 100%;
-  height: 1.2rem;
-}
-
-.card_box {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  margin-right: 1rem;
-}
-
-.card_front {
-  border-radius: 3px;
-  box-shadow: rgba(168, 168, 168, 0.678) 0px 25px 20px -20px;
-  cursor: pointer;
-  filter: brightness(80%);
-  height: 28rem;
-  position: relative;
-  overflow: hidden;
-  width: 20rem;
-  max-height: 28rem;
-  margin-bottom: 2rem;
-  z-index: 1;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.card_body {
-  align-items: center;
-  height: 20%;
-  padding: 0.5rem;
-  font-size: 1.3rem;
-  background-color: rgb(211, 209, 209);
-}
-
-.card_body p {
-  text-align: center;
-}
-
-.card_front:hover {
-  /* transform: translate3d(0, -1rem, 1rem); */
-  transform-style: preserve-3d;
-  transition: all 0.4s linear;
-  filter: brightness(1.2);
-}
-
-.footer_home {
-  display: flex;
-  justify-content: space-between;
-}
-
-.dlt_upt_icons {
-  display: flex;
-  align-items: center;
-}
-
-.poke_description {
-  width: 20rem;
-  height: 28rem;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: aliceblue;
-  padding: 1rem 1rem 0rem 1rem;
-  text-align: justify;
-  transform: rotateY(180deg);
-}
-
-.poke_description>h1 {
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.footer-card{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.footer-card img{
-  width: 6rem;
 
 }

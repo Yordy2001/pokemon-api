@@ -1,5 +1,5 @@
-import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
-import Dashboard from './Router/dashboard/dashboard';
+import { Routes, Route } from 'react-router-dom'
+import PokeProfile from './Router/dashboard/dashboard';
 
 import Home from './Router/home/home';
 import Login from './Router/login/login';
@@ -13,6 +13,13 @@ function App() {
     <div className="App">
 
       <Routes>
+        <Route path='/pokemon'>
+          <Route
+            path=':pokeId'
+            element={<PokeProfile />}
+          />
+        </Route>
+
         <Route
           path='/'
           element={
@@ -21,14 +28,15 @@ function App() {
             </PrivateRouter>
           }
         />
-        <Route
+        {/* <Route
           path='/dashboard'
           element={
             <PrivateRouter>
               <Dashboard />
             </PrivateRouter>
           }
-        />
+        /> */}
+
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
 

@@ -11,6 +11,7 @@ import AddPokemon from "../../components/addForm";
 import Header from "../../components/header";
 import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
 import { IPokemon } from "../../interface";
+import Card from "../../components/card/card";
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
@@ -88,106 +89,24 @@ export default function Home() {
     setOpenUpdatePokemon(true);
   };
 
-  const handleFlip = (e: any) => {
-    e.currentTarget.classList.toggle('card_flip')
-  }
-
   return (
     <>
-      <div>
-        <Header
-          handleLogOut={handleLogout}
-          handleOpenModal={handleAddModal}
-        ></Header>
-        {loading ? (
-          <h1>LOADING...</h1>
-        ) : (
-          <main className="main__home">
-            <form className='form-dash' onSubmit={handleSubmit}>
-              <input placeholder="Name" onChange={handleChange} type="text" />
-            </form>
-            <div className="card__container">
-              {pokemon?.map((pokemon, index) => {
-                return (
-                  <div className="card_box"
-                    key={index}
-                    onClick={handleFlip}
-                  >
-                    <div className="card_display">
-                      <div className="card_front" key={index}>
-                        <div className={`image ${pokemon.pokemon_type.type}`} >
-                          <img
-                            src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
-                            alt={`imagen de ${pokemon.name}`}
-                          />
-                        </div>
-                        <div className='card_body'>
-                          <p>{pokemon.name.toUpperCase()} </p>
-                          <footer className="footer_home">
-                            <div className="type_des">
-                              <h5>Type:</h5>
-                              <img
-                                className="icon-type"
-                                src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemon_type.type}.png`}
-                                alt=""
-                              />
-                            </div>
-                            <div className="dlt_upt_icons">
-                              <button
-                                className="icon delete_card_btn"
-                                onClick={() => {
-                                  handleDelete(Event, pokemon.id);
-                                }}
-                              >
-                                <img
-                                  key={pokemon.id}
-                                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
-                                  alt=""
-                                />
-                              </button>
-
-                              <button
-                                className="icon update_card_btn"
-                                onClick={() => {
-                                  setPokeId(pokemon.id);
-                                  handleUpdateModal();
-                                }}
-                              >
-                                <img
-                                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
-                                  alt=""
-                                />
-                              </button>
-                            </div>
-                          </footer>
-                        </div>
-                      </div>
-                      <div className="poke_description">
-                        <h1>{pokemon.name}</h1>
-                        <p>
-                          {pokemon.description}
-                        </p>
-
-                        <div className="footer-card">
-                          <p>{pokemon.owner.toUpperCase()}</p>
-                          <p>{pokemon.pokemon_ability.ability.toUpperCase()}</p>
-                          <p>
-                            {" "}
-                            <img
-                              src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemon_type.type}.png`}
-                              alt=""
-                            />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </main>
-        )}
-
+    <Header
+        handleLogOut={handleLogout}
+        handleOpenModal={handleAddModal}
+      ></Header>
+      <div className="home">
+        <div className="main-home">
+          <form className='form-dash' onSubmit={handleSubmit}>
+            <input placeholder="Name" onChange={handleChange} type="text" />
+          </form>
+          <Card
+            pokemon={pokemon}
+            handleDelete={handleDelete}
+            setPokeId={setPokeId}
+            handleUpdateModal={handleUpdateModal}
+          ></Card>
+        </div>
         {
           <UpdatePokemon
             type={pokemonsType}

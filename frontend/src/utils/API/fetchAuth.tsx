@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import fetchApi from './fetchApi'
 import { IUser } from '../../interface'
 

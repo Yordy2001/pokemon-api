@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ import './login.css';
 const AuthApi = new fetchAuth()
 
 export default function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
+  const { register, handleSubmit } = useForm<IUser>();
   let navigate = useNavigate()
 
   const onSubmit = async (data: any, e: any) => {
