@@ -1,9 +1,11 @@
-const { Pokemon } = require('../../../db')
+const { Pokemon,  pokemon_ability, pokemon_type  } = require('../../../db')
 
 module.exports = async (req, res) => {
+    let id = req.params.id
     try {
         const pokemon = await Pokemon.findAll({
-            where: { id: req.params.id }
+            include: [pokemon_ability, pokemon_type],
+            where: { id: id }
         });
 
         if (pokemon) {

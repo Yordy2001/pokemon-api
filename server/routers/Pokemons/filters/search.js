@@ -2,14 +2,11 @@ const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db')
 const { Op } = require('sequelize')
 
 module.exports = async (req, res) => {
+    let name = req.params.name 
     try {
         const pokemon = await Pokemon.findOne({
             include: [pokemon_ability, pokemon_type],
-            where: {
-                name: {
-                    [Op.eq]: req.params.name
-                }
-            }
+            where: {name}
 
         });
         if (pokemon) {
