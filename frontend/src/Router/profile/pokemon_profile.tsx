@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 
 
-import './dashboard.css'
+import './profile.css'
 import { IPokemon } from '../../interface';
 import Pokemon from "../../utils/API/fetchPokemon";
 
@@ -13,7 +13,7 @@ type Props = {}
 const pokemonApi = new Pokemon();
 const PokeProfile = (_props: Props) => {
 
-    const [pokemon, setPokemon] = useState<IPokemon>()
+    const [pokemon, setPokemon] = useState<IPokemon[]>([])
     let { pokeId } = useParams()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,13 +31,26 @@ const PokeProfile = (_props: Props) => {
     useEffect(() => {
         getPokemon()
 
-    },[pokeId])
+    }, [pokeId])
 
 
     console.log(pokemon)
     return (
         <div className='page-description'>
-            
+            {
+                pokemon?.map((elem: any, index: any) => {
+                    return <>
+                        <div className="img">
+                            <img src={`${process.env.REACT_APP_SERVER_URL}/images/` + elem?.img} alt={`imagen del pokemon ${elem?.name} `} />
+                        </div>
+
+                        <div className="info">
+                            <p>{elem?.description}</p>
+                        </div>
+                    </>
+                })
+            }
+
         </div>
     )
 }

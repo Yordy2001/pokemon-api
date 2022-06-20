@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import PokeProfile from './Router/dashboard/dashboard';
+import PokeProfile from './Router/profile/pokemon_profile';
 
 import Home from './Router/home/home';
 import Login from './Router/login/login';
@@ -28,14 +28,6 @@ function App() {
             </PrivateRouter>
           }
         />
-        {/* <Route
-          path='/dashboard'
-          element={
-            <PrivateRouter>
-              <Dashboard />
-            </PrivateRouter>
-          }
-        /> */}
 
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
