@@ -2,14 +2,11 @@
 
 This is a Pokemon api done by node(express) to practice backend
 
-
-
-
-
 ## Tech Stack
 
 
-**Server:** Node, Express, postgres, sequelize
+**Server:** Node, Express, postgres, sequelize\
+**Frontend:** React, typeScript
 
 
 ## Run Locally
@@ -28,6 +25,16 @@ Go to the project directory
 
 Install dependencies
 
+### Run server
+
+Go to the server directory
+
+```bash
+  cd server
+```
+
+Install dependences
+
 ```bash
   npm install
 ```
@@ -35,9 +42,27 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm run dev
 ```  
-  
+### Run Frontend
+
+Go to the frontend directory
+
+```bash
+  cd frontend
+```
+Install dependeces
+
+```bash
+  npm install
+```
+
+Start app
+
+```bash
+  npm run dev
+```  
+
 ## Migrations
 
 Create database pokemon-api with npx sequelize-cli db:create
@@ -52,5 +77,3 @@ Create database pokemon-api with npx sequelize-cli db:create
 ```bash
   npx sequelize-cli db:seed:all
 ```
-    
-    
