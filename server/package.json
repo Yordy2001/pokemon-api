@@ -4,7 +4,7 @@
   "description": "create-api de pokemon. \r crear api con nodejs",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon -r dotenv/config index.js ",
     "test": "jest --verbose --detectOpenHandles --silent",
     "test:watch": "npm run test -- --watch"
   },

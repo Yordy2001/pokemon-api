@@ -7,3 +7,4 @@ images
 server/db/config/config.json
 frontend/.env
 server/db/config/config.json
+.env

@@ -1,5 +1,5 @@
 const express = require('express')
-const port = 5000
+const port = process.env.PORT
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParse =require('cookie-parser')
