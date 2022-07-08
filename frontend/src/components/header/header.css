@@ -8,18 +8,18 @@
 }
 
 .title,
-.open_nav{
+.open_nav {
   padding: 1rem;
-  color: #FFFFFA;
+  color: #fffffa;
   font-size: 2.2rem;
   display: block;
 }
 
-ul li{
+ul li {
   text-decoration: none;
   color: aliceblue;
   padding: 16px;
-  text-align: center;  
+  text-align: center;
 }
 
 .nav__home {
@@ -27,22 +27,21 @@ ul li{
   z-index: 1;
 }
 
-@media screen and (max-width: 500px ) {
-
-  ul li{
+@media screen and (max-width: 500px) {
+  ul li {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     text-decoration: none;
     color: aliceblue;
     padding: 16px;
-    text-align: center;  
+    text-align: center;
     margin-bottom: 1rem;
   }
 
   .nav__home {
-    animation-duration: .7s;
+    animation-duration: 0.7s;
     animation-name: slidein;
-    background-color: #037E8C;
+    background-color: #037e8c;
     display: block;
     position: absolute;
     height: 50vh;
@@ -51,35 +50,30 @@ ul li{
     z-index: 1;
   }
 
-  .nav__home p{ 
+  .nav__home p {
     text-align: end;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     padding: 16px;
-
   }
-  .hidden_menu{
+  .hidden_menu {
     display: none;
   }
-
 }
 
-
-@media screen and (min-width: 500px ) {
-
-  .open_nav{
+@media screen and (min-width: 500px) {
+  .open_nav {
     display: none;
   }
-  .nav__home{
+  .nav__home {
     display: block;
   }
 
-  ul li{
+  ul li {
     display: inline-block;
     padding: 1rem;
   }
-  
 }
-  
+
 @keyframes slidein {
   from {
     margin-left: -100%;

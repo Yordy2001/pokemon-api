@@ -25,6 +25,7 @@
     "start": "serve -s build -l 3000",
     "dev": "react-scripts start",
     "build": "react-scripts build",
+    "prettier": "npx prettier --write \"src/\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.8",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "prettier": "^2.7.1"
   }
 }

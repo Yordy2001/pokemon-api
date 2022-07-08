@@ -1,0 +1,21 @@
+name: Pull request
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Set Up node-version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Intall dependecies
+        run: npm ci
+
+      - name: Prettier 
+        run: yarn run prettier

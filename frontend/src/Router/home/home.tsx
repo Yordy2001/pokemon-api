@@ -1,30 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import "../../assets/style/main.css";
-import "./home.css";
+import '../../assets/style/main.css';
+import './home.css';
 
-import fetchAuth from "../../utils/API/fetchAuth";
-import { useFetch } from "../../utils/getData";
-import Pokemon from "../../utils/API/fetchPokemon";
-import AddPokemon from "../../components/addForm";
-import Header from "../../components/header";
-import Hero from "../../components/hero/hero";
-import UpdatePokemon from "../../components/updatePokemon/UpdatePokemonForm";
-import { useNavigate } from "react-router-dom";
+import fetchAuth from '../../utils/API/fetchAuth';
+import { useFetch } from '../../utils/getData';
+import Pokemon from '../../utils/API/fetchPokemon';
+import AddPokemon from '../../components/addForm';
+import Header from '../../components/header';
+import Hero from '../../components/hero/hero';
+import UpdatePokemon from '../../components/updatePokemon/UpdatePokemonForm';
+import { useNavigate } from 'react-router-dom';
 
 // Fetch Instance
 const pokemonApi = new Pokemon();
 const AuthApi = new fetchAuth();
 
 export default function Home() {
-  const navigate = useNavigate()
-  const { 
-    pokemons,
-    pokemonsAbility,
-    pokemonsType, 
-    loading, 
-    getData
-  } = useFetch();
+  const navigate = useNavigate();
+  const { pokemons, pokemonsAbility, pokemonsType, loading, getData } =
+    useFetch();
 
   const [pokeId, setPokeId] = useState<number>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -33,8 +28,8 @@ export default function Home() {
   const handleLogout = async () => {
     try {
       await AuthApi.logOut();
-      localStorage.isAuthenticate = false
-      navigate('/login')
+      localStorage.isAuthenticate = false;
+      navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -63,9 +58,9 @@ export default function Home() {
     setOpenUpdatePokemon(true);
   };
 
-  const flipCard= (e:any)=>{
-    e.currentTarget.classList.toggle('card_flip')
-  }
+  const flipCard = (e: any) => {
+    e.currentTarget.classList.toggle('card_flip');
+  };
   return (
     <>
       <div>
@@ -82,13 +77,14 @@ export default function Home() {
             <div className="card__container">
               {pokemons?.map((pokemon, index) => {
                 return (
-                  <div className="card-box" key={index} 
-                    onClick={flipCard}
-                  >
-                    <div className={`card_display`} >
+                  <div className="card-box" key={index} onClick={flipCard}>
+                    <div className={`card_display`}>
                       <div className="card__content" key={index}>
                         <img
-                          src={`${process.env.REACT_APP_SERVER_URL}/images/` + pokemon.img}
+                          src={
+                            `${process.env.REACT_APP_SERVER_URL}/images/` +
+                            pokemon.img
+                          }
                           alt={`imagen de ${pokemon.name}`}
                         />
                         <div
@@ -138,7 +134,7 @@ export default function Home() {
                           <p>{pokemon.owner}</p>
                           {/* <p>{pokemon.pokemonAbilityId}</p> */}
                           <p>
-                            {" "}
+                            {' '}
                             <img
                               src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${pokemon.pokemonTypeId}.png`}
                               alt=""
