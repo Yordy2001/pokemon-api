@@ -27,8 +27,6 @@ export default function Home() {
     getData,
   } = useFetch();
 
-  const initialState = pokemons
-
   const [search, setsearch] = useState<string>('')
   const [pokemon, setPokemon] = useState<IPokemon[]>()
   const [pokeId, setPokeId] = useState<number>(0);
@@ -36,24 +34,20 @@ export default function Home() {
   const [openUpdateModal, setOpenUpdatePokemon] = useState<boolean>(false);
 
   useEffect(() => {
-    setPokemon(initialState)
-  }, [initialState])
+    setPokemon(pokemons)
+  }, [pokemons])
 
   const handleChange = (e: any) => {
     let value = e.target.value
     setsearch(value)
-
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const getPokemon = async () => {
-    let data = await pokemonApi.getPokemonByName(search)
-    setPokemon([data])
-  }
+
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    getPokemon()
+    navigate(`/pokemon/${search}`)
   }
 
   const handleClose = async () => {

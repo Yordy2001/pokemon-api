@@ -99,7 +99,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: Props
                     {...register("pokeTypeName")}
                     required
                 >
-                    <option value="" selected disabled>
+                    <option value=""  disabled>
                         Pokemon Type
                     </option>
                     
@@ -116,7 +116,7 @@ export default function AddUpdatePokemon({ type, ability, onClose, open }: Props
                     {...register("pokeAbilityName")}
                     required
                 >
-                    <option value="" selected disabled>
+                    <option value=""  disabled>
                         pokemon Ability
                     </option>
                     {ability?.map((data: any, index: number) => {

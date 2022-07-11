@@ -8,7 +8,7 @@ export default class Pokemon extends fetchApi{
     }
 
     async getPokemonByName( pokeName:string ){
-        const response = await this.api.get(`/pokemon/:${pokeName}`);
+        const response = await this.api.get(`/pokemon/${pokeName}`);
         return response.data
     }
 

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 
-
-
 import './profile.css'
 import { IPokemon } from '../../interface';
 import Pokemon from "../../utils/API/fetchPokemon";
-
 
 type Props = {}
 
@@ -20,8 +17,9 @@ const PokeProfile = (_props: Props) => {
     const getPokemon = async () => {
         if (pokeId) {
             try {
-                let data = await pokemonApi.getPokemonById(parseInt(pokeId))
-                setPokemon(data)
+                let data = await pokemonApi.getPokemonByName(pokeId)
+                // let data = await pokemonApi.getPokemonById(parseInt(pokeId))
+                setPokemon([data])
             } catch (error) {
                 console.log(error)
             }
@@ -30,24 +28,40 @@ const PokeProfile = (_props: Props) => {
 
     useEffect(() => {
         getPokemon()
-
     }, [pokeId])
 
 
-    console.log(pokemon)
     return (
         <div className='page-description'>
             {
-                pokemon?.map((elem: any, index: any) => {
-                    return <>
+                pokemon?.map((elem: any) => {
+                    return <div className='poke-desc' key={elem.id}>
                         <div className="img">
                             <img src={`${process.env.REACT_APP_SERVER_URL}/images/` + elem?.img} alt={`imagen del pokemon ${elem?.name} `} />
                         </div>
 
                         <div className="info">
                             <p>{elem?.description}</p>
+                            <div className="footer">
+                                <img
+                                    className="icon-type"
+                                    src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
+                                    alt=""
+                                />
+                                <img
+                                    className="icon-type"
+                                    src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
+                                    alt=""
+                                />
+                                <img
+                                    className="icon-type"
+                                    src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
+                                    alt=""
+                                />
+                            </div>
+                            
                         </div>
-                    </>
+                    </div >
                 })
             }
 
