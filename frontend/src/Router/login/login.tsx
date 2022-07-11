@@ -12,41 +12,42 @@ const AuthApi = new fetchAuth();
 
 export default function Login() {
   const { register, handleSubmit } = useForm<IUser>();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
 
     try {
-      let user = await AuthApi.logIn(data)
-      localStorage.setItem('poke-session', JSON.stringify({isAuthenticate:true}))
-      navigate("/")
+      let user = await AuthApi.logIn(data);
+      localStorage.setItem(
+        'poke-session',
+        JSON.stringify({ isAuthenticate: true })
+      );
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
-  }
-  
-  return (<div className='login_body'>
-    <div className='background'>
-      <div className='shape'></div>
-      <div className='shape'></div>
-    </div>
-    <form className='form_login' onSubmit={handleSubmit(onSubmit)}>
-      <label
-        className='label_login'
-        htmlFor="email">
-        E-mail
-      </label>
-      <input
-        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-        className='input_login'
-        type="text" placeholder="Email"
-      />
-      <label
-        className='label_login'
-        htmlFor="password">
-        Password
-      </label>
+  };
+
+  return (
+    <div className="login_body">
+      <div className="background">
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
+      <form className="form_login" onSubmit={handleSubmit(onSubmit)}>
+        <label className="label_login" htmlFor="email">
+          E-mail
+        </label>
+        <input
+          {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+          className="input_login"
+          type="text"
+          placeholder="Email"
+        />
+        <label className="label_login" htmlFor="password">
+          Password
+        </label>
 
         <input
           {...register('password', { required: true, maxLength: 80 })}

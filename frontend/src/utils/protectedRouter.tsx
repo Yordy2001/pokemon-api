@@ -7,5 +7,5 @@ export default function PrivateRouter({ children }: any) {
     return <Navigate to="/login"></Navigate>;
   }
 
-    return children
+  return children;
 }

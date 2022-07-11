@@ -67,66 +67,52 @@ export default function AddUpdatePokemon({
     }
   });
 
-    return (
-        <Modal open={open} onClose={onClose}>
-            <form onSubmit={onSubmit}>
-                <span className="close" onClick={onClose}>
-                    &times;
-                </span>
-                <input
-                    {...register("name")}
-                    placeholder="name"
-                    required
-                />
-                <input
-                    onChange={handleFile}
-                    type="file"
-                    name="avatar"
-                    placeholder="img"
-                    required
-                />
-                <input
-                    {...register("description")}
-                    placeholder="Description"
-                    required
-                />
-                <input
-                    {...register("owner")}
-                    placeholder="owner"
-                    required
-                />
-                <select
-                    {...register("pokeTypeName")}
-                    required
-                >
-                    <option value=""  disabled>
-                        Pokemon Type
-                    </option>
-                    
-                    {type?.map((data: any, index: number) => {
-                        return (
-                            <option className='pokemon_type' value={data.type} key={index}>
-                                {data.type}
-                            </option>
-                        );
-                    })}
-                </select>
+  return (
+    <Modal open={open} onClose={onClose}>
+      <form onSubmit={onSubmit}>
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
+        <input {...register('name')} placeholder="name" required />
+        <input
+          onChange={handleFile}
+          type="file"
+          name="avatar"
+          placeholder="img"
+          required
+        />
+        <input
+          {...register('description')}
+          placeholder="Description"
+          required
+        />
+        <input {...register('owner')} placeholder="owner" required />
+        <select {...register('pokeTypeName')} required>
+          <option value="" disabled>
+            Pokemon Type
+          </option>
 
-                <select
-                    {...register("pokeAbilityName")}
-                    required
-                >
-                    <option value=""  disabled>
-                        pokemon Ability
-                    </option>
-                    {ability?.map((data: any, index: number) => {
-                        return (
-                            <option value={data.ability} key={index}>
-                                {data.ability}
-                            </option>
-                        );
-                    })}
-                </select>
+          {type?.map((data: any, index: number) => {
+            return (
+              <option className="pokemon_type" value={data.type} key={index}>
+                {data.type}
+              </option>
+            );
+          })}
+        </select>
+
+        <select {...register('pokeAbilityName')} required>
+          <option value="" disabled>
+            pokemon Ability
+          </option>
+          {ability?.map((data: any, index: number) => {
+            return (
+              <option value={data.ability} key={index}>
+                {data.ability}
+              </option>
+            );
+          })}
+        </select>
 
         <button type="submit" className="enviar">
           {onSubmit}

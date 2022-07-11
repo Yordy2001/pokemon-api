@@ -1,8 +1,8 @@
-.home{
+.home {
   box-sizing: border-box;
   width: 100%;
 }
-.main-home{
+.main-home {
   box-sizing: border-box;
   height: fit-content;
   background-color: rgba(5, 5, 5, 0.795);
@@ -13,7 +13,6 @@
   margin-left: auto;
   padding: 1rem;
 }
-
 
 .poke_description > h1 {
   text-transform: uppercase;
@@ -33,16 +32,13 @@
   padding: 1rem;
   outline: 0;
   border: none;
-
 }
 
 .form-dash input:focus {
   outline: 2px solid rgba(9, 131, 231, 0.877);
-
 }
 
 .foother-card p {
   text-transform: capitalize;
   font-size: medium;
 }
-

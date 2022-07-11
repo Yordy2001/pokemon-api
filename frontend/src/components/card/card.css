@@ -3,13 +3,12 @@
   height: 100%;
 }
 
-.card-content{
+.card-content {
   display: flex;
   flex-wrap: wrap;
+}
 
-} 
-
-.card-front{
+.card-front {
   margin-top: 1rem;
   cursor: pointer;
   height: 28rem;
@@ -17,28 +16,27 @@
   margin: 1.5rem;
 }
 
-.image{
+.image {
   height: 80%;
 }
 
-.card-body{
+.card-body {
   align-content: flex-end;
   height: 20%;
   background-color: rgb(211, 209, 209);
-  padding: .5rem;
+  padding: 0.5rem;
 }
-.card-body p{
+.card-body p {
   /* font-size: 1.5rem; */
   text-align: center;
-
 }
-.card-footer{
+.card-footer {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 }
 
-.type-des{
+.type-des {
   height: max-content;
 }
 
@@ -47,11 +45,10 @@
   height: 1.2rem;
 }
 
-
-.card-front:hover{
+.card-front:hover {
   transition: all 0.5s linear;
   transform: translate3d(0, -1rem, 1rem);
-} 
+}
 
 /* .card-box {
   position: relative;

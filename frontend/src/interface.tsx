@@ -13,10 +13,10 @@ export interface IpokemonAbility {
   ability: string;
 }
 
-export interface IpokemonAbility{
-    id: number,
-    ability: string
-} 
+export interface IpokemonAbility {
+  id: number;
+  ability: string;
+}
 
 export interface IpokemonType {
   id: number;
