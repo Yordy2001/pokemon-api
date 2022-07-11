@@ -1,5 +1,5 @@
 const express = require('express')
-const port = process.env.SERVER_PORT
+const port = process.env.PORT
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParse =require('cookie-parser')
@@ -34,7 +34,6 @@ app.get('/', (req, res)=>{
 
 app.use(router)
 
-
 // Error handler
 app.use((err, req, res, next) => res.status(400).send(err.menssage))
 
@@ -42,4 +41,4 @@ const server = app.listen(port, ()=>{
     console.log(`this project is running on http://localhost:${port}/`)
 })
 
-module.exports = {app, server};
+module.exports = { app, server };
