@@ -1,6 +1,6 @@
 
 module.exports = async(req, res, next ) =>{
-    console.log(req.session.user)
+
     try {
         if(req.session.isAuth){
             await next()
@@ -10,5 +10,5 @@ module.exports = async(req, res, next ) =>{
     } catch (error) {
         console.log(error)
     }
-    
+
 };

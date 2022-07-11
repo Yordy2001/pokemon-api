@@ -7,6 +7,11 @@
   background-color: #024959;
 }
 
+.button {
+  padding: 1rem;
+  border-radius: 16px;
+}
+
 .title,
 .open_nav {
   padding: 1rem;
@@ -28,6 +33,7 @@ ul li {
 }
 
 @media screen and (max-width: 500px) {
+
   ul li {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -55,15 +61,18 @@ ul li {
     margin-right: 0.5rem;
     padding: 16px;
   }
+
   .hidden_menu {
     display: none;
   }
 }
 
+
 @media screen and (min-width: 500px) {
   .open_nav {
     display: none;
   }
+
   .nav__home {
     display: block;
   }

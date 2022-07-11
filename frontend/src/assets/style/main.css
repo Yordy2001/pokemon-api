@@ -8,6 +8,7 @@
 }
 img {
   width: 100%;
+  height: 100%;
 }
 
 body {
@@ -20,4 +21,46 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+li{
+  list-style: none;
+  text-decoration: none;
+}
+
+.fire{
+  background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
+}
+
+.water{
+  background-image: linear-gradient(to top, #007adf 0%, #00ecbc 100%);
+}
+
+.electric{
+
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+.dragon{
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.dark{
+  background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}
+.fairy{
+  background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+}
+.bug{
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+.ghost{
+  background-image: linear-gradient(-225deg, #65379B 0%, #886AEA 53%, #6457C6 100%);
+}
+
+.fighting{
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+}
+.grass{
+  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
 }

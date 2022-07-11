@@ -1,7 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
-import fetchApi from './fetchApi';
-import { IUser } from '../../interface';
+import fetchApi from './fetchApi'
+import { IUser } from '../../interface'
 
 export default class fetchAuth extends fetchApi {
   async logOut() {

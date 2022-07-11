@@ -4,7 +4,5 @@ cookieValidator.js
 logger.js
 requestime.js
 images
-server/db/config/config.json
 frontend/.env
-server/db/config/config.json
 .env
