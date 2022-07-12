@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: pokemon-api/server
+          repository: ./server
           path: server
           fetch-depth: 0
 
@@ -27,7 +27,7 @@ jobs:
       - name: checkout react repo
         uses: actions/checkout@v3
         with:
-          repository: pokemon-api/frontend
+          repository: ./frontend
           path: frontend
           fetch-depth: 0
 
