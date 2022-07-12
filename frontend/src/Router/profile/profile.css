@@ -9,7 +9,8 @@
   height: 100%;
 }
 .poke-desc {
-  width: 100%;
+  width: 60vw;
+  margin: auto;
   display: flex;
   align-items: center;
   height: 18rem;

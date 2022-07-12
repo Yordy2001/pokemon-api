@@ -31,6 +31,7 @@ const PokeProfile = (_props: Props) => {
 
   return (
     <div className="page-description">
+
       {pokemon?.map((elem: any) => {
         return (
           <div className="poke-desc" key={elem.id}>
