@@ -22,7 +22,6 @@ jobs:
       - name: Install dependecies
         working-directory: ./server
         run: npm ci
-        
 
       - name: checkout react repo
         uses: actions/checkout@v3
@@ -36,6 +35,7 @@ jobs:
           node-version: 16
 
       - name: Install dependecies
+        working-directory: ./frontend
         run: npm ci
 
       - name: Build React
