@@ -27,7 +27,7 @@ const PokeProfile = (_props: Props) => {
 
   useEffect(() => {
     getPokemon();
-  }, [pokeId]);
+  }, [pokeId, getPokemon]);
 
   return (
     <div className="page-description">

@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      let user = await AuthApi.logIn(data);
+      await AuthApi.logIn(data);
       localStorage.setItem(
         'poke-session',
         JSON.stringify({ isAuthenticate: true })

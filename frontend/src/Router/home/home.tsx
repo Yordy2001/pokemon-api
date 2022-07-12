@@ -19,7 +19,7 @@ const AuthApi = new fetchAuth();
 
 export default function Home() {
   const navigate = useNavigate();
-  const { pokemons, pokemonsAbility, pokemonsType, loading, getData } =
+  const { pokemons, pokemonsAbility, pokemonsType, getData } =
     useFetch();
 
   const [search, setsearch] = useState<string>('');
