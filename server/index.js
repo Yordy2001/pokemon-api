@@ -28,7 +28,7 @@ app.use(cookieSession)
 // Routers
 app.get('/', (req, res) => {
 
-    var responseText = "Welcome to Pokemon-api! <br>"
+    var responseText = "Welcome to Pokemon-api v2! <br>"
     res.send(responseText)
 })
 
