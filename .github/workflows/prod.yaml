@@ -1,0 +1,50 @@
+name: Deploy-prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: SERVER
+
+      - name: checkout node repo
+        uses: actions/checkout@v3
+        with:
+          repository: pokemon-api/server
+          path: server
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependecies
+        run: npm ci
+        working-directory: ./server
+
+      - name: FRONTEND
+      - name: checkout react repo
+        uses: actions/checkout@v3
+        with:
+          repository: pokemon-api/frontend
+          path: frontend
+          fetch-depth: 0
+
+      - name: checkout react repo
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependecies
+        run: npm ci
+
+      - name: Build React
+        env:
+          REACT_APP_SERVER_URL: http://localhost:8000
+        run: npm run build
+        working-directory: ./frontend
