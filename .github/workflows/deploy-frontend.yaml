@@ -3,9 +3,8 @@ name: Deploy-app
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-
+    branches: [main]
+    paths: [frontend/**]
 jobs:
   build:
     runs-on: ubuntu-20.04
