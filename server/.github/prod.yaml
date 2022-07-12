@@ -1,20 +1,20 @@
-name: Deploy-prod
+# name: Deploy-prod
 
-on:
-  push: main
+# on:
+#   push: main
 
-jobs:
-  build:
-    runs-on: ubuntu-20.04
+# jobs:
+#   build:
+#     runs-on: ubuntu-20.04
 
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 16
 
-      - name: Install dependecies
-        run: npm ci
+#       - name: Install dependecies
+#         run: npm ci
