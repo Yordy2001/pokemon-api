@@ -20,8 +20,9 @@ jobs:
           node-version: 16
 
       - name: Install dependecies
-        run: npm ci
         working-directory: ./server
+        run: npm ci
+        
 
       - name: checkout react repo
         uses: actions/checkout@v3
@@ -39,6 +40,6 @@ jobs:
 
       - name: Build React
         env:
-          REACT_APP_SERVER_URL: http://localhost:8000
-        run: npm run build
+          REACT_APP_SERVER_URL: http://localhost:5000
         working-directory: ./frontend
+        run: npm run build
