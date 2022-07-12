@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: SERVER
-
-      - name: checkout node repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           repository: pokemon-api/server
           path: server
@@ -27,7 +24,6 @@ jobs:
         run: npm ci
         working-directory: ./server
 
-      - name: FRONTEND
       - name: checkout react repo
         uses: actions/checkout@v3
         with:
