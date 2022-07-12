@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: ./server
           path: server
           fetch-depth: 0
 
@@ -27,11 +26,10 @@ jobs:
       - name: checkout react repo
         uses: actions/checkout@v3
         with:
-          repository: ./frontend
           path: frontend
           fetch-depth: 0
 
-      - name: checkout react repo
+      - name: setup react repo
         uses: actions/setup-node@v3
         with:
           node-version: 16
