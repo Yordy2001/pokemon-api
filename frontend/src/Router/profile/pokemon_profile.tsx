@@ -11,7 +11,9 @@ type Props = {};
 const pokemonApi = new Pokemon();
 const PokeProfile = (_props: Props) => {
   const [pokemon, setPokemon] = useState<IPokemon[]>([]);
-  let { pokeId } = useParams();
+  const { pokeId } = useParams();
+  const [like, setlike] = useState(false)
+
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getPokemon = async () => {
@@ -30,6 +32,10 @@ const PokeProfile = (_props: Props) => {
     getPokemon();
   }, [pokeId, getPokemon]);
 
+  const handleLike = () => {
+    setlike(!like)
+  }
+
   return (
 
     <div className={styles.page_description}>
@@ -45,23 +51,42 @@ const PokeProfile = (_props: Props) => {
             </div>
 
             <div className={styles.info}>
+              <h2>{elem?.name}</h2>
               <p>{elem?.description}</p>
               <div className={styles.footer}>
-                <img
-                  className={styles.iconType}
-                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
-                  alt=""
-                />
-                <img
-                  className={styles.iconType}
-                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
-                  alt=""
-                />
-                <img
-                  className={styles.iconType}
-                  src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem.pokemon_type.type}.png`}
-                  alt=""
-                />
+
+                <div className="type-des">
+                  <h5>Type:</h5>
+                  <img
+                    className="icon-type"
+                    src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${elem?.pokemon_type.type}.png`}
+                    alt=""
+                  />
+                </div>
+
+                {/* <div className={`${styles.heart} ${like ? styles.heartLiked : ''}`} onClick={handleLike}>
+                </div> */}
+                <div className={styles.iconsDelete}>
+                  <button
+                    className="icon delete_card_btn"
+                  >
+                    <img
+                      key={elem?.id}
+                      src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/x-button.png`}
+                      alt=""
+                    />
+                  </button>
+
+                  <button
+                    className="icon update_card_btn"
+                  >
+                    <img
+                      src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/pencil.png`}
+                      alt=""
+                    />
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>
