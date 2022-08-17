@@ -1,4 +1,5 @@
 export interface IPokemon {
+  pokemon_type: any;
   id: number;
   name: string;
   img: any;

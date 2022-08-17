@@ -7,12 +7,12 @@ export default class Pokemon extends fetchApi {
   }
 
   async getPokemonByName(pokeName: string) {
-    const response = await this.api.get(`/pokemon/${pokeName}`);
+    const response = await this.api.get(`/pokemon/search/?name=${pokeName}`);
     return response.data;
   }
 
   async getPokemonById(pokeId: number) {
-    const response = await this.api.get(`/pokemon/${pokeId}`);
+    const response = await this.api.get(`/pokemon/search/?id=${pokeId}`);
     return response.data;
   }
 
@@ -23,6 +23,11 @@ export default class Pokemon extends fetchApi {
 
   async getPokemonType() {
     const response = await this.api.get('/pokemon/poke-type');
+    return response.data;
+  }
+
+  async getPokemonFilter(){
+    const response = await this.api.get('/pokemon/filter');
     return response.data;
   }
 
@@ -39,4 +44,5 @@ export default class Pokemon extends fetchApi {
   async deletePokemon(pokeId: number) {
     await this.api.delete(`/pokemon/${pokeId}`);
   }
+
 }
