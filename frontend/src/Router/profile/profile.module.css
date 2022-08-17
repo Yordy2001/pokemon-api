@@ -1,6 +1,6 @@
 .page_description {
-  width: 80%;
-  margin: auto;
+  width: 100%;
+  /* margin: auto; */
   height: 100vh;
   max-height: 100vh;
   background-color: rgba(49, 49, 49, 0.795);
@@ -66,6 +66,13 @@
   background-position: -2800px 0;
   transition: background 1s steps(28);
 }
+
+.recomeded{
+  display: flex;
+  flex-wrap:wrap ;
+  justify-content: space-between;
+}
+
 
 @keyframes fave-heart {
   0% {

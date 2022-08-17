@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -11,26 +12,29 @@ type Props = {};
 const pokemonApi = new Pokemon();
 const PokeProfile = (_props: Props) => {
   const [pokemon, setPokemon] = useState<IPokemon[]>([]);
+  const [pokemonFilter, setpokemonFilter] = useState<IPokemon[]>  ([])
   const { pokeId } = useParams();
   const [like, setlike] = useState(false)
 
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getPokemon = async () => {
-    if (pokeId) {
-      try {
-        let data = await pokemonApi.getPokemonByName(pokeId);
-        // let data = await pokemonApi.getPokemonById(parseInt(pokeId))
-        setPokemon([data]);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      let data = await pokemonApi.getPokemonByName(pokeId?pokeId:'');
+      let pokemonFilter = await pokemonApi.getPokemonFilter()
+      
+      setpokemonFilter([pokemonFilter])
+      setPokemon([data]);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   useEffect(() => {
     getPokemon();
-  }, [pokeId, getPokemon]);
+    // console.log(pokemonFilter[0]?.pokemon_type.type);
+    
+  }, [pokeId]);
 
   const handleLike = () => {
     setlike(!like)
@@ -92,6 +96,28 @@ const PokeProfile = (_props: Props) => {
           </div>
         );
       })}
+
+      <div className={styles.recomeded}>
+        {
+          pokemonFilter?.map((data, key)=>{
+            return <>  <div className={styles.pokemonRecomeded}>
+              <div className='img'>
+                <img src={`${process.env.REACT_APP_SERVER_URL}/images/` + data.img} alt="" />
+              </div>
+              <div className={styles.cardRecomendedBody}>
+                  <p>{data.name}</p>
+                  <h5>Type:</h5>
+                  {/* <img
+                    className="icon-type"
+                    src={`${process.env.REACT_APP_SERVER_URL}/static/image-dev/icons_type/${data?.pokemon_type.type}.png`}
+                    alt=""
+                  /> */}
+              </div>
+            </div>
+            </>
+          })
+        }
+      </div>
     </div>
   );
 };

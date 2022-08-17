@@ -26,6 +26,11 @@ export default class Pokemon extends fetchApi {
     return response.data;
   }
 
+  async getPokemonFilter(){
+    const response = await this.api.get('/pokemon/filter');
+    return response.data;
+  }
+
   async postPokemon(data: any) {
     const response = await this.api.post('/pokemon', data);
     return response.data;
@@ -39,4 +44,5 @@ export default class Pokemon extends fetchApi {
   async deletePokemon(pokeId: number) {
     await this.api.delete(`/pokemon/${pokeId}`);
   }
+
 }

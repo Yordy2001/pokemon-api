@@ -1,16 +1,14 @@
-const { Pokemon } = require('../../../db')
+const { Pokemon, pokemon_ability, pokemon_type } = require('../../../db')
 
 module.exports = async (req, res) => {
-    const {ordering, id} = req.query
     try {
         const pokemon = await Pokemon.findAll({
-            where: {id: id},
-            order :[ ordering ],
+            include: [pokemon_ability, pokemon_type],
             limit : 4
         });
 
         if (pokemon) {
-            res.status(200).json(pokemon)
+           return res.status(200).json(pokemon)
         }
         res.sendStatus(404)
     } catch (error) {
